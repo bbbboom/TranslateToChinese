@@ -1,0 +1,1130 @@
+# cmdgen.c
+echo cmdgen.c
+perl -i -pe 's#\Q"Usage: puttygen ( keyfile | -t type [ -b bits ] )\n"#"用法: puttygen ( 密钥文件 | -t 类型 [ -b 位数 ] )\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"                [ -C comment ] [ -P ] [ -q ]\n"#"                [ -C 注释 ] [ -P ] [ -q ]\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"                [ -o output-keyfile ] [ -O type | -l | -L"#"                [ -o 输出密钥文件 ] [ -O 类型 | -l | -L"#g' cmdgen.c
+perl -i -pe 's#\Q"Use \"puttygen --help\" for more detail.\n"#"使用 \\"puttygen --help\\" 了解更多帮助。\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"PuTTYgen: key generator and converter for the PuTTY tools\n"#"PuTTYgen: PuTTY 密钥生成与转换工具\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"  -t    specify key type when generating (ed25519, ecdsa, rsa, "#"  -t    指定生成的密钥类型 (ed25519, ecdsa, rsa, "#g' cmdgen.c
+perl -i -pe 's#\Q"  -b    specify number of bits when generating key\n"#"  -b    指定生成密钥的位数\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"  -C    change or specify key comment\n"#"  -C    修改或指定密钥注释\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"  -P    change key passphrase\n"#"  -P    修改密钥密码\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"  -q    quiet: do not display progress bar\n"#"  -q    静默: 不显示进度条\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"  -O    specify output type:\n"#"  -O    指定输出类型:\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"           private             output PuTTY private key format\n"#"           private             输出 PuTTY 私钥格式\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"           private-openssh     export OpenSSH private key\n"#"           private-openssh     导出 OpenSSH 私钥格式\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"           private-openssh-new export OpenSSH private key "#"           private-openssh-new 导出 OpenSSH 私钥格式 "#g' cmdgen.c
+perl -i -pe 's#\Q"(force new format)\n"#"(强制新格式)\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"           private-sshcom      export ssh.com private key\n"#"           private-sshcom      导出 ssh.com 私钥格式\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"           public              RFC 4716 / ssh.com public key\n"#"           public              RFC 4716 / ssh.com 公钥\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"           public-openssh      OpenSSH public key\n"#"           public-openssh      OpenSSH 公钥\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"           fingerprint         output the key fingerprint\n"#"           fingerprint         输出密钥指纹\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"  -o    specify output file\n"#"  -o    指定输出文件\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"  -l    equivalent to `-O fingerprint'\''\n"#"  -l    等价于 `-O fingerprint'\''\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"  -L    equivalent to `-O public-openssh'\''\n"#"  -L    等价于 `-O public-openssh'\''\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"  -p    equivalent to `-O public'\''\n"#"  -p    等价于 `-O public'\''\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"  --old-passphrase file\n"#"  --old-passphrase 文件\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"        specify file containing old key passphrase\n"#"        指定包含旧密钥密码的文件\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"  --new-passphrase file\n"#"  --new-passphrase 文件\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"        specify file containing new key passphrase\n"#"        指定包含新密钥密码的文件\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"  --random-device device\n"#"  --random-device 设备\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"        specify device to read entropy from (e.g. /dev/urandom)\n"#"        指定用于读取熵的设备 (例如：/dev/urandom)\\n"#g' cmdgen.c
+
+# config.c
+echo config.c
+perl -i -pe 's#\Q"None (printing disabled)"#"无 (禁止打印)"#g' config.c
+perl -i -pe 's#\Q"Host Name (or IP address)"#"主机名称(或 IP 地址)(N)"#g' config.c
+perl -i -pe 's#\Q"Port"#"端口(P)"#g' config.c
+perl -i -pe 's#\Q"Serial line"#"串行口(N)"#g' config.c
+perl -i -pe 's#\Q"Speed"#"速度(P)"#g' config.c
+perl -i -pe 's#\Q"ChaCha20 (SSH-2 only)"#"ChaCha20 (只限 SSH-2)"#g' config.c
+perl -i -pe 's#\Q"AES (SSH-2 only)"#"AES (只限 SSH-2)"#g' config.c
+perl -i -pe 's#\Q"Arcfour (SSH-2 only)"#"Arcfour (只限 SSH-2)"#g' config.c
+perl -i -pe 's#\Q"-- warn below here --"#"-- 下面为警告选项 --"#g' config.c
+perl -i -pe 's#\Q"Auto"#"自动"#g' config.c
+perl -i -pe 's#\Q"Off"#"关"#g' config.c
+perl -i -pe 's#\Q"On"#"开"#g' config.c
+perl -i -pe 's#\Q"Default Settings"#"默认设置"#g' config.c
+perl -i -pe 's#\Q"Default Foreground"#"默认前景"#g' config.c
+perl -i -pe 's#\Q"Default Bold Foreground"#"默认前景(粗)"#g' config.c
+perl -i -pe 's#\Q"Default Background"#"默认背景"#g' config.c
+perl -i -pe 's#\Q"Default Bold Background"#"默认背景(粗)"#g' config.c
+perl -i -pe 's#\Q"Cursor Text"#"光标文本"#g' config.c
+perl -i -pe 's#\Q"Cursor Colour"#"光标颜色"#g' config.c
+perl -i -pe 's#\Q"ANSI Black"#"ANSI 黑"#g' config.c
+perl -i -pe 's#\Q"ANSI Black Bold"#"ANSI 黑(粗)"#g' config.c
+perl -i -pe 's#\Q"ANSI Red"#"ANSI 红"#g' config.c
+perl -i -pe 's#\Q"ANSI Red Bold"#"ANSI 红(粗)"#g' config.c
+perl -i -pe 's#\Q"ANSI Green"#"ANSI 绿"#g' config.c
+perl -i -pe 's#\Q"ANSI Green Bold"#"ANSI 绿(粗)"#g' config.c
+perl -i -pe 's#\Q"ANSI Yellow"#"ANSI 黄"#g' config.c
+perl -i -pe 's#\Q"ANSI Yellow Bold"#"ANSI 黄(粗)"#g' config.c
+perl -i -pe 's#\Q"ANSI Blue"#"ANSI 蓝"#g' config.c
+perl -i -pe 's#\Q"ANSI Blue Bold"#"ANSI 蓝(粗)"#g' config.c
+perl -i -pe 's#\Q"ANSI Magenta"#"ANSI 紫"#g' config.c
+perl -i -pe 's#\Q"ANSI Magenta Bold"#"ANSI 紫(粗)"#g' config.c
+perl -i -pe 's#\Q"ANSI Cyan"#"ANSI 青"#g' config.c
+perl -i -pe 's#\Q"ANSI Cyan Bold"#"ANSI 青(粗)"#g' config.c
+perl -i -pe 's#\Q"ANSI White"#"ANSI 白"#g' config.c
+perl -i -pe 's#\Q"ANSI White Bold"#"ANSI 白(粗)"#g' config.c
+perl -i -pe 's#\Q"(auto)"#"(自动)"#g' config.c
+perl -i -pe 's#\Q"(don'\''t send)"#"(不发送)"#g' config.c
+perl -i -pe 's#\Q"You need to specify a source port number"#"需要指定一个来源端口数字"#g' config.c
+perl -i -pe 's#\Q"You need to specify a destination address\n"#"需要在表单指定一个目标地址\\n"#g' config.c
+perl -i -pe 's#\Q"in the form \"host.name:port\""#"如 \\"host.name:port\\""#g' config.c
+perl -i -pe 's#\Q"Specified forwarding already exists"#"指定的转向已经存在"#g' config.c
+perl -i -pe 's#\Q"You need to specify a host key or "#"需要指定一个主机密钥或"#g' config.c
+perl -i -pe 's#\Q"fingerprint"#"指纹"#g' config.c
+perl -i -pe 's#\Q"Host key is not in a valid format"#"主机密钥不是一个有效的格式"#g' config.c
+perl -i -pe 's#\Q"Specified host key is already listed"#"指定的主机密钥已存在"#g' config.c
+perl -i -pe 's#\Q"Apply"#"应用(A)"#g' config.c
+perl -i -pe 's#\Q"Open"#"打开(O)"#g' config.c
+perl -i -pe 's#\Q"Cancel"#"取消(C)"#g' config.c
+perl -i -pe 's#\Q"Basic options for your %s session"#"%s 会话基本设置"#g' config.c
+perl -i -pe 's#\Q"Session"#"会话"#g' config.c
+perl -i -pe 's#\Q"Specify the destination you want to connect to"#"指定要连接的目的地址"#g' config.c
+perl -i -pe 's#\Q"Connection type:"#"连接类型："#g' config.c
+perl -i -pe 's#\Q"Save the current session settings"#"保存当前会话设置"#g' config.c
+perl -i -pe 's#\Q"Load, save or delete a stored session"#"载入、保存或删除已存在的会话"#g' config.c
+perl -i -pe 's#\Q"Saved Sessions"#"保存的会话(E)"#g' config.c
+perl -i -pe 's#\Q"Load", '\''l'\''#"载入(L)", '\''l'\''#g' config.c
+perl -i -pe 's#\Q"Save", '\''v'\''#"保存(V)", '\''v'\''#g' config.c
+perl -i -pe 's#\Q"Delete", '\''d'\''#"删除(D)", '\''d'\''#g' config.c
+perl -i -pe 's#\Q"Close window on exit:"#"退出时关闭窗口(X)："#g' config.c
+perl -i -pe 's#\Q"Always"#"总是"#g' config.c
+perl -i -pe 's#\Q"Never"#"从不"#g' config.c
+perl -i -pe 's#\Q"Only on clean exit"#"仅正常退出"#g' config.c
+perl -i -pe 's#\Q"Session/Logging"#"会话/日志记录"#g' config.c
+perl -i -pe 's#\Q"Options controlling session logging"#"会话日志记录选项"#g' config.c
+perl -i -pe 's#\Q"SSH packets"#"SSH 包"#g' config.c
+perl -i -pe 's#\Q"SSH packets and raw data"#"SSH 包和 RAW 数据"#g' config.c
+perl -i -pe 's#\Q"Session logging:"#"会话日志记录："#g' config.c
+perl -i -pe 's#\Q"None", '\''t'\''#"无(T)", '\''t'\''#g' config.c
+perl -i -pe 's#\Q"Printable output"#"可打印输出(P)"#g' config.c
+perl -i -pe 's#\Q"All session output"#"所有会话输出(L)"#g' config.c
+perl -i -pe 's#\Q"Log file name:"#"日志文件名(F)："#g' config.c
+perl -i -pe 's#\Q"Select session log file name"#"选择会话的日志文件名"#g' config.c
+perl -i -pe 's#\Q"(Log file name can contain &Y, &M, &D for date,"#"(日志文件名可以包含 &Y &M &D 表示年月日，"#g' config.c
+perl -i -pe 's#\Q" &T for time, &H for host name, and &P for port number)"#"&T 表示时间，&H 表示主机名称)"#g' config.c
+perl -i -pe 's#\Q"What to do if the log file already exists:"#"要记录的日志文件已存在时(E)："#g' config.c
+perl -i -pe 's#\Q"Always overwrite it"#"总是覆盖"#g' config.c
+perl -i -pe 's#\Q"Always append to the end of it"#"总是添加到末尾"#g' config.c
+perl -i -pe 's#\Q"Ask the user every time"#"每次询问"#g' config.c
+perl -i -pe 's#\Q"Flush log file frequently"#"快速刷新缓存到日志文件(U)"#g' config.c
+perl -i -pe 's#\Q"Include header"#"包含header"#g' config.c
+perl -i -pe 's#\Q"Session/Logging"#"会话/日志记录"#g' config.c
+perl -i -pe 's#\Q"Options specific to SSH packet logging"#"指定 SSH 包日志记录设置"#g' config.c
+perl -i -pe 's#\Q"Omit known password fields"#"忽略已知的密码域(K)"#g' config.c
+perl -i -pe 's#\Q"Omit session data"#"忽略会话数据(D)"#g' config.c
+perl -i -pe 's#\Q"Terminal"#"终端"#g' config.c
+perl -i -pe 's#\Q"Options controlling the terminal emulation"#"终端模拟设置"#g' config.c
+perl -i -pe 's#\Q"Set various terminal options"#"设置不同的终端选项"#g' config.c
+perl -i -pe 's#\Q"Auto wrap mode initially on"#"初始开启自动换行(W)"#g' config.c
+perl -i -pe 's#\Q"DEC Origin Mode initially on"#"初始开启 DEC 原始模式"#g' config.c
+perl -i -pe 's#\Q"Implicit CR in every LF"#"在每个 LF 字符后增加 CR 字符"#g' config.c
+perl -i -pe 's#\Q"Implicit LF in every CR"#"在每个 CR 字符后增加 LF 字符"#g' config.c
+perl -i -pe 's#\Q"Use background colour to erase screen"#"使用背景颜色清除屏幕(E)"#g' config.c
+perl -i -pe 's#\Q"Enable blinking text"#"开启闪烁字文本(N)"#g' config.c
+perl -i -pe 's#\Q"Answerback to ^E:"#"^E 回应(S)："#g' config.c
+perl -i -pe 's#\Q"Line discipline options"#"行规则选项"#g' config.c
+perl -i -pe 's#\Q"Local echo:"#"本地回应(L)："#g' config.c
+perl -i -pe 's#\Q"Auto", I(AUTO)#"自动", I(AUTO)#g' config.c
+perl -i -pe 's#\Q"Force on"#"强制开"#g' config.c
+perl -i -pe 's#\Q"Force off"#"强制关"#g' config.c
+perl -i -pe 's#\Q"Local line editing:"#"本地行编辑(T)："#g' config.c
+perl -i -pe 's#\Q"Remote-controlled printing"#"远程控制打印"#g' config.c
+perl -i -pe 's#\Q"Printer to send ANSI printer output to:"#"打印发送 ANSI 打印机输出到(P)："#g' config.c
+perl -i -pe 's#\Q"Terminal/Keyboard"#"终端/键盘"#g' config.c
+perl -i -pe 's#\Q"Options controlling the effects of keys"#"按键效果设置"#g' config.c
+perl -i -pe 's#\Q"Change the sequences sent by:"#"修改按键码发送序列："#g' config.c
+perl -i -pe 's#\Q"The Backspace key"#"Backspace 回退键"#g' config.c
+perl -i -pe 's#\Q"The Home and End keys"#"Home 和 End 键"#g' config.c
+perl -i -pe 's#\Q"Standard"#"标准"#g' config.c
+perl -i -pe 's#\Q"The Function keys and keypad"#"Fn 功能键和小键盘"#g' config.c
+perl -i -pe 's#\Q"Application keypad settings:"#"应用小键盘设置："#g' config.c
+perl -i -pe 's#\Q"Initial state of cursor keys:"#"光标键初始状态(R)："#g' config.c
+perl -i -pe 's#\Q"Normal", I(0)#"常规", I(0)#g' config.c
+perl -i -pe 's#\Q"Application"#"应用"#g' config.c
+perl -i -pe 's#\Q"Initial state of numeric keypad:"#"数字小键盘初始状态(N)："#g' config.c
+perl -i -pe 's#\Q"Terminal/Bell"#"终端/响铃"#g' config.c
+perl -i -pe 's#\Q"Options controlling the terminal bell"#"终端响铃设置"#g' config.c
+perl -i -pe 's#\Q"Set the style of bell"#"设置响铃类型"#g' config.c
+perl -i -pe 's#\Q"Action to happen when a bell occurs:"#"发生响铃时动作(B)："#g' config.c
+perl -i -pe 's#\Q"None (bell disabled)"#"无 (禁止响铃)"#g' config.c
+perl -i -pe 's#\Q"Make default system alert sound"#"使用系统默认警告声音"#g' config.c
+perl -i -pe 's#\Q"Visual bell (flash window)"#"可视响铃 (闪动窗口)"#g' config.c
+perl -i -pe 's#\Q"Control the bell overload behaviour"#"设置重复响铃处理"#g' config.c
+perl -i -pe 's#\Q"Bell is temporarily disabled when over-used"#"大量重复响铃时临时禁止响铃(D)"#g' config.c
+perl -i -pe 's#\Q"Over-use means this many bells..."#"重复响铃最少数目(M)："#g' config.c
+perl -i -pe 's#\Q"... in this many seconds"#"重复响铃计算时间(秒)(T)："#g' config.c
+perl -i -pe 's#\Q"The bell is re-enabled after a few seconds of silence."#"响铃将在被禁止一段时间后重新被允许。"#g' config.c
+perl -i -pe 's#\Q"Seconds of silence required"#"被禁止响铃的时间(秒)(S)："#g' config.c
+perl -i -pe 's#\Q"Terminal/Features"#"终端/特性"#g' config.c
+perl -i -pe 's#\Q"Enabling and disabling advanced terminal features"#"允许或禁止高级终端特性"#g' config.c
+perl -i -pe 's#\Q"Disable application cursor keys mode"#"禁止应用光标键模式(U)"#g' config.c
+perl -i -pe 's#\Q"Disable application keypad mode"#"禁止应用小键盘模式(K)"#g' config.c
+perl -i -pe 's#\Q"Disable xterm-style mouse reporting"#"禁止 xterm 类型鼠标报告"#g' config.c
+perl -i -pe 's#\Q"Disable remote-controlled terminal resizing"#"禁止改变远程控制终端大小(S)"#g' config.c
+perl -i -pe 's#\Q"Disable switching to alternate terminal screen"#"禁止切换终端屏幕(W)"#g' config.c
+perl -i -pe 's#\Q"Disable remote-controlled window title changing"#"禁止改变远程控制窗口标题(T)"#g' config.c
+perl -i -pe 's#\Q"Disable remote-controlled clearing of scrollback"#"禁止远程控制清除回滚(E)"#g' config.c
+perl -i -pe 's#\Q"Response to remote title query (SECURITY):"#"远程标题查询回应(SECURITY)(Q)："#g' config.c
+perl -i -pe 's#\Q"None"#"无"#g' config.c
+perl -i -pe 's#\Q"Empty string"#"空字符串"#g' config.c
+perl -i -pe 's#\Q"Window title"#"窗口标题"#g' config.c
+perl -i -pe 's#\Q"Disable destructive backspace on server sending ^?"#"禁止服务器发送 ^? 时破坏性回退删除(B)"#g' config.c
+perl -i -pe 's#\Q"Disable remote-controlled character set configuration"#"禁止远程控制字符集设置(R)"#g' config.c
+perl -i -pe 's#\Q"Disable Arabic text shaping"#"禁止修整阿拉伯文本(L)"#g' config.c
+perl -i -pe 's#\Q"Disable bidirectional text display"#"禁止双向文本显示(D)"#g' config.c
+perl -i -pe 's#\Q"Options controlling %s'\''s window"#"%s 窗口设置"#g' config.c
+perl -i -pe 's#\Q"Window"#"窗口"#g' config.c
+perl -i -pe 's#\Q"Set the size of the window"#"设置窗口大小"#g' config.c
+perl -i -pe 's#\Q"Columns"#"列(M)"#g' config.c
+perl -i -pe 's#\Q"Rows"#"行(R)"#g' config.c
+perl -i -pe 's#\Q"Control the scrollback in the window"#"设置窗口回滚"#g' config.c
+perl -i -pe 's#\Q"Lines of scrollback"#"回滚行数(S)"#g' config.c
+perl -i -pe 's#\Q"Display scrollbar"#"显示滚动条(D)"#g' config.c
+perl -i -pe 's#\Q"Reset scrollback on keypress"#"按键时重置回滚(K)"#g' config.c
+perl -i -pe 's#\Q"Reset scrollback on display activity"#"刷新显示时重置回滚(P)"#g' config.c
+perl -i -pe 's#\Q"Push erased text into scrollback"#"将清除的文本压入回滚(E)"#g' config.c
+perl -i -pe 's#\Q"Configure the appearance of %s'\''s window"#"配置 %s 窗口外观"#g' config.c
+perl -i -pe 's#\Q"Window/Appearance"#"窗口/外观"#g' config.c
+perl -i -pe 's#\Q"Adjust the use of the cursor"#"调整光标"#g' config.c
+perl -i -pe 's#\Q"Cursor appearance:"#"光标显示："#g' config.c
+perl -i -pe 's#\Q"Block"#"显示块(L)"#g' config.c
+perl -i -pe 's#\Q"Underline"#"下划线(U)"#g' config.c
+perl -i -pe 's#\Q"Vertical line"#"垂直线(V)"#g' config.c
+perl -i -pe 's#\Q"Cursor blinks"#"光标闪烁(B)"#g' config.c
+perl -i -pe 's#\Q"Font settings"#"字体设置"#g' config.c
+perl -i -pe 's#\Q"Font used in the terminal window"#"终端窗口使用的字体(N)"#g' config.c
+perl -i -pe 's#\Q"Adjust the use of the mouse pointer"#"调整鼠标指针"#g' config.c
+perl -i -pe 's#\Q"Hide mouse pointer when typing in window"#"在窗口中输入时隐藏鼠标指针(P)"#g' config.c
+perl -i -pe 's#\Q"Adjust the window border"#"调整窗口边框"#g' config.c
+perl -i -pe 's#\Q"Gap between text and window edge:"#"文本与窗口边界的距离(E)："#g' config.c
+perl -i -pe 's#\Q"Configure the behaviour of %s'\''s window"#"配置 %s 窗口行为"#g' config.c
+perl -i -pe 's#\Q"Window/Behaviour"#"窗口/行为"#g' config.c
+perl -i -pe 's#\Q"Adjust the behaviour of the window title"#"调整窗口标题外观"#g' config.c
+perl -i -pe 's#\Q"Window title:"#"窗口标题(T)："#g' config.c
+perl -i -pe 's#\Q"Separate window and icon titles"#"使用单独的客户区窗口(I)"#g' config.c
+perl -i -pe 's#\Q"Warn before closing window"#"关闭窗口时警告(W)"#g' config.c
+perl -i -pe 's#\Q"Window/Translation"#"窗口/转换"#g' config.c
+perl -i -pe 's#\Q"Options controlling character set translation"#"字符集转换设置"#g' config.c
+perl -i -pe 's#\Q"Character set translation"#"字符集转换"#g' config.c
+perl -i -pe 's#\Q"Remote character set:"#"远程字符集(R)："#g' config.c
+perl -i -pe 's#\Q"Treat CJK ambiguous characters as wide"#"将不确定字符处理为 CJK 字符(W)"#g' config.c
+perl -i -pe 's#\Q"Adjust how %s handles line drawing characters"#"调整 %s 如何重画字符行"#g' config.c
+perl -i -pe 's#\Q"Handling of line drawing characters:"#"重画字符行处理："#g' config.c
+perl -i -pe 's#\Q"Use Unicode line drawing code points"#"使用 Unicode 统一码重画代码"#g' config.c
+perl -i -pe 's#\Q"Poor man'\''s line drawing (+, - and |)"#"简单重画行(+、- 和 |)(P)"#g' config.c
+perl -i -pe 's#\Q"Copy and paste line drawing characters as lqqqk"#"重画字符类似 lqqqk 复制粘贴行(D)"#g' config.c
+perl -i -pe 's#\Q"Enable VT100 line drawing even in UTF-8 mode"#"即使在UTF-8模式下也启用VT100线条图"#g' config.c
+perl -i -pe 's#\Q"Window/Selection"#"窗口/选择"#g' config.c
+perl -i -pe 's#\Q"Options controlling copy and paste"#"复制粘贴设置"#g' config.c
+perl -i -pe 's#\Q"Control use of mouse"#"鼠标使用控制"#g' config.c
+perl -i -pe 's#\Q"Shift overrides application'\''s use of mouse"#"Shift 上档键可与鼠标组合使用(P)"#g' config.c
+perl -i -pe 's#\Q"Default selection mode (Alt+drag does the other one):"#"默认选择模式(Alt 换档键拖放为另一种模式)："#g' config.c
+perl -i -pe 's#\Q"常规", '\''n'\''#"常规(N)", '\''n'\''#g' config.c
+perl -i -pe 's#\Q"Rectangular block"#"矩形框(R)"#g' config.c
+perl -i -pe 's#\Q"Character classes:"#"字符类别(E)："#g' config.c
+perl -i -pe 's#\Q"Set to class"#"设置到类别(T)"#g' config.c
+perl -i -pe 's#\Q"Set"#"设置(S)"#g' config.c
+perl -i -pe 's#\Q"Window/Selection/Copy"#"窗口/选择/复制"#g' config.c
+perl -i -pe 's#\Q"Options controlling copying from terminal to clipboard"#"控制从终端复制到剪贴板的选项"#g' config.c
+perl -i -pe 's#\Q"Classes of character that group together"#"Classes of character that group together"#g' config.c
+perl -i -pe 's#\Q"Window/Colours"#"窗口/颜色"#g' config.c
+perl -i -pe 's#\Q"Options controlling use of colours"#"颜色使用设置"#g' config.c
+perl -i -pe 's#\Q"General options for colour usage"#"颜色使用常规设置"#g' config.c
+perl -i -pe 's#\Q"Allow terminal to specify ANSI colours"#"允许终端指定 ANSI 颜色"#g' config.c
+perl -i -pe 's#\Q"Allow terminal to use xterm 256-colour mode"#"允许终端使用 xterm 256 色模式"#g' config.c
+perl -i -pe 's#\Q"Allow terminal to use 24-bit colours"#"允许终端使用24位颜色"#g' config.c
+perl -i -pe 's#\Q"Indicate bolded text by changing:"#"粗体文字表现(B)："#g' config.c
+perl -i -pe 's#\Q"The font"#"字体"#g' config.c
+perl -i -pe 's#\Q"The colour"#"颜色"#g' config.c
+perl -i -pe 's#\Q"Both"#"两者"#g' config.c
+perl -i -pe 's#\Q"Adjust the precise colours %s displays"#"调整 %s 显示的精确颜色"#g' config.c
+perl -i -pe 's#\Q"Select a colour from the list, and then click the"#"选择列表中的颜色，然后点击"#g' config.c
+perl -i -pe 's#\Q" Modify button to change its appearance."#"\\"修改\\"按钮改变其具体数值。"#g' config.c
+perl -i -pe 's#\Q"Select a colour to adjust:"#"选择颜色进行修改(U)："#g' config.c
+perl -i -pe 's#\Q"RGB value:"#"RGB 值："#g' config.c
+perl -i -pe 's#\Q"Red"#"红(R)"#g' config.c
+perl -i -pe 's#\Q"Green"#"绿(N)"#g' config.c
+perl -i -pe 's#\Q"Blue"#"蓝(E)"#g' config.c
+perl -i -pe 's#\Q"Modify"#"修改(M)"#g' config.c
+perl -i -pe 's#\Q"Connection"#"连接"#g' config.c
+perl -i -pe 's#\Q"Options controlling the connection"#"连接设置"#g' config.c
+perl -i -pe 's#\Q"Sending of null packets to keep session active"#"发送空数据包保持会话活动"#g' config.c
+perl -i -pe 's#\Q"Seconds between keepalives (0 to turn off)"#"空包发送时间间隔(秒，0 表示关闭)(K)："#g' config.c
+perl -i -pe 's#\Q"Low-level TCP connection options"#"底层 TCP 连接选项"#g' config.c
+perl -i -pe 's#\Q"Disable Nagle'\''s algorithm (TCP_NODELAY option)"#"禁止 Nagle 算法(TCP_NODELAY 参数)"#g' config.c
+perl -i -pe 's#\Q"Enable TCP keepalives (SO_KEEPALIVE option)"#"允许 TCP 保持活动连接(SO_KEEPALIVE 参数)"#g' config.c
+perl -i -pe 's#\Q"Internet protocol version"#"互联网协议版本"#g' config.c
+perl -i -pe 's#\Q"Logical name of remote host (e.g. for SSH key lookup):"#"远程主机的注册名字（比如用 ssh 密钥寻找）(M)："#g' config.c
+perl -i -pe 's#\Q"Logical name of remote host:"#"Logical 远程主机的注册名字(M)："#g' config.c
+perl -i -pe 's#\Q"Logical name of remote host"#"远程主机的注册名字"#g' config.c
+perl -i -pe 's#\Q"Connection/Data"#"连接/数据"#g' config.c
+perl -i -pe 's#\Q"Data to send to the server"#"传送到服务器的数据"#g' config.c
+perl -i -pe 's#\Q"Login details"#"登录详细资料"#g' config.c
+perl -i -pe 's#\Q"Auto-login username"#"自动登录用户名(U)："#g' config.c
+perl -i -pe 's#\Q"Use system username (%s)"#"使用系统用户名 (%s)"#g' config.c
+perl -i -pe 's#\Q"When username is not specified:"#"未指定用户名时(N)："#g' config.c
+perl -i -pe 's#\Q"Prompt"#"提示"#g' config.c
+perl -i -pe 's#\Q"Terminal details"#"终端详细资料"#g' config.c
+perl -i -pe 's#\Q"Terminal-type string"#"终端类型字符串(T)："#g' config.c
+perl -i -pe 's#\Q"Terminal speeds"#"终端速度(S)："#g' config.c
+perl -i -pe 's#\Q"Environment variables"#"环境变量"#g' config.c
+perl -i -pe 's#\Q"Variable"#"变量(V)："#g' config.c
+perl -i -pe 's#\Q"Value"#"值(L)："#g' config.c
+perl -i -pe 's#\Q"Remove"#"删除(R)"#g' config.c
+perl -i -pe 's#\Q"Connection/Proxy"#"连接/代理"#g' config.c
+perl -i -pe 's#\Q"Options controlling proxy usage"#"代理使用设置"#g' config.c
+perl -i -pe 's#\Q"Proxy type:"#"代理类型(T)："#g' config.c
+perl -i -pe 's#\Q"Proxy hostname"#"代理地址(Y)"#g' config.c
+perl -i -pe 's#\Q"Exclude Hosts/IPs"#"排除在外的地址(E)"#g' config.c
+perl -i -pe 's#\Q"Consider proxying local host connections"#"对于本地地址不使用代理(X)"#g' config.c
+perl -i -pe 's#\Q"Do DNS name lookup at proxy end:"#"在代理端进行 DNS 域名解析："#g' config.c
+perl -i -pe 's#\Q"No", I(FORCE_OFF)#"否", I(FORCE_OFF)#g' config.c
+perl -i -pe 's#\Q"Yes", I(FORCE_ON)#"是", I(FORCE_ON)#g' config.c
+perl -i -pe 's#\Q"Username"#"用户名(U)："#g' config.c
+perl -i -pe 's#\Q"Password"#"密码(W)："#g' config.c
+perl -i -pe 's#\Q"Telnet command"#"Telnet 命令(M)"#g' config.c
+perl -i -pe 's#\Q"Print proxy diagnostics "#"在终端窗口"#g' config.c
+perl -i -pe 's#\Q"in the terminal window"#"输出代理诊断信息(R)"#g' config.c
+perl -i -pe 's#\Q"Only until session starts"#"只在会话开始时"#g' config.c
+perl -i -pe 's#\Q"Connection/Telnet"#"连接/Telnet"#g' config.c
+perl -i -pe 's#\Q"Options controlling Telnet connections"#"Telnet 连接设置"#g' config.c
+perl -i -pe 's#\Q"Telnet protocol adjustments"#"Telnet 协议调整"#g' config.c
+perl -i -pe 's#\Q"Handling of OLD_ENVIRON ambiguity:"#"处理含糊的 OLD_ENVIRON 参数："#g' config.c
+perl -i -pe 's#\Q"BSD (commonplace)"#"BSD (常用)"#g' config.c
+perl -i -pe 's#\Q"RFC 1408 (unusual)"#"RFC 1408 (不常用)"#g' config.c
+perl -i -pe 's#\Q"Telnet negotiation mode:"#"Telnet 通讯模式："#g' config.c
+perl -i -pe 's#\Q"Passive"#"被动"#g' config.c
+perl -i -pe 's#\Q"Active"#"主动"#g' config.c
+perl -i -pe 's#\Q"Keyboard sends Telnet special commands"#"键盘直接发送 Telnet 特殊命令(K)"#g' config.c
+perl -i -pe 's#\Q"Return key sends Telnet New Line instead of ^M"#"发送 Telnet 新行命令替换 ^M 字符"#g' config.c
+perl -i -pe 's#\Q"Connection/Rlogin"#"连接/Rlogin"#g' config.c
+perl -i -pe 's#\Q"Options controlling Rlogin connections"#"Rlogin 连接设置"#g' config.c
+perl -i -pe 's#\Q"Local username:"#"本地用户名(L)："#g' config.c
+perl -i -pe 's#\Q"Connection/SSH"#"连接/SSH"#g' config.c
+perl -i -pe 's#\Q"Options controlling SSH connections"#"SSH 连接设置"#g' config.c
+perl -i -pe 's#\Q"Remote command:"#"远程命令(R)："#g' config.c
+perl -i -pe 's#\Q"Protocol options"#"协议选项"#g' config.c
+perl -i -pe 's#\Q"Don'\''t start a shell or command at all"#"完全不运行 Shell 或命令(N)"#g' config.c
+perl -i -pe 's#\Q"Enable compression"#"开启压缩(E)"#g' config.c
+perl -i -pe 's#\Q"Sharing an SSH connection between PuTTY tools"#"在 PuTTY 工具之间共享 SSH 连接"#g' config.c
+perl -i -pe 's#\Q"Share SSH connections if possible"#"如果可能共享 SSH 连接"#g' config.c
+perl -i -pe 's#\Q"Permitted roles in a shared connection:"#"共享连接中允许角色："#g' config.c
+perl -i -pe 's#\Q"Upstream (connecting to the real server)"#"上游 (连接到真实服务器)(U)"#g' config.c
+perl -i -pe 's#\Q"Downstream (connecting to the upstream PuTTY)"#"下游 (连接到上游 PuTTY)(D)"#g' config.c
+perl -i -pe 's#\Q"SSH protocol version:"#"首选的 SSH 协议版本："#g' config.c
+perl -i -pe 's#\Q"1 (INSECURE)"#"1 (不安全)"#g' config.c
+perl -i -pe 's#\Q"Connection/SSH/Kex"#"连接/SSH/密钥"#g' config.c
+perl -i -pe 's#\Q"Options controlling SSH key exchange"#"SSH 密钥验证设置"#g' config.c
+perl -i -pe 's#\Q"Key exchange algorithm options"#"密钥验证算法选项"#g' config.c
+perl -i -pe 's#\Q"Algorithm selection policy:"#"算法选择策略(S)："#g' config.c
+perl -i -pe 's#\Q"Attempt GSSAPI key exchange"#"尝试使用 GSSAPI 密钥验证"#g' config.c
+perl -i -pe 's#\Q"Options controlling key re-exchange"#"密钥再次验证设置"#g' config.c
+perl -i -pe 's#\Q"Max minutes before rekey (0 for no limit)"#"重新验证最长时间(分钟，0 不限制)(T)："#g' config.c
+perl -i -pe 's#\Q"Max minutes before rekey (0 for no limit)"#"GSS检查间隔时间(分钟，0 不限制)："#g' config.c
+perl -i -pe 's#\Q"Max data before rekey (0 for no limit)"#"重新验证最大数据量(0 为不限制)(X)："#g' config.c
+perl -i -pe 's#\Q"(Use 1M for 1 megabyte, 1G for 1 gigabyte etc)"#"(使用 1M 表示 1 兆字节，1G 表示 1 吉字节))"#g' config.c
+perl -i -pe 's#\Q"Connection/SSH/Host keys"#"连接/SSH/主机密钥"#g' config.c
+perl -i -pe 's#\Q"Options controlling SSH host keys"#"控制 SSH 主机密钥选项"#g' config.c
+perl -i -pe 's#\Q"Host key algorithm preference"#"主机密钥算法偏好"#g' config.c
+perl -i -pe 's#\Q"Manually configure host keys for this connection"#"手动配置本连接的主机密钥"#g' config.c
+perl -i -pe 's#\Q"Host keys or fingerprints to accept:"#"可接受的主机密钥或指纹："#g' config.c
+perl -i -pe 's#\Q"Key"#"密钥(K)"#g' config.c
+perl -i -pe 's#\Q"Add key"#"增加(Y)"#g' config.c
+perl -i -pe 's#\Q"Connection/SSH/Cipher"#"连接/SSH/加密"#g' config.c
+perl -i -pe 's#\Q"Options controlling SSH encryption"#"控制 SSH 加密选项"#g' config.c
+perl -i -pe 's#\Q"Encryption options"#"加密选项"#g' config.c
+perl -i -pe 's#\Q"Encryption cipher selection policy:"#"加密方法选择顺序(S)："#g' config.c
+perl -i -pe 's#\Q"Enable legacy use of single-DES in SSH-2"#"允许 SSH-2 兼容使用单一 DES 算法(I)"#g' config.c
+perl -i -pe 's#\Q"Connection/SSH/Auth"#"连接/SSH/认证"#g' config.c
+perl -i -pe 's#\Q"Options controlling SSH authentication"#"SSH 认证设置"#g' config.c
+perl -i -pe 's#\Q"Display pre-authentication banner (SSH-2 only)"#"显示预认证提示，只限于 SSH-2(D)"#g' config.c
+perl -i -pe 's#\Q"Bypass authentication entirely (SSH-2 only)"#"完全绕过认证，只限于 SSH-2(B)"#g' config.c
+perl -i -pe 's#\Q"Authentication methods"#"认证方式"#g' config.c
+perl -i -pe 's#\Q"Attempt authentication using Pageant"#"尝试使用 Pageant 认证"#g' config.c
+perl -i -pe 's#\Q"Attempt TIS or CryptoCard auth (SSH-1)"#"尝试 TIS 或 CryptoCard 认证 (SSH-1) (M)"#g' config.c
+perl -i -pe 's#\Q"Attempt \"keyboard-interactive\" auth (SSH-2)"#"尝试\\"智能键盘\\"认证 (SSH-2) (I)"#g' config.c
+perl -i -pe 's#\Q"Authentication parameters"#"认证参数"#g' config.c
+perl -i -pe 's#\Q"Allow agent forwarding"#"允许代理映射(F)"#g' config.c
+perl -i -pe 's#\Q"Allow attempted changes of username in SSH-2"#"允许尝试在 SSH-2 中修改用户名"#g' config.c
+perl -i -pe 's#\Q"Private key file for authentication:"#"认证私钥文件(K)："#g' config.c
+perl -i -pe 's#\Q"Select private key file"#"选择私钥文件"#g' config.c
+perl -i -pe 's#\Q"Connection/SSH/Auth/GSSAPI"#"连接/SSH/认证/GSSAPI"#g' config.c
+perl -i -pe 's#\Q"Options controlling GSSAPI authentication"#"控制 GSSAPI 认证选项"#g' config.c
+perl -i -pe 's#\Q"Attempt GSSAPI authentication (SSH-2 only)"#"尝试使用 GSSAPI 认证 (仅限SSH-2)"#g' config.c
+perl -i -pe 's#\Q"Attempt GSSAPI key exchange (SSH-2 only)"#"尝试使用 GSSAPI 密钥验证 (仅限SSH-2)"#g' config.c
+perl -i -pe 's#\Q"Allow GSSAPI credential delegation"#"允许 GSSAPI 凭据委托(L)"#g' config.c
+perl -i -pe 's#\Q"Preference order for GSSAPI libraries:"#"GSSAPI 库优先级："#g' config.c
+perl -i -pe 's#\Q"User-supplied GSSAPI library path:"#"用户支持的 GSSAPI 库路径："#g' config.c
+perl -i -pe 's#\Q"Select library file"#"选择库文件"#g' config.c
+perl -i -pe 's#\Q"Connection/SSH/TTY"#"连接/SSH/TTY"#g' config.c
+perl -i -pe 's#\Q"Remote terminal settings"#"远程终端设置"#g' config.c
+perl -i -pe 's#\Q"Don'\''t allocate a pseudo-terminal"#"不分配假终端(P)"#g' config.c
+perl -i -pe 's#\Q"Terminal modes"#"终端模式"#g' config.c
+perl -i -pe 's#\Q"Terminal modes to send:"#"终端模式用于发送："#g' config.c
+perl -i -pe 's#\Q"For selected mode, send:"#"选择的模式，发送："#g' config.c
+perl -i -pe 's#\Q"Nothing"#"无"#g' config.c
+perl -i -pe 's#\Q"This:"#"指定："#g' config.c
+perl -i -pe 's#\Q"Connection/SSH/X11"#"连接/SSH/X11"#g' config.c
+perl -i -pe 's#\Q"Options controlling SSH X11 forwarding"#"SSH X11 映射设置"#g' config.c
+perl -i -pe 's#\Q"X11 forwarding"#"X11 映射"#g' config.c
+perl -i -pe 's#\Q"Enable X11 forwarding"#"允许 X11 映射(E)"#g' config.c
+perl -i -pe 's#\Q"X display location"#"X 显示位置："#g' config.c
+perl -i -pe 's#\Q"Remote X11 authentication protocol"#"远程 X11 认证协议(U)"#g' config.c
+perl -i -pe 's#\Q"Connection/SSH/Tunnels"#"连接/SSH/通道"#g' config.c
+perl -i -pe 's#\Q"Options controlling SSH port forwarding"#"SSH 端口映射设置"#g' config.c
+perl -i -pe 's#\Q"Port forwarding"#"端口映射"#g' config.c
+perl -i -pe 's#\Q"Local ports accept connections from other hosts"#"本地端口接受其他主机的连接(T)"#g' config.c
+perl -i -pe 's#\Q"Remote ports do the same (SSH-2 only)"#"远程端口接受连接(只限 SSH-2)(P)"#g' config.c
+perl -i -pe 's#\Q"Forwarded ports:"#"映射的端口："#g' config.c
+perl -i -pe 's#\Q"Add new forwarded port:"#"增加新的映射端口："#g' config.c
+perl -i -pe 's#\Q"Add"#"增加(D)"#g' config.c
+perl -i -pe 's#\Q"Source port"#"源端口(S)："#g' config.c
+perl -i -pe 's#\Q"Destination"#"目的地(I)"#g' config.c
+perl -i -pe 's#\Q"Local"#"本地(L)"#g' config.c
+perl -i -pe 's#\Q"Remote"#"远程(M)"#g' config.c
+perl -i -pe 's#\Q"Dynamic"#"动态(Y)"#g' config.c
+perl -i -pe 's#\Q"Auto", '\''u'\''#"自动(U)", '\''u'\''#g' config.c
+perl -i -pe 's#\Q"Connection/SSH/Bugs"#"连接/SSH/查错"#g' config.c
+perl -i -pe 's#\Q"Workarounds for SSH server bugs"#"处理 SSH 服务器错误设置"#g' config.c
+perl -i -pe 's#\Q"Detection of known bugs in SSH servers"#"检测已知的 SSH 服务器错误"#g' config.c
+perl -i -pe 's#\Q"Chokes on SSH-2 ignore messages"#"阻塞 SSH-2 忽略信息"#g' config.c
+perl -i -pe 's#\Q"Handles SSH-2 key re-exchange badly"#"严格 SSH-2 密钥再次验证操作(K)"#g' config.c
+perl -i -pe 's#\Q"Chokes on PuTTY'\''s SSH-2 '\''winadj'\'' requests"#"阻塞 PuTTY'\''s SSH-2 '\''winadj'\'' 请求"#g' config.c
+perl -i -pe 's#\Q"Replies to requests on closed channels"#"回复已关闭通道的请求(Q)"#g' config.c
+perl -i -pe 's#\Q"Ignores SSH-2 maximum packet size"#"忽略 SSH-2 最大包大小(X)"#g' config.c
+perl -i -pe 's#\Q"Connection/SSH/More bugs"#"连接/SSH/更多查错"#g' config.c
+perl -i -pe 's#\Q"Further workarounds for SSH server bugs"#"处理 SSH 服务器更多错误设置"#g' config.c
+perl -i -pe 's#\Q"Detection of known bugs in SSH servers"#"检测已知的 SSH 服务器错误"#g' config.c
+perl -i -pe 's#\Q"Requires padding on SSH-2 RSA signatures"#"SSH-2 RSA 签名附加请求(P)"#g' config.c
+perl -i -pe 's#\Q"Only supports pre-RFC4419 SSH-2 DH GEX"#"只支持 pre-RFC4419 SSH-2 DH GEX"#g' config.c
+perl -i -pe 's#\Q"Miscomputes SSH-2 HMAC keys"#"混算 SSH-2 HMAC 密钥"#g' config.c
+perl -i -pe 's#\Q"Misuses the session ID in SSH-2 PK auth"#"错误 SSH-2 PK 认证会话 ID(N)"#g' config.c
+perl -i -pe 's#\Q"Miscomputes SSH-2 encryption keys"#"混算 SSH-2 加密密钥(E)"#g' config.c
+perl -i -pe 's#\Q"Chokes on SSH-1 ignore messages"#"阻塞 SSH-1 忽略信息(I)"#g' config.c
+perl -i -pe 's#\Q"Refuses all SSH-1 password camouflage"#"拒绝所有 SSH-1 密码伪装"#g' config.c
+perl -i -pe 's#\Q"Chokes on SSH-1 RSA authentication"#"阻塞 SSH-1 RSA 认证"#g' config.c
+
+# logging.c
+echo logging.c
+perl -i -pe 's#\Q"SSH packets"#"SSH 包"#g' logging.c
+
+# misc.c
+echo misc.c
+perl -i -pe 's#\Q"Build platform: %d-bit %s"#"构建平台: %d 位 %s"#g' misc.c
+perl -i -pe 's#\Q"%sCompiler: clang %s"#"%s编译器: clang %s"#g' misc.c
+perl -i -pe 's#\Q"%sCompiler: gcc %s"#"%s编译器: gcc %s"#g' misc.c
+perl -i -pe 's#\Q"%sCompiler: "#"%s编译器: "#g' misc.c
+perl -i -pe 's#\Q", unrecognised version"#", 未知版本"#g' misc.c
+perl -i -pe 's#\Q"%sBuild option: NO_SECURITY"#"%s构建选项: NO_SECURITY"#g' misc.c
+perl -i -pe 's#\Q"%sBuild option: NO_SECUREZEROMEMORY"#"%s构建选项: NO_SECUREZEROMEMORY"#g' misc.c
+perl -i -pe 's#\Q"%sBuild option: NO_IPV6"#"%s构建选项: NO_IPV6"#g' misc.c
+perl -i -pe 's#\Q"%sBuild option: NO_GSSAPI"#"%s构建选项: NO_GSSAPI"#g' misc.c
+perl -i -pe 's#\Q"%sBuild option: STATIC_GSSAPI"#"%s构建选项: STATIC_GSSAPI"#g' misc.c
+perl -i -pe 's#\Q"%sBuild option: UNPROTECT"#"%s构建选项: UNPROTECT"#g' misc.c
+perl -i -pe 's#\Q"%sBuild option: FUZZING"#"%s构建选项: FUZZING"#g' misc.c
+perl -i -pe 's#\Q"%sBuild option: DEBUG"#"%s构建选项: DEBUG"#g' misc.c
+perl -i -pe 's#\Q"%sSource commit: %s"#"%s源代码提交: %s"#g' misc.c
+
+# pscp.c
+echo pscp.c
+perl -i -pe 's#\Q"Error: "#"错误："#g' pscp.c
+perl -i -pe 's#\Q"PuTTY Secure Copy client\n"#"PuTTY 安全拷贝客户端\\n"#g' pscp.c
+perl -i -pe 's#\Q"Usage: pscp [options] [user@]host:source target\n"#"用法: pscp [选项] [用户名@]主机:源 目标\\n"#g' pscp.c
+perl -i -pe 's#\Q"       pscp [options] source [source...] [user@]host:target\n"#"       pscp [选项] 源 [其他源...] [用户名@]主机:目标\\n"#g' pscp.c
+perl -i -pe 's#\Q"       pscp [options] -ls [user@]host:filespec\n"#"       pscp [选项] -ls [用户名@]主机:指定文件\\n"#g' pscp.c
+perl -i -pe 's#\Q"Options:\n"#"选项:\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -V        print version information and exit\n"#"  -V        显示版本信息后退出\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -pgpfp    print PGP key fingerprints and exit\n"#"  -pgpfp    显示 PGP 密钥指纹后退出\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -p        preserve file attributes\n"#"  -p        保留文件属性\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -q        quiet, don'\''t show statistics\n"#"  -q        安静模式，不显示状态信息\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -r        copy directories recursively\n"#"  -r        递归拷贝目录\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -v        show verbose messages\n"#"  -v        显示详细信息\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -load sessname  Load settings from saved session\n"#"  -load 会话名  载入保存的会话信息\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -P port   connect to specified port\n"#"  -P 端口   连接指定的端口\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -l user   connect with specified username\n"#"  -l 用户名 使用指定的用户名连接\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -pw passw login with specified password\n"#"  -pw 密码  使用指定的密码登录\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -1 -2     force use of particular SSH protocol version\n"#"  -1 -2     强制使用 SSH 协议版本\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -4 -6     force use of IPv4 or IPv6\n"#"  -4 -6     强制使用 IPv4 或 IPv6 版本\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -C        enable compression\n"#"  -C        允许压缩\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -i key    private key file for user authentication\n"#"  -i 密钥   认证使用的密钥文件\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -noagent  disable use of Pageant\n"#"  -noagent  禁用 Pageant 认证代理\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -agent    enable use of Pageant\n"#"  -agent    启用 Pageant 认证代理\\n"#g' pscp.c
+perl -i -pe 's#\Q"            manually specify a host key (may be repeated)\n"#"            手动指定主机密钥(可能重复)\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -batch    disable all interactive prompts\n"#"  -batch    禁止所有交互提示\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -no-sanitise-stderr  don'\''t strip control chars from"#"  -no-sanitise-stderr  不要从标准错误中"#g' pscp.c
+perl -i -pe 's#\Q" standard error\n"#" 删除控制字符\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -proxycmd command\n"#"  -proxycmd 命令\\n"#g' pscp.c
+perl -i -pe 's#\Q"            use '\''command'\'' as local proxy\n"#"            使用 '\''命令'\'' 作为本地代理\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -unsafe   allow server-side wildcards (DANGEROUS)\n"#"  -unsafe   允许服务端通配符(危险操作)\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -sftp     force use of SFTP protocol\n"#"  -sftp     强制使用 SFTP 协议\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -scp      force use of SCP protocol\n"#"  -scp      强制使用 SCP 协议\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -sshlog file\n"#"  -sshlog 文件\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -sshrawlog file\n"#"  -sshrawlog 文件\\n"#g' pscp.c
+perl -i -pe 's#\Q"            log protocol details to a file\n"#"            记录协议详细日志到指定文件\\n"#g' pscp.c
+
+# psftp.c
+echo psftp.c
+perl -i -pe 's#\Q"Error: "#"错误："#g' psftp.c
+# "did not receive SFTP response packet from server"
+# "unable to understand SFTP response packet from server: %s"
+# "psftp: not connected to a host; use \"open host.name\"\n"
+# "psftp: already connected\n"
+# "open: expects a host name\n"
+# "open: invalid port number\n"
+# "lcd: expects a local directory name\n"
+# "lcd: unable to change directory: %s\n"
+# "New local directory is %s\n"
+# "Current local directory is %s\n"
+# "help: %s: command not found\n"
+# "Fatal: unable to initialise SFTP: %s\n"
+# "Warning: failed to resolve home directory: %s\n"
+# "Remote working directory is %s\n"
+# "Fatal: unable to open %s\n"
+# "all PSFTP agent requests should be synchronous"
+# "Received unexpected end-of-file from SFTP server"
+perl -i -pe 's#\Q"PuTTY Secure File Transfer (SFTP) client\n"#"PuTTY 安全文件传输 (SFTP) 客户端\\n"#g' psftp.c
+perl -i -pe 's#\Q"Usage: psftp [options] [user@]host\n"#"用法: psftp [选项] [用户名@]主机\\n"#g' psftp.c
+perl -i -pe 's#\Q"Options:\n"#"选项:\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -V        print version information and exit\n"#"  -V        显示版本信息后退出\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -pgpfp    print PGP key fingerprints and exit\n"#"  -pgpfp    显示 PGP 密钥指纹后退出\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -b file   use specified batchfile\n"#"  -b 文件   使用指定的批处理文件\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -bc       output batchfile commands\n"#"  -bc       输出批处理文件命令\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -be       don'\''t stop batchfile processing if errors\n"#"  -be       批处理文件发生错误也不停止其处理进程\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -v        show verbose messages\n"#"  -v        显示详细信息\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -load sessname  Load settings from saved session\n"#"  -load 会话名  载入保存的会话信息\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -l user   connect with specified username\n"#"  -l 用户名 使用指定的用户名连接\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -P port   connect to specified port\n"#"  -P 端口   连接指定的端口\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -pw passw login with specified password\n"#"  -pw 密码  使用指定的密码登录\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -1 -2     force use of particular SSH protocol version\n"#"  -1 -2     强制使用 SSH 协议版本\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -4 -6     force use of IPv4 or IPv6\n"#"  -4 -6     强制使用 IPv4 或 IPv6 版本\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -C        enable compression\n"#"  -C        允许压缩\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -i key    private key file for user authentication\n"#"  -i 密钥   认证使用的密钥文件\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -noagent  disable use of Pageant\n"#"  -noagent  禁止使用 Pageant 认证代理\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -agent    enable use of Pageant\n"#"  -agent    开启使用 Pageant 认证代理\\n"#g' psftp.c
+perl -i -pe 's#\Q"            manually specify a host key (may be repeated)\n"#"            手工指定主机密钥指纹 (可能是重复的)\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -batch    disable all interactive prompts\n"#"  -batch    禁止所有交互提示\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -no-sanitise-stderr  don'\''t strip control chars from"#"  -no-sanitise-stderr  不要从标准错误中"#g' psftp.c
+perl -i -pe 's#\Q" standard error\n"#" 删除控制字符\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -proxycmd command\n"#"  -proxycmd 命令\\n"#g' psftp.c
+perl -i -pe 's#\Q"            use '\''command'\'' as local proxy\n"#"            使用 '\''命令'\'' 作为本地代理\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -sshlog file\n"#"  -sshlog 文件\\n"#g' psftp.c
+perl -i -pe 's#\Q"  -sshrawlog file\n"#"  -sshrawlog 文件\\n"#g' psftp.c
+perl -i -pe 's#\Q"            log protocol details to a file\n"#"            日志协议明细输出到文件\\n"#g' psftp.c
+
+# sercfg.c
+echo sercfg.c
+perl -i -pe 's#\Q"None"#"无"#g' sercfg.c
+perl -i -pe 's#\Q"Session"#"会话"#g' sercfg.c
+perl -i -pe 's#\Q"Specify the destination you want to connect to"#"指定要连接的目的地址"#g' sercfg.c
+perl -i -pe 's#\Q"Serial"#"串口(R)"#g' sercfg.c
+perl -i -pe 's#\Q"Connection/Serial"#"连接/串口"#g' sercfg.c
+perl -i -pe 's#\Q"Options controlling local serial lines"#"本地串口设置"#g' sercfg.c
+perl -i -pe 's#\Q"Select a serial line"#"选择一个串口"#g' sercfg.c
+perl -i -pe 's#\Q"Serial line to connect to"#"连接到的串口(L)"#g' sercfg.c
+perl -i -pe 's#\Q"Configure the serial line"#"配置串口"#g' sercfg.c
+perl -i -pe 's#\Q"Speed (baud)"#"速度/波特率(S)"#g' sercfg.c
+perl -i -pe 's#\Q"Data bits"#"数据位(B)"#g' sercfg.c
+perl -i -pe 's#\Q"Stop bits"#"停止位(T)"#g' sercfg.c
+perl -i -pe 's#\Q"Parity"#"奇偶校验位(P)"#g' sercfg.c
+perl -i -pe 's#\Q"Flow control"#"流量控制(F)"#g' sercfg.c
+
+# settings.c
+echo settings.c
+perl -i -pe 's#\Q"Default Settings"#"默认设置"#g' settings.c
+
+# ssh.c
+echo ssh.c
+perl -i -pe 's#\Q"Repeat key exchange"#"重复密钥交换"#g' ssh.c
+perl -i -pe 's#\Q"More signals"#"更多信号"#g' ssh.c
+perl -i -pe 's#\Q"Cache new host key type"#"缓存新的主机密钥类型"#g' ssh.c
+
+# sshpubk.c
+echo sshpubk.c
+perl -i -pe 's#\Q"unable to open file"#"无法打开文件"#g' sshpubk.c
+perl -i -pe 's#\Q"not a recognised key file format"#"不是私钥"#g' sshpubk.c
+perl -i -pe 's#\Q"SSH-1 public key"#"SSH-1 公钥"#g' sshpubk.c
+perl -i -pe 's#\Q"SSH-2 public key (RFC 4716 format)"#"SSH-2 公钥 (RFC 4716 格式)"#g' sshpubk.c
+perl -i -pe 's#\Q"SSH-2 public key (OpenSSH format)"#"SSH-2 公钥 (OpenSSH 格式)"#g' sshpubk.c
+perl -i -pe 's#\Q"SSH-1 private key"#"SSH-1 私钥"#g' sshpubk.c
+perl -i -pe 's#\Q"PuTTY SSH-2 private key"#"PuTTY SSH-2 私钥"#g' sshpubk.c
+perl -i -pe 's#\Q"OpenSSH SSH-2 private key (old PEM format)"#"OpenSSH SSH-2 私钥 (旧 PEM 格式)"#g' sshpubk.c
+perl -i -pe 's#\Q"OpenSSH SSH-2 private key (new format)"#"OpenSSH SSH-2 私钥 (新格式)"#g' sshpubk.c
+perl -i -pe 's#\Q"ssh.com SSH-2 private key"#"ssh.com SSH-2 私钥"#g' sshpubk.c
+
+# version.h
+echo version.h
+perl -i -pe 's#\Q"Release 0.70"#"发布版 0.70_cn_portable"#g' version.h
+perl -i -pe 's#\Q"Release 0.71"#"发布版 0.71_cn_portable"#g' version.h
+perl -i -pe 's#\Q"Release 0.72"#"发布版 0.72_cn_portable"#g' version.h
+perl -i -pe 's#\Q"Release 0.73"#"发布版 0.73_cn_portable"#g' version.h
+
+# windows/pageant.rc
+echo windows/pageant.rc
+perl -i -pe 's#\Q"PuTTY SSH authentication agent"#"PuTTY SSH 认证代理"#g' windows/pageant.rc
+perl -i -pe 's#\Q"Pageant: Enter Passphrase"#"Pageant: 输入密码"#g' windows/pageant.rc
+perl -i -pe 's#\Q"Enter passphrase for key"#"请输入密钥的密码"#g' windows/pageant.rc
+perl -i -pe 's#\Q"O&K"#"确定(&K)"#g' windows/pageant.rc
+perl -i -pe 's#\Q"&Cancel"#"取消(&C)"#g' windows/pageant.rc
+perl -i -pe 's#\Q"Pageant Key List"#"Pageant 密钥列表"#g' windows/pageant.rc
+perl -i -pe 's#\Q"&Add Key"#"增加密钥(&A)"#g' windows/pageant.rc
+perl -i -pe 's#\Q"&Remove Key"#"移除密钥(&R)"#g' windows/pageant.rc
+perl -i -pe 's#\Q"&Help"#"帮助(&H)"#g' windows/pageant.rc
+perl -i -pe 's#\Q"&Close"#"关闭(&C)"#g' windows/pageant.rc
+perl -i -pe 's#\Q"About Pageant"#"关于 Pageant"#g' windows/pageant.rc
+perl -i -pe 's#\Q"&Close"#"关闭(&C)"#g' windows/pageant.rc
+perl -i -pe 's#\Q"View &Licence"#"查看许可证(&L)"#g' windows/pageant.rc
+perl -i -pe 's#\Q"Visit &Web Site"#"查看网站 (&W)"#g' windows/pageant.rc
+perl -i -pe 's#\Q"PuTTY Licence"#"PuTTY 许可证"#g' windows/pageant.rc
+perl -i -pe 's#\Q"OK"#"确定"#g' windows/pageant.rc
+
+# windows/plink.rc
+echo windows/plink.rc
+perl -i -pe 's#\Q"Command-line SSH, Telnet, and Rlogin client"#"命令行 SSH、Telnet 和 Rlogin 客户端"#g' windows/plink.rc
+
+# windows/pscp.rc
+echo windows/pscp.rc
+perl -i -pe 's#\Q"Command-line SCP/SFTP client"#"命令行 SCP/SFTP 客户端"#g' windows/pscp.rc
+
+# windows/psftp.rc
+echo windows/psftp.rc
+perl -i -pe 's#\Q"Command-line interactive SFTP client"#"命令行交互 SFTP 客户端"#g' windows/psftp.rc
+
+# windows/putty.rc
+echo windows/putty.rc
+perl -i -pe 's#\Q"SSH, Telnet and Rlogin client"#"SSH、Telnet 和 Rlogin 客户端"#g' windows/putty.rc
+
+# windows/puttygen.rc
+echo windows/puttygen.rc
+perl -i -pe 's#\Q"PuTTY SSH key generation utility"#"PuTTY SSH 密钥生成工具"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"PuTTY Key Generator"#"PuTTY 密钥生成器"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"PuTTYgen: Enter Passphrase"#"PuTTYgen: 输入密码"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"Enter passphrase for key"#"请输入密钥的密码"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"O&K"#"确定(&K)"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"&Cancel"#"取消(&C)"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"About PuTTYgen"#"关于 PuTTYgen"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"&Close"#"关闭(&C)"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"View &Licence"#"查看许可证(&L)"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"Visit &Web Site"#"访问网站 (&W)"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"PuTTY Licence"#"PuTTY 许可证"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"OK"#"确定"#g' windows/puttygen.rc
+
+# windows/version.rc2
+echo windows/version.rc2
+perl -i -pe 's#\Q"080904B0"#"080404B0"#g' windows/version.rc2
+perl -i -pe 's#\Q"PuTTY suite"#"PuTTY 套件"#g' windows/version.rc2
+perl -i -pe 's#\Q"Copyright \251 "#"版权所有(C) "#g' windows/version.rc2
+
+# windows/win_res.rc2
+echo windows/win_res.rc2
+perl -i -pe 's#\Q"About PuTTY"#"关于 PuTTY"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"&Close"#"关闭(&C)"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"View &Licence"#"查看许可证(&L)"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"Visit &Web Site"#"查看网站 (&W)"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"PuTTY Configuration"#"PuTTY 配置"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"PuTTY Event Log"#"PuTTY 事件日志"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"C&opy"#"复制(&O)"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"PuTTY Licence"#"PuTTY 许可证"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"OK"#"确定"#g' windows/win_res.rc2
+
+# windows/wincfg.c
+echo windows/wincfg.c
+perl -i -pe 's#\Q"About"#"关于(A)"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Help"#"帮助(H)"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Window"#"窗口"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Control the scrollback in the window"#"设置窗口回滚"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Display scrollbar in full screen mode"#"全屏模式显示滚动条(I)"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Terminal/Keyboard"#"终端/键盘"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Enable extra keyboard features:"#"使用附加键盘特性："#g' windows/wincfg.c
+perl -i -pe 's#\Q"AltGr acts as Compose key"#"AltGr 动作为组合键"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Control-Alt is different from AltGr"#"Ctrl+Alt 键与 AltGr 不同(D)"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Terminal/Bell"#"终端/响铃"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Set the style of bell"#"设置响铃类型"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Play a custom sound file"#"播放指定的声音文件"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Beep using the PC speaker"#"使用 PC 扬声器响铃"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Custom sound file to play as a bell:"#"响铃时播放的声音文件："#g' windows/wincfg.c
+perl -i -pe 's#\Q"Select bell sound file"#"选择声音文件"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Taskbar/caption indication on bell:"#"响铃任务栏/标题栏显示(I)："#g' windows/wincfg.c
+perl -i -pe 's#\Q"Disabled"#"禁止"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Flashing"#"闪烁"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Steady"#"反显"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Window/Appearance"#"窗口/外观"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Adjust the window border"#"调整窗口边框"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Sunken-edge border (slightly thicker)"#"下沉边框(细瘦外观)(S)"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Window/Appearance"#"窗口/外观"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Font settings"#"字体设置"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Allow selection of variable-pitch fonts"#"允许选择可变宽度字体"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Font quality:"#"字体品质(Q)："#g' windows/wincfg.c
+perl -i -pe 's#\Q"Antialiased"#"抗锯齿"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Non-Antialiased"#"无抗锯齿"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Default"#"默认"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Window/Translation"#"窗口/转换"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Caps Lock acts as Cyrillic switch"#"Caps Lock 大写按键用于 Cyrillic 切换"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Character set translation on received data"#"接收数据时字符集转换"#g' windows/wincfg.c
+perl -i -pe 's#\Q"(Codepages supported by Windows but not listed here, "#"(列表中没有的 Windows 代码页，"#g' windows/wincfg.c
+perl -i -pe 's#\Q"such as CP866 on many systems, can be entered manually)"#" 比如指定 CP866 代码页，可以手工输入到列表)"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Adjust how %s displays line drawing characters"#"调整 %s 显示文本字符行"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Font has XWindows encoding"#"使用 X Windows 字体"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Use font in both ANSI and OEM modes"#"使用 ANSI 和 OEM 字体(B)"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Use font in OEM mode only"#"只使用 OEM 字体"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Window/Selection"#"窗口/选择"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Formatting of pasted characters"#"格式化要传送的字符"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Paste to clipboard in RTF as well as plain text"#"粘贴 RTF 文本到剪贴板"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Control use of mouse"#"鼠标使用控制"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Action of mouse buttons:"#"鼠标按钮动作(M)："#g' windows/wincfg.c
+perl -i -pe 's#\Q"Windows (Middle extends, Right brings up menu)"#"Windows (中键扩展，右键弹出菜单)"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Compromise (Middle extends, Right pastes)"#"混合模式 (中键扩展，右键粘贴)"#g' windows/wincfg.c
+perl -i -pe 's#\Q"xterm (Right extends, Middle pastes)"#"xterm (右键扩展，中键粘贴)"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Window/Colours"#"窗口/颜色"#g' windows/wincfg.c
+perl -i -pe 's#\Q"General options for colour usage"#"颜色使用常规设置"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Attempt to use logical palettes"#"尝试使用逻辑调色板(L)"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Use system colours"#"使用系统颜色(S)"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Window"#"窗口"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Set the size of the window"#"设置窗口大小"#g' windows/wincfg.c
+perl -i -pe 's#\Q"When window is resized:"#"当窗口大小被改变时(Z)："#g' windows/wincfg.c
+perl -i -pe 's#\Q"Change the number of rows and columns"#"改变行列数"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Change the size of the font"#"改变字体大小"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Change font size only when maximised"#"只在最大化时改变字体大小"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Forbid resizing completely"#"完全禁止大小改变"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Window/Behaviour"#"窗口/行为"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Window closes on ALT-F4"#"Alt+F4 关闭窗口"#g' windows/wincfg.c
+perl -i -pe 's#\Q"System menu appears on ALT-Space"#"Alt+空格显示系统菜单(Y)"#g' windows/wincfg.c
+perl -i -pe 's#\Q"System menu appears on ALT alone"#"Alt 键显示系统菜单"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Ensure window is always on top"#"窗口总在最上层(E)"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Full screen on Alt-Enter"#"Alt+回车全屏(F)"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Window/Selection/Copy"#"窗口/选择/复制"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Connection/Proxy"#"连接/代理"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Local"#"本地"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Telnet command, or local"#"Telnet 命令，或者本地"#g' windows/wincfg.c
+perl -i -pe 's#\Q" proxy command"#"代理命令(M)"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Connection/SSH/X11"#"连接/SSH/X11"#g' windows/wincfg.c
+perl -i -pe 's#\Q"X11 forwarding"#"X11 映射"#g' windows/wincfg.c
+perl -i -pe 's#\Q"X authority file for local display"#"用于本地显示的 X 认证文件(T)"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Select X authority file"#"选择 X 认证文件"#g' windows/wincfg.c
+
+# windows/wincons.c
+echo windows/wincons.c
+perl -i -pe 's#\Q"The server'\''s host key is not cached in the registry. You\n"#"在系统注册表缓存中没有找到该服务器密钥。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"have no guarantee that the server is the computer you\n"#"不能保证该服务器是能够正确访问的计算机。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"think it is.\n"#""#g' windows/wincons.c
+perl -i -pe 's#\Q"The server'\''s %s key fingerprint is:\n"#"该服务器的 %s 密钥指纹为:\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"Connection abandoned.\n"#"放弃连接。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"The server'\''s host key is not cached in the registry. You\n"#"在系统注册表缓存中没有找到该服务器密钥。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"have no guarantee that the server is the computer you\n"#"不能保证该服务器是能够正确访问的计算机。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"think it is.\n"#""#g' windows/wincons.c
+perl -i -pe 's#\Q"The server'\''s %s key fingerprint is:\n"#"该服务器的 %s 密钥指纹为:\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"If you trust this host, enter \"y\" to add the key to\n"#"如果信任该主机，请输入 \\"y\\" 增加密钥到"#g' windows/wincons.c
+perl -i -pe 's#\Q"PuTTY'\''s cache and carry on connecting.\n"#" PuTTY 缓存中并继续连接。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"If you want to carry on connecting just once, without\n"#"如果仅仅只希望进行本次连接，而不"#g' windows/wincons.c
+perl -i -pe 's#\Q"adding the key to the cache, enter \"n\".\n"#"将密钥储存，请输入 \\"n\\"。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"If you do not trust this host, press Return to abandon the\n"#"如果不信任该主机，请按回车键放弃"#g' windows/wincons.c
+perl -i -pe 's#\Q"connection.\n"#"连接。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"Store key in cache? (y/n) "#"是否储存该密钥？(y/n) "#g' windows/wincons.c
+perl -i -pe 's#\Q"WARNING - POTENTIAL SECURITY BREACH!\n"#"**警告** - 潜在安全隐患！\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"The server'\''s host key does not match the one PuTTY has\n"#"在系统注册表缓存中不能匹配该服务器密钥。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"cached in the registry. This means that either the\n"#"这说明可能该服务器管理员更新了主机密钥，\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"server administrator has changed the host key, or you\n"#"或者更可能是连接到了一台伪装成该服务器的\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"have actually connected to another computer pretending\n"#"虚假计算机系统。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"to be the server.\n"#""#g' windows/wincons.c
+perl -i -pe 's#\Q"The new %s key fingerprint is:\n"#"新的 %s 密钥指纹为:\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"Connection abandoned.\n"#"放弃连接。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"WARNING - POTENTIAL SECURITY BREACH!\n"#"**警告** - 潜在安全隐患！\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"The server'\''s host key does not match the one PuTTY has\n"#"在系统注册表缓存中不能匹配该服务器密钥。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"cached in the registry. This means that either the\n"#"这说明可能该服务器管理员更新了主机密钥，\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"server administrator has changed the host key, or you\n"#"或者更可能是连接到了一台伪装成该服务器的\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"have actually connected to another computer pretending\n"#"虚假计算机系统。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"to be the server.\n"#""#g' windows/wincons.c
+perl -i -pe 's#\Q"The new %s key fingerprint is:\n"#"新的 %s 密钥指纹为:\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"If you were expecting this change and trust the new key,\n"#"如果确信该密钥被更新同意接受新的密钥，\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"enter \"y\" to update PuTTY'\''s cache and continue connecting.\n"#"请输入 \\"y\\" 更新 PuTTY 缓存并继续连接。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"If you want to carry on connecting but without updating\n"#"如果仅仅只希望继续本次连接，而不更新\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"the cache, enter \"n\".\n"#"系统缓存，请输入 \\"n\\"。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"If you want to abandon the connection completely, press\n"#"如果希望完全放弃本次连接，请按回车键\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"Return to cancel. Pressing Return is the ONLY guaranteed\n"#"取消操作。按下回车键是**唯一**可以保证"#g' windows/wincons.c
+perl -i -pe 's#\Q"safe choice.\n"#"的安全选择。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"Update cached key? (y/n, Return cancels connection) "#"更新缓存密钥？(y/n, 回车键取消连接) "#g' windows/wincons.c
+perl -i -pe 's#\Q"Connection abandoned.\n"#"放弃连接。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"The first %s supported by the server is\n"#"服务器支持的第一个 %s 是\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"%s, which is below the configured warning threshold.\n"#"%s，其低于配置的警告阀值。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"Continue with connection? (y/n) "#"继续连接？(y/n) "#g' windows/wincons.c
+perl -i -pe 's#\Q"The first %s supported by the server is\n"#"服务器支持的第一个 %s 是\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"%s, which is below the configured warning threshold.\n"#"%s，其低于配置的警告阀值。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"Connection abandoned.\n"#"放弃连接。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"The first host key type we have stored for this server\n"#"我们储存的此服务器第一个主机密钥类型\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"is %s, which is below the configured warning threshold.\n"#"为 %s，其低于配置的警告阀值。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"The server also provides the following types of host key\n"#"此服务器同时也提供有我们没有储存的高\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"above the threshold, which we do not have stored:\n"#"于阀值的下列主机密钥类型：\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"Continue with connection? (y/n) "#"继续连接？(y/n) "#g' windows/wincons.c
+perl -i -pe 's#\Q"The first host key type we have stored for this server\n"#"我们储存的此服务器第一个主机密钥类型\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"is %s, which is below the configured warning threshold.\n"#"为 %s，其低于配置的警告阀值。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"The server also provides the following types of host key\n"#"此服务器同时也提供有我们没有储存的高\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"above the threshold, which we do not have stored:\n"#"于阀值的下列主机密钥类型：\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"The session log file \"%.*s\" already exists.\n"#"会话日志文件 \\"%.*s\\" 已经存在。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"You can overwrite it with a new session log,\n"#"你可以使用新会话日志覆盖旧文件，\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"append your session log to the end of it,\n"#"或者在旧日志文件结尾增加新日志，\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"or disable session logging for this session.\n"#"或在此会话中禁止日志记录。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"Enter \"y\" to wipe the file, \"n\" to append to it,\n"#"输入 \\"y\\" 覆盖为新文件，\\"n\\" 附加到旧文件，\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"or just press Return to disable logging.\n"#"或者直接回车禁止日志记录。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"Wipe the log file? (y/n, Return cancels logging) "#"要覆盖为新文件么？(y/n，回车取消日志记录) "#g' windows/wincons.c
+perl -i -pe 's#\Q"The session log file \"%.*s\" already exists.\n"#"会话日志文件 \\"%.*s\\" 已经存在。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"Logging will not be enabled.\n"#"日志功能未被启用。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"You are loading an SSH-2 private key which has an\n"#"现在载入的是一个旧版本文件格式的 SSH2\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"old version of the file format. This means your key\n"#" 私钥格式。这意味着该私钥文件不是\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"file is not fully tamperproof. Future versions of\n"#"足够的安全。未来版本的 PuTTY 可能会\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"PuTTY may stop supporting this private key format,\n"#"停止对该私钥格式的支持。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"so we recommend you convert your key to the new\n"#"建议将其转换为新的\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"format.\n"#"格式。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"Once the key is loaded into PuTTYgen, you can perform\n"#"一旦密钥被载入到 PuTTYgen，你可以简单的\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"this conversion simply by saving it again.\n"#"使用保存文件来进行转换。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"Cannot get standard input handle\n"#"无法获取标准输入句柄\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"Cannot get standard output handle\n"#"无法获取标准输出句柄\\n"#g' windows/wincons.c
+
+# windows/winctrls.c
+echo windows/winctrls.c
+perl -i -pe 's#\Q"&Up"#"上(&U)"#g' windows/winctrls.c
+perl -i -pe 's#\Q"&Down"#"下(&D)"#g' windows/winctrls.c
+perl -i -pe 's#\Q"Bro&wse..."#"浏览(&W)"#g' windows/winctrls.c
+perl -i -pe 's#\Q"Change..."#"修改..."#g' windows/winctrls.c
+perl -i -pe 's#\Q"All Files (*.*)\0*\0\0\0"#"所有文件 (*.*)\\0*\\0\\0\\0"#g' windows/winctrls.c
+perl -i -pe 's#\Q"Font: %s, %sdefault height"#"字体: %s, %s默认高度"#g' windows/winctrls.c
+perl -i -pe 's#\Q"Font: %s, %s%d-%s"#"字体: %s, %s%d %s"#g' windows/winctrls.c
+perl -i -pe 's#\Q"pixel"#"像素"#g' windows/winctrls.c
+perl -i -pe 's#\Q"point"#"点"#g' windows/winctrls.c
+
+# windows/windlg.c
+echo windows/windlg.c
+perl -i -pe 's#\Q"None (printing disabled)"#"无 (禁止打印)"#g' windows/windlg.c
+perl -i -pe 's#\Q"%s Event Log"#"%s 事件日志记录"#g' windows/windlg.c
+perl -i -pe 's#\Q"%s Licence"#"%s 许可证"#g' windows/windlg.c
+perl -i -pe 's#\Q"About %s"#"关于 %s"#g' windows/windlg.c
+perl -i -pe 's#\Q"\251 "#"(C) "#g' windows/windlg.c
+perl -i -pe 's#\Q". All rights reserved."#". 保留所有权利。"#g' windows/windlg.c
+perl -i -pe 's#\Q"Cate&gory:"#"分类(&G)："#g' windows/windlg.c
+perl -i -pe 's#\Q"%s Configuration"#"%s 配置"#g' windows/windlg.c
+perl -i -pe 's#\Q"%s Error"#"%s 错误"#g' windows/windlg.c
+perl -i -pe 's#\Q"%s Reconfiguration"#"%s 重新配置"#g' windows/windlg.c
+perl -i -pe 's#\Q"The server'\''s host key is not cached in the registry. You\n"#"在系统注册表缓存中没有找到该服务器密钥。\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"have no guarantee that the server is the computer you\n"#"不能保证该服务器是能够正确访问的计算机。\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"think it is.\n"#""#g' windows/windlg.c
+perl -i -pe 's#\Q"The server'\''s %s key fingerprint is:\n"#"该服务器的 %s 密钥指纹为:\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"If you trust this host, hit Yes to add the key to\n"#"如果信任该主机，请点击 \\"是\\" 增加密钥到"#g' windows/windlg.c
+perl -i -pe 's#\Q"%s'\''s cache and carry on connecting.\n"#" %s 缓存中并继续连接。\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"If you want to carry on connecting just once, without\n"#"如果仅仅只希望进行本次连接，而不"#g' windows/windlg.c
+perl -i -pe 's#\Q"adding the key to the cache, hit No.\n"#"将密钥储存，请点击 \\"否\\"。\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"If you do not trust this host, hit Cancel to abandon the\n"#"如果不信任该主机，请点击 \\"取消\\" 放弃"#g' windows/windlg.c
+perl -i -pe 's#\Q"connection.\n"#"连接。\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"WARNING - POTENTIAL SECURITY BREACH!\n"#"**警告** - 潜在安全隐患！\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"The server'\''s host key does not match the one %s has\n"#"在 %s 注册表缓存中不能匹配该服务器密钥。\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"cached in the registry. This means that either the\n"#"这说明可能该服务器管理员更新了主机密钥，\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"server administrator has changed the host key, or you\n"#"或者更可能是连接到了一台伪装成该服务器的\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"have actually connected to another computer pretending\n"#"虚假计算机系统。\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"to be the server.\n"#""#g' windows/windlg.c
+perl -i -pe 's#\Q"The new %s key fingerprint is:\n"#"新的 %s 密钥指纹为:\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"If you were expecting this change and trust the new key,\n"#"如果确信该密钥被更新同意接受新的密钥，\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"hit Yes to update %s'\''s cache and continue connecting.\n"#"请点击 \\"是\\" 更新 %s 缓存并继续连接。\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"If you want to carry on connecting but without updating\n"#"如果仅仅只希望继续本次连接，而不更新\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"the cache, hit No.\n"#"系统缓存，请点击 \\"否\\"。\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"If you want to abandon the connection completely, hit\n"#"如果希望完全放弃本次连接，请点击\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"Cancel. Hitting Cancel is the ONLY guaranteed safe\n"#" \\"取消\\"。点击 \\"取消\\" 是**唯一**可以保证的安全"#g' windows/windlg.c
+perl -i -pe 's#\Q"choice.\n"#"操作。\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"%s Security Alert"#"%s 安全警告"#g' windows/windlg.c
+perl -i -pe 's#\Q"The first %s supported by the server\n"#"服务器支持的第一个 %s\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"is %.64s, which is below the configured\n"#"是 %.64s，其低于配置的"#g' windows/windlg.c
+perl -i -pe 's#\Q"warning threshold.\n"#"警告阀值。\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"Do you want to continue with this connection?\n"#"你要继续连接么？\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"The first host key type we have stored for this server\n"#"我们储存的此服务器第一个主机密钥类型\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"is %s, which is below the configured warning threshold.\n"#"为 %s，其低于配置的警告阀值。\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"The server also provides the following types of host key\n"#"此服务器同时也提供有我们没有储存的高\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"above the threshold, which we do not have stored:\n"#"于阀值的下列主机密钥类型：\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"Do you want to continue with this connection?\n"#"你要继续连接么？\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"The session log file \"%.*s\" already exists.\n"#"会话日志文件 \\"%.*s\\" 已经存在。\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"You can overwrite it with a new session log,\n"#"你可以使用新会话日志覆盖旧文件，\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"append your session log to the end of it,\n"#"或者在旧日志文件结尾增加新日志，\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"or disable session logging for this session.\n"#"或在此会话中禁止日志记录。\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"Hit Yes to wipe the file, No to append to it,\n"#"点击是覆盖为新文件，否附加到旧文件，\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"or Cancel to disable logging."#"或者点击取消禁止日志记录。"#g' windows/windlg.c
+perl -i -pe 's#\Q"%s Log to File"#"%s 日志记录到文件"#g' windows/windlg.c
+perl -i -pe 's#\Q"%s Key File Warning"#"%s 密钥文件警告"#g' windows/windlg.c
+perl -i -pe 's#\Q"You are loading an SSH-2 private key which has an\n"#"现在载入的是一个旧版本文件格式的 SSH2\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"old version of the file format. This means your key\n"#" 私钥格式。这意味着该私钥文件不是\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"file is not fully tamperproof. Future versions of\n"#"足够的安全。未来版本的 %s 可能会\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"%s may stop supporting this private key format,\n"#"停止支持此私钥格式，\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"so we recommend you convert your key to the new\n"#"建议将其转换为新的\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"format.\n"#"格式。\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"You can perform this conversion by loading the key\n"#"请使用 PuTTYgen 载入该密钥进行转换\\n"#g' windows/windlg.c
+perl -i -pe 's#\Q"into PuTTYgen and then saving it again."#"然后保存。"#g' windows/windlg.c
+
+# windows/window.c
+echo windows/window.c
+perl -i -pe 's#\Q"%s Internal Error"#"%s 内部错误"#g' windows/window.c
+perl -i -pe 's#\Q"Unsupported protocol number found"#"发现不支持的协议号"#g' windows/window.c
+perl -i -pe 's#\Q"%s Error"#"%s 错误"#g' windows/window.c
+perl -i -pe 's#\Q"Unable to open connection to\n"#"无法打开到\\n"#g' windows/window.c
+perl -i -pe 's#\Q"%.800s\n"#"%.800s 的连接\\n"#g' windows/window.c
+perl -i -pe 's#\Q"%.70s (inactive)"#"%.70s (不活动的)"#g' windows/window.c
+perl -i -pe 's#\Q"&Restart Session"#"重启会话(&R)"#g' windows/window.c
+perl -i -pe 's#\Q"%s Fatal Error"#"%s 致命错误"#g' windows/window.c
+perl -i -pe 's#\Q"Windows refuses to report a version"#"Windows 拒绝报告版本"#g' windows/window.c
+perl -i -pe 's#\Q"%s Fatal Error"#"%s 致命错误"#g' windows/window.c
+perl -i -pe 's#\Q"Failed to initialize COM subsystem"#"初始化 COM 子系统失败"#g' windows/window.c
+perl -i -pe 's#\Q"This procedure will remove ALL Registry entries\n"#"此过程将删除所有与 %s 相关联\\n"#g' windows/window.c
+perl -i -pe 's#\Q"associated with %s, and will also remove\n"#"注册表项目，并且还将删除随机\\n"#g' windows/window.c
+perl -i -pe 's#\Q"the random seed file. (This only affects the\n"#"种子文件。（这只会影响到当前\\n"#g' windows/window.c
+perl -i -pe 's#\Q"currently logged-in user.)\n"#"登录的用户。）\\n"#g' windows/window.c
+perl -i -pe 's#\Q"THIS PROCESS WILL DESTROY YOUR SAVED SESSIONS.\n"#"此操作将会摧毁你保存的会话。\\n"#g' windows/window.c
+perl -i -pe 's#\Q"Are you really sure you want to continue?"#"真的确定要继续么？"#g' windows/window.c
+perl -i -pe 's#\Q"%s Warning"#"%s 警告"#g' windows/window.c
+perl -i -pe 's#\Q"unknown option \"%s\""#"未知选项 \\"%s\\""#g' windows/window.c
+perl -i -pe 's#\Q"&Paste"#"粘贴(&P)"#g' windows/window.c
+perl -i -pe 's#\Q"&Event Log"#"事件日志记录(&E)"#g' windows/window.c
+perl -i -pe 's#\Q"Ne&w Session..."#"新会话(&W)..."#g' windows/window.c
+perl -i -pe 's#\Q"&Duplicate Session"#"复制会话(&D)"#g' windows/window.c
+perl -i -pe 's#\Q"Sa&ved Sessions"#"保存会话(&V)"#g' windows/window.c
+perl -i -pe 's#\Q"Chan&ge Settings..."#"修改设置(&G)..."#g' windows/window.c
+perl -i -pe 's#\Q"C&opy All to Clipboard"#"复制所有内容到剪贴板(&O)"#g' windows/window.c
+perl -i -pe 's#\Q"C&lear Scrollback"#"清除滚动条(&L)"#g' windows/window.c
+perl -i -pe 's#\Q"Rese&t Terminal"#"重启终端(&T)"#g' windows/window.c
+perl -i -pe 's#\Q"&Full Screen"#"全屏(&F)"#g' windows/window.c
+perl -i -pe 's#\Q"&Help"#"帮助(&H)"#g' windows/window.c
+perl -i -pe 's#\Q"&About %s"#"关于 %s(&A)"#g' windows/window.c
+perl -i -pe 's#\Q"(No sessions)"#"(没有会话)"#g' windows/window.c
+perl -i -pe 's#\Q"S&pecial Command"#"指定命令(&P)"#g' windows/window.c
+perl -i -pe 's#\Q"%s Exit Confirmation"#"%s 退出确认"#g' windows/window.c
+perl -i -pe 's#\Q"Are you sure you want to close this session?"#"确定要关闭本会话么？"#g' windows/window.c
+
+# windows/winnet.c
+echo windows/winnet.c
+perl -i -pe 's#\Q"PuTTY was built without IPv6 support"#"PuTTY 无 IPv6 支持编译版"#g' windows/winnet.c
+
+# windows/winpgen.c
+echo windows/winpgen.c
+perl -i -pe 's#\Q"PuTTYgen Fatal Error"#"PuTTYgen 致命错误"#g' windows/winpgen.c
+perl -i -pe 's#\Q"PuTTYgen Error"#"PuTTYgen 错误"#g' windows/winpgen.c
+perl -i -pe 's#\Q"PuTTY Private Key Files (*.ppk)\0*.ppk\0"#"PuTTY 私钥文件 (*.ppk)\\0*.ppk\\0"#g' windows/winpgen.c
+perl -i -pe 's#\Q"All Files (*.*)\0*\0\0\0"#"所有文件 (*.*)\\0*\\0\\0\\0"#g' windows/winpgen.c
+perl -i -pe 's#\Q"\251 "#"(C) "#g' windows/winpgen.c
+perl -i -pe 's#\Q". All rights reserved."#". 保留所有权利。"#g' windows/winpgen.c
+perl -i -pe 's#\Q"&Public key for pasting into authorized_keys file:"#"已认可密钥文件的公钥(&P)："#g' windows/winpgen.c
+perl -i -pe 's#\Q"&Public key for pasting into "#"显示的公钥由 "#g' windows/winpgen.c
+perl -i -pe 's#\Q"OpenSSH authorized_keys file:"#"OpenSSH 认可(&P)："#g' windows/winpgen.c
+perl -i -pe 's#\Q"PuTTY Key File Warning"#"PuTTY 密钥文件警告"#g' windows/winpgen.c
+perl -i -pe 's#\Q"You are loading an SSH-2 private key which has an\n"#"现在载入的是一个旧版本文件格式的 SSH2\\n"#g' windows/winpgen.c
+perl -i -pe 's#\Q"old version of the file format. This means your key\n"#" 私钥格式。这意味着该私钥文件不是\\n"#g' windows/winpgen.c
+perl -i -pe 's#\Q"file is not fully tamperproof. Future versions of\n"#"足够的安全。未来版本的 PuTTY 可能会\\n"#g' windows/winpgen.c
+perl -i -pe 's#\Q"PuTTY may stop supporting this private key format,\n"#"停止对该私钥格式的支持。\\n"#g' windows/winpgen.c
+perl -i -pe 's#\Q"so we recommend you convert your key to the new\n"#"建议将其转换为新的\\n"#g' windows/winpgen.c
+perl -i -pe 's#\Q"format.\n"#"格式。\\n"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Once the key is loaded into PuTTYgen, you can perform\n"#"一旦密钥被载入到 PuTTYgen，你可以简单的\\n"#g' windows/winpgen.c
+perl -i -pe 's#\Q"this conversion simply by saving it again."#"使用保存文件来进行转换。"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Couldn'\''t load private key (%s)"#"无法载入私钥 (%s)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"PuTTYgen Error"#"PuTTYgen 错误"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Successfully imported foreign key\n"#"成功导入其他格式密钥\\n"#g' windows/winpgen.c
+perl -i -pe 's#\Q"To use this key with PuTTY, you need to\n"#"请选择\\"保存私钥\\"命令将密钥保存为 PuTTY\\n"#g' windows/winpgen.c
+perl -i -pe 's#\Q"use the \"Save private key\" command to\n"#"自有格式，以便于 PuTTY 使用"#g' windows/winpgen.c
+perl -i -pe 's#\Q"save it in PuTTY'\''s own format."#"该密钥。\\n"#g' windows/winpgen.c
+perl -i -pe 's#\Q"PuTTYgen Notice"#"PuTTYgen 提示"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Please wait while a key is generated..."#"正在生成密钥，请稍等..."#g' windows/winpgen.c
+perl -i -pe 's#\Q"Please generate some randomness by moving the mouse over the blank area."#"请在空白区域移动鼠标，以便产生随机数据。"#g' windows/winpgen.c
+perl -i -pe 's#\Q"&Load private key"#"载入私钥(&L)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Save p&ublic key"#"保存公钥(&U)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"&Save private key"#"保存私钥(&S)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"E&xit"#"退出(&X)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"&File"#"文件(&F)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"&Generate key pair"#"生成密钥对(&G)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"SSH-&1 key (RSA)"#"SSH&1 密钥 (RSA)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"SSH-2 &RSA key"#"SSH2 &RSA 密钥"#g' windows/winpgen.c
+perl -i -pe 's#\Q"SSH-2 &DSA key"#"SSH2 &DSA 密钥"#g' windows/winpgen.c
+perl -i -pe 's#\Q"SSH-2 &ECDSA key"#"SSH-2 &ECDSA 密钥"#g' windows/winpgen.c
+perl -i -pe 's#\Q"SSH-2 ED&25519 key"#"SSH-2 ED&25519 密钥"#g' windows/winpgen.c
+perl -i -pe 's#\Q"&Key"#"密钥(&K)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"&Import key"#"导入密钥(&I)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Export &OpenSSH key"#"导出 OpenSSH 密钥(&O)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Export &OpenSSH key (force new file format)"#"导出 OpenSSH 密钥(强制新文件格式)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Export &ssh.com key"#"导出 ssh.com 密钥(&S)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Con&versions"#"转换(&V)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"&About"#"关于(&A)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"&Help"#"帮助(&H)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Key"#"密钥"#g' windows/winpgen.c
+perl -i -pe 's#\Q"No key."#"没有密钥"#g' windows/winpgen.c
+perl -i -pe 's#\Q"&Public key for pasting into authorized_keys file:"#"已认可密钥文件的公钥(&P)："#g' windows/winpgen.c
+perl -i -pe 's#\Q"Key f&ingerprint:"#"密钥指纹(&I)："#g' windows/winpgen.c
+perl -i -pe 's#\Q"Key &comment:"#"密钥注释(&C)："#g' windows/winpgen.c
+perl -i -pe 's#\Q"Key p&assphrase:"#"密钥密码(&A)："#g' windows/winpgen.c
+perl -i -pe 's#\Q"C&onfirm passphrase:"#"确认密码(&O)："#g' windows/winpgen.c
+perl -i -pe 's#\Q"Actions"#"动作"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Generate a public/private key pair"#"生成公钥/私钥对"#g' windows/winpgen.c
+perl -i -pe 's#\Q"&Generate"#"生成(&G)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Load an existing private key file"#"载入已保存的私钥文件"#g' windows/winpgen.c
+perl -i -pe 's#\Q"&Load"#"载入(&L)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Save the generated key"#"保存生成的密钥"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Save p&ublic key"#"保存公钥(&U)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"&Save private key"#"保存私钥(&S)"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Parameters"#"参数"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Type of key to generate:"#"生成的密钥类型："#g' windows/winpgen.c
+perl -i -pe 's#\Q"Number of &bits in a generated key:"#"生成密钥位数(&B)："#g' windows/winpgen.c
+perl -i -pe 's#\Q"Cur&ve to use for generating this key:"#"用于生成此密钥的曲线(&V)："#g' windows/winpgen.c
+perl -i -pe 's#\Q"(nothing to configure for this key type)"#"（此密钥类型无需配置）"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Out of thread resources"#"创建线程发生错误"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Key generation error"#"密钥生成错误"#g' windows/winpgen.c
+perl -i -pe 's#\Q"PuTTYgen will not generate a key smaller than 256"#"PuTTYgen 不能生成低于 256 位的密钥。"#g' windows/winpgen.c
+perl -i -pe 's#\Q" bits.\nKey length reset to default %d. Continue?"#"\\n密钥位数将调整为默认的 %d，是否继续？"#g' windows/winpgen.c
+perl -i -pe 's#\Q"PuTTYgen Warning"#"PuTTYgen 警告"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Keys shorter than %d bits are not recommended. "#"不建议使用少于 %d 位密钥。"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Really generate this key?"#"真的要生成此密钥？"#g' windows/winpgen.c
+perl -i -pe 's#\Q"PuTTYgen Warning"#"PuTTYgen 警告"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Cannot export an SSH-%d key in an SSH-%d"#"无法输出 SSH%d 密钥（SSH%d 格式）"#g' windows/winpgen.c
+perl -i -pe 's#\Q" format"#""#g' windows/winpgen.c
+perl -i -pe 's#\Q"PuTTYgen Error"#"PuTTYgen 错误"#g' windows/winpgen.c
+perl -i -pe 's#\Q"The two passphrases given do not match."#"两次输入的密码不一样。"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Are you sure you want to save this key\n"#"确定不给该密钥设置密码保护么？\\n"#g' windows/winpgen.c
+perl -i -pe 's#\Q"without a passphrase to protect it?"#""#g' windows/winpgen.c
+perl -i -pe 's#\Q"PuTTYgen Warning"#"PuTTYgen 警告"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Save private key as:"#"保存私钥为："#g' windows/winpgen.c
+perl -i -pe 's#\Q"Overwrite existing file\n%s?"#"覆盖已存在的文件\\n%s?"#g' windows/winpgen.c
+perl -i -pe 's#\Q"PuTTYgen Warning"#"PuTTYgen 警告"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Unable to save key file"#"无法保存密钥文件"#g' windows/winpgen.c
+perl -i -pe 's#\Q"PuTTYgen Error"#"PuTTYgen 错误"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Save public key as:"#"保存公钥为："#g' windows/winpgen.c
+perl -i -pe 's#\Q"Overwrite existing file\n%s?"#"覆盖已存在的文件\\n%s?"#g' windows/winpgen.c
+perl -i -pe 's#\Q"PuTTYgen Warning"#"PuTTYgen 警告"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Unable to open key file"#"无法打开密钥文件"#g' windows/winpgen.c
+perl -i -pe 's#\Q"PuTTYgen Error"#"PuTTYgen 错误"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Unable to save key file"#"无法保存密钥文件"#g' windows/winpgen.c
+perl -i -pe 's#\Q"PuTTYgen Error"#"PuTTYgen 错误"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Load private key:"#"载入私钥："#g' windows/winpgen.c
+
+# windows/winpgnt.c
+echo windows/winpgnt.c
+perl -i -pe 's#\Q"Pageant Fatal Error"#"Pageant 致命错误"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"\251 "#"(C) "#g' windows/winpgnt.c
+perl -i -pe 's#\Q". All rights reserved."#". 保留所有权利。"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"PuTTY Key File Warning"#"PuTTY 密钥文件警告"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"You are loading an SSH-2 private key which has an\n"#"现在载入的是一个旧版本文件格式的 SSH2\\n"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"old version of the file format. This means your key\n"#" 私钥格式。这意味着该私钥文件不是\\n"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"file is not fully tamperproof. Future versions of\n"#"足够的安全。未来版本的 PuTTY 可能会\\n"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"PuTTY may stop supporting this private key format,\n"#"停止对该私钥格式的支持。\\n"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"so we recommend you convert your key to the new\n"#"建议将其转换为新的\\n"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"format.\n"#"格式。\\n"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"You can perform this conversion by loading the key\n"#"请使用 PuTTYgen 载入该密钥进行转换\\n"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"into PuTTYgen and then saving it again."#"然后保存。"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Select Private Key File"#"选择私钥文件"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Pageant (PuTTY authentication agent)"#"Pageant (PuTTY 认证代理)"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"(No sessions)"#"(没有会话)"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Unable to execute PuTTY!"#"无法执行 PuTTY！"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Error"#"错误"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Windows refuses to report a version"#"Windows 拒绝报告版本"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Unable to access security APIs. Pageant will\n"#"无法访问安全认证 API 函数。\\nPageant"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"not run, in case it causes a security breach."#"无法运行，因为存在安全隐患。"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Pageant Fatal Error"#"Pageant 致命错误"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"This program has been compiled for Win9X and will\n"#"本程序在 Win9x 下编译，无法运行在 NT 系统。\\n"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"not run on NT, in case it causes a security breach."#"因为存在安全隐患。"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Pageant is already running"#"Pageant 已经运行了"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Pageant Error"#"Pageant 错误"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"&New Session"#"新会话(&N)"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"&Saved Sessions"#"保存会话(&S)"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"&View Keys"#"查看密钥(&V)"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Add &Key"#"增加密钥(&K)"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"&Help"#"帮助(&H)"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"&About"#"关于(&A)"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"E&xit"#"退出(&X)"#g' windows/winpgnt.c
+
+# windows/winplink.c
+echo windows/winplink.c
+perl -i -pe 's#\Q"Plink: command-line connection utility\n"#"Plink: 命令行连接工具\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"Usage: plink [options] [user@]host [command]\n"#"用法: plink [选项] [用户名@]主机 [命令]\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"       (\"host\" can also be a PuTTY saved session name)\n"#"       (\\"主机\\" 也可以是 PuTTY 已有的会话名称)\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"Options:\n"#"选项:\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -V        print version information and exit\n"#"  -V        显示版本信息后退出\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -pgpfp    print PGP key fingerprints and exit\n"#"  -pgpfp    显示 PGP 密钥指纹后退出\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -v        show verbose messages\n"#"  -v        显示详细信息\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -load sessname  Load settings from saved session\n"#"  -load 会话名  载入保存的会话信息\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"            force use of a particular protocol\n"#"            强制使用特定协议\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -P port   connect to specified port\n"#"  -P 端口   连接指定的端口\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -l user   connect with specified username\n"#"  -l 用户名 使用指定的用户名连接\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -batch    disable all interactive prompts\n"#"  -batch    禁止所有交互提示\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -no-sanitise-stderr  don'\''t strip control chars from"#"  -no-sanitise-stderr  不要从标准错误中"#g' windows/winplink.c
+perl -i -pe 's#\Q" standard error\n"#" 删除控制字符\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -proxycmd command\n"#"  -proxycmd 命令\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"            use '\''command'\'' as local proxy\n"#"            使用 '\''命令'\'' 作为本地代理\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -sercfg configuration-string (e.g. 19200,8,n,1,X)\n"#"  -sercfg 配置字符串 (例如: 19200,8,n,1,X)\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"            Specify the serial configuration (serial only)\n"#"            指定串口配置(仅限串口)\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"The following options only apply to SSH connections:\n"#"以下选项仅适用于 SSH 连接:\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -pw passw login with specified password\n"#"  -pw 密码  使用指定的密码登录\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -D [listen-IP:]listen-port\n"#"  -D [监听-IP:]监听-端口\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"            Dynamic SOCKS-based port forwarding\n"#"            基于 SOCKS 协议的动态端口转发\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -L [listen-IP:]listen-port:host:port\n"#"  -L [监听-IP:]监听-端口:主机:端口\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"            Forward local port to remote address\n"#"            转发本地端口到远程地址\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -R [listen-IP:]listen-port:host:port\n"#"  -R [监听-IP:]监听-端口:主机:端口\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"            Forward remote port to local address\n"#"            转发远程端口到本地地址\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -X -x     enable / disable X11 forwarding\n"#"  -X -x     启禁用 X11 转发\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -A -a     enable / disable agent forwarding\n"#"  -A -a     启禁用 agent 转发\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -t -T     enable / disable pty allocation\n"#"  -t -T     启禁用 pty 转发\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -1 -2     force use of particular protocol version\n"#"  -1 -2     强制使用特定协议版本\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -4 -6     force use of IPv4 or IPv6\n"#"  -4 -6     强制使用 IPv4 或 IPv6 版本\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -C        enable compression\n"#"  -C        允许压缩\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -i key    private key file for user authentication\n"#"  -i 密钥   认证使用的密钥文件\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -noagent  disable use of Pageant\n"#"  -noagent  禁用 Pageant 认证代理\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -agent    enable use of Pageant\n"#"  -agent    启用 Pageant 认证代理\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"            manually specify a host key (may be repeated)\n"#"            手动指定主机密钥(可能重复)\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -m file   read remote command(s) from file\n"#"  -m 文件   从文件读取远程命令\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -s        remote command is an SSH subsystem (SSH-2 only)\n"#"  -s        SSH 子系统远程命令(仅限 SSH-2)\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -N        don'\''t start a shell/command (SSH-2 only)\n"#"  -N        不启动 shell 或执行命令(仅限 SSH-2)\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -nc host:port\n"#"  -nc 主机:端口\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"            open tunnel in place of session (SSH-2 only)\n"#"            打开隧道代替会话(仅限 SSH-2)\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -sshlog file\n"#"  -sshlog 文件\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -sshrawlog file\n"#"  -sshrawlog 文件\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"            log protocol details to a file\n"#"            记录协议详细日志到指定文件\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"            test whether a connection-sharing upstream exists\n"#"            测试是否存在上游共享连接\\n"#g' windows/winplink.c
+
+# windows/winstore.c
+echo windows/winstore.c
+perl -i -pe 's#\Q"Recent sessions"#"最近会话"#g' windows/winstore.c
+perl -i -pe 's#\Q"Default Settings"#"默认设置"#g' windows/winstore.c
+
+# windows/winstuff.h
+echo windows/winstuff.c
+perl -i -pe 's#\Q"PuTTY Private Key Files (*.ppk)\0*.ppk\0"#"PuTTY 私钥文件 (*.ppk)\\0*.ppk\\0"#g' windows/winstuff.h
+perl -i -pe 's#\Q"All Files (*.*)\0*\0\0\0"#"所有文件 (*.*)\\0*\\0\\0\\0"#g' windows/winstuff.h
+perl -i -pe 's#\Q"Wave Files (*.wav)\0*.WAV\0"#"声音文件 (*.wav)\\0*.WAV\\0"#g' windows/winstuff.h
+perl -i -pe 's#\Q"Dynamic Library Files (*.dll)\0*.dll\0"#"动态链接库文件 (*.dll)\\0*.dll\\0"#g' windows/winstuff.h
+
+# 修改字体
+# windows/*.*
+perl -i -pe 's#\Q8, "MS Shell Dlg"#9, "宋体"#g' windows/{pageant.rc,puttygen.rc,win_res.rc2}
+
+# windows/version.rc2
+perl -i -pe 's#\Q0x809, 1200#0x804, 0x4B0#g' windows/version.rc2
+perl -i -pe 's#\Q(UK English, Unicode)#(CN 中文, 中华人民共和国)#g' windows/version.rc2
+
+# windows/winctrls.c
+perl -i -pe 's#\Qdefine CHECKBOXHEIGHT 8#define CHECKBOXHEIGHT 9#g' windows/winctrls.c
+perl -i -pe 's#\Qdefine RADIOHEIGHT 8#define RADIOHEIGHT 9#g' windows/winctrls.c
+
+# windows/windefs.c
+perl -i -pe 's#\Q("Courier New", false, 10, ANSI_CHARSET)#("新宋体", false, 12, GB2312_CHARSET)#g' windows/windefs.c
+
+# 调整界面
+# config.c
+perl -i -pe 's#\Q"连接类型：", NO_SHORTCUT, 4#"连接类型：", NO_SHORTCUT, 3#g' config.c
+
+# 0.70旧版
+perl -i -pe 's#\Q"Control the select-one-word-at-a-time mode"#"设置自动选取单词模式"#g' config.c
+perl -i -pe 's#\Q("Courier New", 0, 10, ANSI_CHARSET)#("新宋体", 0, 12, GB2312_CHARSET)#g' windows/windefs.c
+
+# 防止乱码-1(界面会变难看)
+# perl -i -pe 's#\Q(TOOLPATH)gcc#(TOOLPATH)gcc -fexec-charset=GBK #g' windows/Makefile.mgw
+
+# 防止乱码-2(界面显示正常)
+echo 转换文件编码
+perl -i -MEncode -ne 'print encode("gb2312",decode("utf8",$_))' *.c *.h windows/{*.c,*.h,*.rc,*.rc2}
+
+# 删除备份
+echo 删除备份
+rm -rf *.bak */*.bak
+
+# 开始编译
+# cd putty-src-0.73\windows
+# mingw32-make -f Makefile.mgw
