@@ -1,5 +1,9 @@
 # 汉化Putty
 
+*部分汉化文本参考[larryli-PuTTY中文版](https://github.com/larryli/PuTTY)*  
+  
+*理论兼容putty0.70-0.73，这里以0.73版作为举例*  
+
 1. 需要安装[git客户端](https://git-scm.com/download/win)（shell环境）和[Mingw-w64](https://sourceforge.net/projects/mingw-w64/files/)（编译putty）
 
 2. 下载[putty源码](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)：  
