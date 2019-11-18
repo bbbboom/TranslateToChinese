@@ -223,8 +223,14 @@ perl -i -pe 's#\Q"Options controlling copy and paste"#"复制粘贴设置"#g' co
 perl -i -pe 's#\Q"Control use of mouse"#"鼠标使用控制"#g' config.c
 perl -i -pe 's#\Q"Shift overrides application'\''s use of mouse"#"Shift 上档键可与鼠标组合使用(P)"#g' config.c
 perl -i -pe 's#\Q"Default selection mode (Alt+drag does the other one):"#"默认选择模式(Alt 换档键拖放为另一种模式)："#g' config.c
-perl -i -pe 's#\Q"常规", '\''n'\''#"常规(N)", '\''n'\''#g' config.c
+perl -i -pe 's#\Q"Normal", '\''n'\''#"常规(N)", '\''n'\''#g' config.c
 perl -i -pe 's#\Q"Rectangular block"#"矩形框(R)"#g' config.c
+perl -i -pe 's#\Q"Assign copy/paste actions to clipboards"#"指定复制/粘贴到剪贴板的操作"#g' config.c
+perl -i -pe 's#\Q"Auto-copy selected text to "#"将所选文本自动复制到 "#g' config.c
+perl -i -pe 's#\Q"Mouse paste action:"#"鼠标粘贴动作:"#g' config.c
+perl -i -pe 's#\Q"Control pasting of text from clipboard to terminal"#"控制文本从剪贴板粘贴到终端"#g' config.c
+perl -i -pe 's#\Q"Permit control characters in pasted text"#"允许粘贴文本中的控制字符"#g' config.c
+perl -i -pe 's#\Q"Classes of character that group together"#"组合在一起的字符类别"#g' config.c
 perl -i -pe 's#\Q"Character classes:"#"字符类别(E)："#g' config.c
 perl -i -pe 's#\Q"Set to class"#"设置到类别(T)"#g' config.c
 perl -i -pe 's#\Q"Set"#"设置(S)"#g' config.c
@@ -462,7 +468,7 @@ perl -i -pe 's#\Q"            use '\''command'\'' as local proxy\n"#"           
 perl -i -pe 's#\Q"  -unsafe   allow server-side wildcards (DANGEROUS)\n"#"  -unsafe   允许服务端通配符(危险操作)\\n"#g' pscp.c
 perl -i -pe 's#\Q"  -sftp     force use of SFTP protocol\n"#"  -sftp     强制使用 SFTP 协议\\n"#g' pscp.c
 perl -i -pe 's#\Q"  -scp      force use of SCP protocol\n"#"  -scp      强制使用 SCP 协议\\n"#g' pscp.c
-perl -i -pe 's#\Q"  -sshlog file\n"#"  -sshlog 文件\\n"#g' pscp.c
+perl -i -pe 's#\Q"  -sshlog file\n"#"  -sshlog   文件\\n"#g' pscp.c
 perl -i -pe 's#\Q"  -sshrawlog file\n"#"  -sshrawlog 文件\\n"#g' pscp.c
 perl -i -pe 's#\Q"            log protocol details to a file\n"#"            记录协议详细日志到指定文件\\n"#g' pscp.c
 
@@ -514,6 +520,8 @@ perl -i -pe 's#\Q"            use '\''command'\'' as local proxy\n"#"           
 perl -i -pe 's#\Q"  -sshlog file\n"#"  -sshlog 文件\\n"#g' psftp.c
 perl -i -pe 's#\Q"  -sshrawlog file\n"#"  -sshrawlog 文件\\n"#g' psftp.c
 perl -i -pe 's#\Q"            log protocol details to a file\n"#"            日志协议明细输出到文件\\n"#g' psftp.c
+perl -i -pe 's#\Q"psftp: no hostname specified; use \"open host.name\""#"psftp: 未指定主机名; 请使用 \\"open host.name\\""#g' psftp.c
+perl -i -pe 's#\Q" to connect\n"#" 进行连接\\n"#g' psftp.c
 
 # sercfg.c
 echo sercfg.c
@@ -671,8 +679,10 @@ perl -i -pe 's#\Q"Font has XWindows encoding"#"使用 X Windows 字体"#g' windo
 perl -i -pe 's#\Q"Use font in both ANSI and OEM modes"#"使用 ANSI 和 OEM 字体(B)"#g' windows/wincfg.c
 perl -i -pe 's#\Q"Use font in OEM mode only"#"只使用 OEM 字体"#g' windows/wincfg.c
 perl -i -pe 's#\Q"Window/Selection"#"窗口/选择"#g' windows/wincfg.c
-perl -i -pe 's#\Q"Formatting of pasted characters"#"格式化要传送的字符"#g' windows/wincfg.c
-perl -i -pe 's#\Q"Paste to clipboard in RTF as well as plain text"#"粘贴 RTF 文本到剪贴板"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Formatting of pasted characters"#"粘贴字符的格式"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Paste to clipboard in RTF as well as plain text"#"以RTF和纯文本格式粘贴到剪贴板"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Formatting of copied characters"#"复制字符的格式"#g' windows/wincfg.c
+perl -i -pe 's#\Q"Copy to clipboard in RTF as well as plain text"#"以RTF和纯文本格式复制到剪贴板"#g' windows/wincfg.c
 perl -i -pe 's#\Q"Control use of mouse"#"鼠标使用控制"#g' windows/wincfg.c
 perl -i -pe 's#\Q"Action of mouse buttons:"#"鼠标按钮动作(M)："#g' windows/wincfg.c
 perl -i -pe 's#\Q"Windows (Middle extends, Right brings up menu)"#"Windows (中键扩展，右键弹出菜单)"#g' windows/wincfg.c
@@ -1068,7 +1078,13 @@ perl -i -pe 's#\Q"  -C        enable compression\n"#"  -C        允许压缩\\n
 perl -i -pe 's#\Q"  -i key    private key file for user authentication\n"#"  -i 密钥   认证使用的密钥文件\\n"#g' windows/winplink.c
 perl -i -pe 's#\Q"  -noagent  disable use of Pageant\n"#"  -noagent  禁用 Pageant 认证代理\\n"#g' windows/winplink.c
 perl -i -pe 's#\Q"  -agent    enable use of Pageant\n"#"  -agent    启用 Pageant 认证代理\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -noshare  disable use of connection sharing\n"#"  -noshare  禁用连接共享\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -share    enable use of connection sharing\n"#"  -share    启用连接共享\\n"#g' windows/winplink.c
 perl -i -pe 's#\Q"            manually specify a host key (may be repeated)\n"#"            手动指定主机密钥(可能重复)\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"            do/don'\''t strip control chars from standard "#"            允许/请勿从标准输出/错误中"#g' windows/winplink.c
+perl -i -pe 's#\Q"output/error\n"#"删除控制字符\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"  -no-antispoof   omit anti-spoofing prompt after "#"  -no-antispoof   身份验证后省略"#g' windows/winplink.c
+perl -i -pe 's#\Q"authentication\n"#"反欺骗提示\\n"#g' windows/winplink.c
 perl -i -pe 's#\Q"  -m file   read remote command(s) from file\n"#"  -m 文件   从文件读取远程命令\\n"#g' windows/winplink.c
 perl -i -pe 's#\Q"  -s        remote command is an SSH subsystem (SSH-2 only)\n"#"  -s        SSH 子系统远程命令(仅限 SSH-2)\\n"#g' windows/winplink.c
 perl -i -pe 's#\Q"  -N        don'\''t start a shell/command (SSH-2 only)\n"#"  -N        不启动 shell 或执行命令(仅限 SSH-2)\\n"#g' windows/winplink.c
@@ -1078,6 +1094,14 @@ perl -i -pe 's#\Q"  -sshlog file\n"#"  -sshlog 文件\\n"#g' windows/winplink.c
 perl -i -pe 's#\Q"  -sshrawlog file\n"#"  -sshrawlog 文件\\n"#g' windows/winplink.c
 perl -i -pe 's#\Q"            log protocol details to a file\n"#"            记录协议详细日志到指定文件\\n"#g' windows/winplink.c
 perl -i -pe 's#\Q"            test whether a connection-sharing upstream exists\n"#"            测试是否存在上游共享连接\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"Network is down"#"网络中断"#g' windows/winplink.c
+perl -i -pe 's#\Q"WSAEventSelect(): unknown error"#"WSAEventSelect(): 未知错误"#g' windows/winplink.c
+perl -i -pe 's#\Q"Unable to read from standard input: %s\n"#"无法从标准输入中读取: %s\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"Unable to write to standard %s: %s\n"#"无法写入到标准 %s: %s\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"plink: option \"%s\" requires an argument\n"#"plink: 选项 \\"%s\\" 需要一个参数\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"plink: unknown option \"%s\"\n"#"plink: 未知选项 \\"%s\\"\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"Internal fault: Unsupported protocol found\n"#"内部错误：发现不支持的协议\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"Plink requires WinSock 2\n"#"Plink 需要 WinSock 2\\n"#g' windows/winplink.c
 
 # windows/winstore.c
 echo windows/winstore.c
