@@ -77,6 +77,7 @@ perl -i -pe 's#\Q"You need to specify a host key or "#"需要指定一个主机�
 perl -i -pe 's#\Q"fingerprint"#"指纹"#g' config.c
 perl -i -pe 's#\Q"Host key is not in a valid format"#"主机密钥不是一个有效的格式"#g' config.c
 perl -i -pe 's#\Q"Specified host key is already listed"#"指定的主机密钥已存在"#g' config.c
+perl -i -pe 's#\Q"No action"#"无动作"#g' config.c
 perl -i -pe 's#\Q"Apply"#"应用(A)"#g' config.c
 perl -i -pe 's#\Q"Open"#"打开(O)"#g' config.c
 perl -i -pe 's#\Q"Cancel"#"取消(C)"#g' config.c
@@ -327,10 +328,11 @@ perl -i -pe 's#\Q"Connection/SSH/Kex"#"连接/SSH/密钥"#g' config.c
 perl -i -pe 's#\Q"Options controlling SSH key exchange"#"SSH 密钥验证设置"#g' config.c
 perl -i -pe 's#\Q"Key exchange algorithm options"#"密钥验证算法选项"#g' config.c
 perl -i -pe 's#\Q"Algorithm selection policy:"#"算法选择策略(S)："#g' config.c
+perl -i -pe 's#\Q"Prefer algorithms for which a host key is known"#"首选主机密钥已知的算法"#g' config.c
 perl -i -pe 's#\Q"Attempt GSSAPI key exchange"#"尝试使用 GSSAPI 密钥验证"#g' config.c
 perl -i -pe 's#\Q"Options controlling key re-exchange"#"密钥再次验证设置"#g' config.c
 perl -i -pe 's#\Q"Max minutes before rekey (0 for no limit)"#"重新验证最长时间(分钟，0 不限制)(T)："#g' config.c
-perl -i -pe 's#\Q"Max minutes before rekey (0 for no limit)"#"GSS检查间隔时间(分钟，0 不限制)："#g' config.c
+perl -i -pe 's#\Q"Minutes between GSS checks (0 for never)"#"GSS检查间隔时间(分钟，0 不限制)："#g' config.c
 perl -i -pe 's#\Q"Max data before rekey (0 for no limit)"#"重新验证最大数据量(0 为不限制)(X)："#g' config.c
 perl -i -pe 's#\Q"(Use 1M for 1 megabyte, 1G for 1 gigabyte etc)"#"(使用 1M 表示 1 兆字节，1G 表示 1 吉字节))"#g' config.c
 perl -i -pe 's#\Q"Connection/SSH/Host keys"#"连接/SSH/主机密钥"#g' config.c
@@ -421,9 +423,9 @@ perl -i -pe 's#\Q"SSH packets"#"SSH 包"#g' logging.c
 # misc.c
 echo misc.c
 perl -i -pe 's#\Q"Build platform: %d-bit %s"#"构建平台: %d 位 %s"#g' misc.c
-perl -i -pe 's#\Q"%sCompiler: clang %s"#"%s编译器: clang %s"#g' misc.c
-perl -i -pe 's#\Q"%sCompiler: gcc %s"#"%s编译器: gcc %s"#g' misc.c
-perl -i -pe 's#\Q"%sCompiler: "#"%s编译器: "#g' misc.c
+perl -i -pe 's#\Q"%sCompiler: clang %s"#"%s编译器: clang %s 汉化: bbbboom"#g' misc.c
+perl -i -pe 's#\Q"%sCompiler: gcc %s"#"%s编译器: gcc %s 汉化: bbbboom"#g' misc.c
+perl -i -pe 's#\Q"%sCompiler: "#"%s编译器:  汉化: bbbboom"#g' misc.c
 perl -i -pe 's#\Q", unrecognised version"#", 未知版本"#g' misc.c
 perl -i -pe 's#\Q"%sBuild option: NO_SECURITY"#"%s构建选项: NO_SECURITY"#g' misc.c
 perl -i -pe 's#\Q"%sBuild option: NO_SECUREZEROMEMORY"#"%s构建选项: NO_SECUREZEROMEMORY"#g' misc.c
@@ -569,6 +571,12 @@ perl -i -pe 's#\Q"Release 0.70"#"发布版 0.70_cn_portable"#g' version.h
 perl -i -pe 's#\Q"Release 0.71"#"发布版 0.71_cn_portable"#g' version.h
 perl -i -pe 's#\Q"Release 0.72"#"发布版 0.72_cn_portable"#g' version.h
 perl -i -pe 's#\Q"Release 0.73"#"发布版 0.73_cn_portable"#g' version.h
+
+# unix/unix.h
+echo unix/unix.h
+perl -i -pe 's#\Q"system clipboard"#"系统剪贴板"#g' unix/unix.h
+perl -i -pe 's#\Q"System clipboard"#"系统剪贴板"#g' unix/unix.h
+perl -i -pe 's#\Q"Last selected text"#"上次选择的文本"#g' unix/unix.h
 
 # windows/pageant.rc
 echo windows/pageant.rc
@@ -1114,6 +1122,9 @@ perl -i -pe 's#\Q"PuTTY Private Key Files (*.ppk)\0*.ppk\0"#"PuTTY 私钥文件 
 perl -i -pe 's#\Q"All Files (*.*)\0*\0\0\0"#"所有文件 (*.*)\\0*\\0\\0\\0"#g' windows/winstuff.h
 perl -i -pe 's#\Q"Wave Files (*.wav)\0*.WAV\0"#"声音文件 (*.wav)\\0*.WAV\\0"#g' windows/winstuff.h
 perl -i -pe 's#\Q"Dynamic Library Files (*.dll)\0*.dll\0"#"动态链接库文件 (*.dll)\\0*.dll\\0"#g' windows/winstuff.h
+perl -i -pe 's#\Q"system clipboard"#"系统剪贴板"#g' windows/winstuff.h
+perl -i -pe 's#\Q"System clipboard"#"系统剪贴板"#g' windows/winstuff.h
+perl -i -pe 's#\Q"Last selected text"#"上次选择的文本"#g' windows/winstuff.h
 
 # 修改字体
 # windows/*.*
@@ -1137,6 +1148,12 @@ perl -i -pe 's#\Q"连接类型：", NO_SHORTCUT, 4#"连接类型：", NO_SHORTCU
 # 0.70旧版
 perl -i -pe 's#\Q"Control the select-one-word-at-a-time mode"#"设置自动选取单词模式"#g' config.c
 perl -i -pe 's#\Q("Courier New", 0, 10, ANSI_CHARSET)#("新宋体", 0, 12, GB2312_CHARSET)#g' windows/windefs.c
+
+# 0.73旧版
+perl -i -pe 's#\Q("Configured key file not in Pageant")#("Configured key file not in Pageant")#g' ssh1login.c
+perl -i -pe 's#\Q("Failed to get reply from Pageant")#("Failed to get reply from Pageant")#g' ssh1login.c
+perl -i -pe 's#\Q"Pageant response contained a negative"#"Pageant response contained a negative"#g' ssh1login.c
+perl -i -pe 's#\Q"Pageant response was truncated"#"Pageant response was truncated"#g' ssh2userauth.c
 
 # 防止乱码-1(界面会变难看)
 # perl -i -pe 's#\Q(TOOLPATH)gcc#(TOOLPATH)gcc -fexec-charset=GBK #g' windows/Makefile.mgw
