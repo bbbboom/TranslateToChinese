@@ -445,9 +445,9 @@ perl -i -pe 's#\Q"SSH packets"#"SSH 包"#g' logging.c
 # misc.c
 echo misc.c
 perl -i -pe 's#\Q"Build platform: %d-bit %s"#"构建平台: %d 位 %s"#g' misc.c
-perl -i -pe 's#\Q"%sCompiler: clang %s"#"%s编译器: clang %s 汉化: paea.cn"#g' misc.c
-perl -i -pe 's#\Q"%sCompiler: gcc %s"#"%s编译器: gcc %s 汉化: paea.cn"#g' misc.c
-perl -i -pe 's#\Q"%sCompiler: "#"%s编译器:  汉化: paea.cn"#g' misc.c
+perl -i -pe 's#\Q"%sCompiler: clang %s"#"%s编译器: clang %s 汉化: bbbboom、wanyanjiabin"#g' misc.c
+perl -i -pe 's#\Q"%sCompiler: gcc %s"#"%s编译器: gcc %s 汉化: bbbboom、wanyanjiabin"#g' misc.c
+perl -i -pe 's#\Q"%sCompiler: "#"%s编译器:  汉化: bbbboom、wanyanjiabin"#g' misc.c
 perl -i -pe 's#\Q", unrecognised version"#", 未知版本"#g' misc.c
 perl -i -pe 's#\Q"%sBuild option: NO_SECURITY"#"%s构建选项: NO_SECURITY"#g' misc.c
 perl -i -pe 's#\Q"%sBuild option: NO_SECUREZEROMEMORY"#"%s构建选项: NO_SECUREZEROMEMORY"#g' misc.c
