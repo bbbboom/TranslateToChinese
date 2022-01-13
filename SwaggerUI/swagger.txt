@@ -163,6 +163,10 @@ perl -i -pe 's#\Q"Invalid string. Length must be a multiple of 4"#"无效的字�
 echo swagger-ui-standalone-preset.js
 perl -i -pe 's#\Q"Explore"#"浏览"#g' swagger-ui-standalone-preset.js
 
+# swagger-ui.css
+echo swagger-ui.css
+perl -i -pe 's#\Q"loading";#"正在加载";word-break: keep-all;#g' swagger-ui.css
+
 # 3.13.x-3.20.x
 # perl -i -pe 's#\Q"Basic auth"#"基础认证"#g' *.js
 # perl -i -pe 's#\Q"Done"#"确定"#g' *.js
@@ -170,9 +174,12 @@ perl -i -pe 's#\Q"Explore"#"浏览"#g' swagger-ui-standalone-preset.js
 # perl -i -pe 's#\Q"Unknown response type"#"未知响应类型"#g' *.js
 
 # 精简代码
+echo '{"version":3,"sources":[],"names":[],"mappings":"","file":"","sourcesContent":[],"sourceRoot":""}' > swagger-ui.css.map
 echo '{"version":3,"sources":[],"names":[],"mappings":"","file":"","sourcesContent":[],"sourceRoot":""}' > swagger-ui.js.map
 echo '{"version":3,"sources":[],"names":[],"mappings":"","file":"","sourcesContent":[],"sourceRoot":""}' > swagger-ui-bundle.js.map
 echo '{"version":3,"sources":[],"names":[],"mappings":"","file":"","sourcesContent":[],"sourceRoot":""}' > swagger-ui-standalone-preset.js.map
+echo '{"version":3,"sources":[],"names":[],"mappings":"","file":"","sourcesContent":[],"sourceRoot":""}' > swagger-ui-es-bundle.js.map
+echo '{"version":3,"sources":[],"names":[],"mappings":"","file":"","sourcesContent":[],"sourceRoot":""}' > swagger-ui-es-bundle-core.js.map
 
 # 关闭联网API验证
 perl -i -pe 's#(\?"https://validator\.swagger\.io/validator".*?\{key:"componentWillReceiveProps",value:function\(\w\)\{).*?\}\)(\}\},)#$1 return false $2#g' *.js
@@ -215,8 +222,7 @@ perl -i -pe 's#</style>#
 
 # index.html-定制内容
 perl -i -pe 's#"https://petstore.swagger.io/v2/swagger.json"#getApiUrl()#g' index.html
-perl -i -pe 's|</script>|
-    function getApiUrl() {
+perl -i -pe 's|window.onload|function getApiUrl() {
       // 解决浏览器不支持endsWith的方法
       if (typeof String.prototype.endsWith != '\''function'\'') {
         String.prototype.endsWith = function (suffix) {
@@ -242,7 +248,8 @@ perl -i -pe 's|</script>|
         }
       }
     }
-    </script>|g' index.html
+
+    window.onload|g' index.html
 perl -i -pe 's#layout: "StandaloneLayout"#layout: "StandaloneLayout",
         tagsSorter: (a, b) => {
           // 自定义排序
