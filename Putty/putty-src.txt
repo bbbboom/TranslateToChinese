@@ -44,29 +44,6 @@ perl -i -pe 's#\Q"-- warn below here --"#"-- 下面为警告选项 --"#g' config
 perl -i -pe 's#\Q"Auto"#"自动"#g' config.c
 perl -i -pe 's#\Q"Off"#"关"#g' config.c
 perl -i -pe 's#\Q"On"#"开"#g' config.c
-perl -i -pe 's#\Q"Default Settings"#"默认设置"#g' config.c
-perl -i -pe 's#\Q"Default Foreground"#"默认前景"#g' config.c
-perl -i -pe 's#\Q"Default Bold Foreground"#"默认前景(粗)"#g' config.c
-perl -i -pe 's#\Q"Default Background"#"默认背景"#g' config.c
-perl -i -pe 's#\Q"Default Bold Background"#"默认背景(粗)"#g' config.c
-perl -i -pe 's#\Q"Cursor Text"#"光标文本"#g' config.c
-perl -i -pe 's#\Q"Cursor Colour"#"光标颜色"#g' config.c
-perl -i -pe 's#\Q"ANSI Black"#"ANSI 黑"#g' config.c
-perl -i -pe 's#\Q"ANSI Black Bold"#"ANSI 黑(粗)"#g' config.c
-perl -i -pe 's#\Q"ANSI Red"#"ANSI 红"#g' config.c
-perl -i -pe 's#\Q"ANSI Red Bold"#"ANSI 红(粗)"#g' config.c
-perl -i -pe 's#\Q"ANSI Green"#"ANSI 绿"#g' config.c
-perl -i -pe 's#\Q"ANSI Green Bold"#"ANSI 绿(粗)"#g' config.c
-perl -i -pe 's#\Q"ANSI Yellow"#"ANSI 黄"#g' config.c
-perl -i -pe 's#\Q"ANSI Yellow Bold"#"ANSI 黄(粗)"#g' config.c
-perl -i -pe 's#\Q"ANSI Blue"#"ANSI 蓝"#g' config.c
-perl -i -pe 's#\Q"ANSI Blue Bold"#"ANSI 蓝(粗)"#g' config.c
-perl -i -pe 's#\Q"ANSI Magenta"#"ANSI 紫"#g' config.c
-perl -i -pe 's#\Q"ANSI Magenta Bold"#"ANSI 紫(粗)"#g' config.c
-perl -i -pe 's#\Q"ANSI Cyan"#"ANSI 青"#g' config.c
-perl -i -pe 's#\Q"ANSI Cyan Bold"#"ANSI 青(粗)"#g' config.c
-perl -i -pe 's#\Q"ANSI White"#"ANSI 白"#g' config.c
-perl -i -pe 's#\Q"ANSI White Bold"#"ANSI 白(粗)"#g' config.c
 perl -i -pe 's#\Q"(auto)"#"(自动)"#g' config.c
 perl -i -pe 's#\Q"(don'\''t send)"#"(不发送)"#g' config.c
 perl -i -pe 's#\Q"You need to specify a source port number"#"需要指定一个来源端口数字"#g' config.c
@@ -415,6 +392,51 @@ perl -i -pe 's#\Q"Miscomputes SSH-2 encryption keys"#"混算 SSH-2 加密密钥(
 perl -i -pe 's#\Q"Chokes on SSH-1 ignore messages"#"阻塞 SSH-1 忽略信息(I)"#g' config.c
 perl -i -pe 's#\Q"Refuses all SSH-1 password camouflage"#"拒绝所有 SSH-1 密码伪装"#g' config.c
 perl -i -pe 's#\Q"Chokes on SSH-1 RSA authentication"#"阻塞 SSH-1 RSA 认证"#g' config.c
+perl -i -pe 's#\Q"Connection/SUPDUP"#"连接/SUPDUP"#g' config.c
+perl -i -pe 's#\Q"Options controlling SUPDUP connections"#"SUPDUP 连接设置"#g' config.c
+perl -i -pe 's#\Q"Connection/Serial"#"连接/串口"#g' config.c
+perl -i -pe 's#\Q"Options controlling local serial lines"#"本地串口设置"#g' config.c
+perl -i -pe 's#\Q"Select a serial line"#"选择一个串口"#g' config.c
+perl -i -pe 's#\Q"Serial line to connect to"#"连接到串口"#g' config.c
+perl -i -pe 's#\Q"Configure the serial line"#"配置串口"#g' config.c
+perl -i -pe 's#\Q"Speed (baud)"#"速度(波特率)"#g' config.c
+perl -i -pe 's#\Q"Data bits"#"数据位"#g' config.c
+perl -i -pe 's#\Q"Stop bits"#"停止位"#g' config.c
+perl -i -pe 's#\Q"Parity"#"奇偶校验位"#g' config.c
+perl -i -pe 's#\Q"Flow control"#"流量控制"#g' config.c
+perl -i -pe 's#\Q"Other:"#"其他:"#g' config.c
+perl -i -pe 's#\Q"Disconnect if authentication succeeds trivially"#"如果身份验证成功，则断开连接"#g' config.c
+perl -i -pe 's#\Q"Extended ASCII Character set:"#"扩展 ASCII 字符集："#g' config.c
+perl -i -pe 's#\Q"**MORE** processing"#"**更多** 加工处理"#g' config.c
+perl -i -pe 's#\Q"Terminal scrolling"#"终端滚动"#g' config.c
+perl -i -pe 's#\Q"Location string"#"位置字符串"#g' config.c
+
+
+# putty.h
+echo putty.h
+perl -i -pe 's#\Q"Default Settings"#"默认设置"#g' putty.h
+perl -i -pe 's#\Q"Default Foreground"#"默认前景"#g' putty.h
+perl -i -pe 's#\Q"Default Bold Foreground"#"默认前景(粗)"#g' putty.h
+perl -i -pe 's#\Q"Default Background"#"默认背景"#g' putty.h
+perl -i -pe 's#\Q"Default Bold Background"#"默认背景(粗)"#g' putty.h
+perl -i -pe 's#\Q"Cursor Text"#"光标文本"#g' putty.h
+perl -i -pe 's#\Q"Cursor Colour"#"光标颜色"#g' putty.h
+perl -i -pe 's#\Q"ANSI Black"#"ANSI 黑"#g' putty.h
+perl -i -pe 's#\Q"ANSI Black Bold"#"ANSI 黑(粗)"#g' putty.h
+perl -i -pe 's#\Q"ANSI Red"#"ANSI 红"#g' putty.h
+perl -i -pe 's#\Q"ANSI Red Bold"#"ANSI 红(粗)"#g' putty.h
+perl -i -pe 's#\Q"ANSI Green"#"ANSI 绿"#g' putty.h
+perl -i -pe 's#\Q"ANSI Green Bold"#"ANSI 绿(粗)"#g' putty.h
+perl -i -pe 's#\Q"ANSI Yellow"#"ANSI 黄"#g' putty.h
+perl -i -pe 's#\Q"ANSI Yellow Bold"#"ANSI 黄(粗)"#g' putty.h
+perl -i -pe 's#\Q"ANSI Blue"#"ANSI 蓝"#g' putty.h
+perl -i -pe 's#\Q"ANSI Blue Bold"#"ANSI 蓝(粗)"#g' putty.h
+perl -i -pe 's#\Q"ANSI Magenta"#"ANSI 紫"#g' putty.h
+perl -i -pe 's#\Q"ANSI Magenta Bold"#"ANSI 紫(粗)"#g' putty.h
+perl -i -pe 's#\Q"ANSI Cyan"#"ANSI 青"#g' putty.h
+perl -i -pe 's#\Q"ANSI Cyan Bold"#"ANSI 青(粗)"#g' putty.h
+perl -i -pe 's#\Q"ANSI White"#"ANSI 白"#g' putty.h
+perl -i -pe 's#\Q"ANSI White Bold"#"ANSI 白(粗)"#g' putty.h
 
 # logging.c
 echo logging.c
@@ -423,9 +445,9 @@ perl -i -pe 's#\Q"SSH packets"#"SSH 包"#g' logging.c
 # misc.c
 echo misc.c
 perl -i -pe 's#\Q"Build platform: %d-bit %s"#"构建平台: %d 位 %s"#g' misc.c
-perl -i -pe 's#\Q"%sCompiler: clang %s"#"%s编译器: clang %s 汉化: bbbboom"#g' misc.c
-perl -i -pe 's#\Q"%sCompiler: gcc %s"#"%s编译器: gcc %s 汉化: bbbboom"#g' misc.c
-perl -i -pe 's#\Q"%sCompiler: "#"%s编译器:  汉化: bbbboom"#g' misc.c
+perl -i -pe 's#\Q"%sCompiler: clang %s"#"%s编译器: clang %s 汉化: bbbboom、wanyanjiabin"#g' misc.c
+perl -i -pe 's#\Q"%sCompiler: gcc %s"#"%s编译器: gcc %s 汉化: bbbboom、wanyanjiabin"#g' misc.c
+perl -i -pe 's#\Q"%sCompiler: "#"%s编译器:  汉化: bbbboom、wanyanjiabin"#g' misc.c
 perl -i -pe 's#\Q", unrecognised version"#", 未知版本"#g' misc.c
 perl -i -pe 's#\Q"%sBuild option: NO_SECURITY"#"%s构建选项: NO_SECURITY"#g' misc.c
 perl -i -pe 's#\Q"%sBuild option: NO_SECUREZEROMEMORY"#"%s构建选项: NO_SECUREZEROMEMORY"#g' misc.c
@@ -596,6 +618,11 @@ perl -i -pe 's#\Q"View &Licence"#"查看许可证(&L)"#g' windows/pageant.rc
 perl -i -pe 's#\Q"Visit &Web Site"#"查看网站 (&W)"#g' windows/pageant.rc
 perl -i -pe 's#\Q"PuTTY Licence"#"PuTTY 许可证"#g' windows/pageant.rc
 perl -i -pe 's#\Q"OK"#"确定"#g' windows/pageant.rc
+perl -i -pe 's#\Q"Add Key (&encrypted)"#"增加密钥(&加密)"#g' windows/pageant.rc
+perl -i -pe 's#\Q"Re-e&ncrypt"#"重新加密"#g' windows/pageant.rc
+perl -i -pe 's#\Q"&Remove"#"删除"#g' windows/pageant.rc
+perl -i -pe 's#\Q"&Fingerprint type:"#"指纹类型"#g' windows/pageant.rc
+
 
 # windows/plink.rc
 echo windows/plink.rc
@@ -627,6 +654,17 @@ perl -i -pe 's#\Q"View &Licence"#"查看许可证(&L)"#g' windows/puttygen.rc
 perl -i -pe 's#\Q"Visit &Web Site"#"访问网站 (&W)"#g' windows/puttygen.rc
 perl -i -pe 's#\Q"PuTTY Licence"#"PuTTY 许可证"#g' windows/puttygen.rc
 perl -i -pe 's#\Q"OK"#"确定"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"PuTTYgen: Private Key File Parameters"#"PuTTYgen: 私钥文件参数"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"PPK file version:"#"PPK 文件版本:"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"Key derivation function:"#"密钥导出函数:"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"Memory to use for passphrase hash:"#"用于密码哈希的内存:"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"Kbyte"#"KB"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"Time to use for passphrase hash:"#"用于密码哈希的时间:"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"ms"#"毫秒"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"passes"#"遍"#g' windows/puttygen.rc
+perl -i -pe 's#\Q"Parallelism for passphrase hash:"#"密码哈希的并行性:"#g' windows/puttygen.rc
+
+
 
 # windows/version.rc2
 echo windows/version.rc2
@@ -880,7 +918,7 @@ echo windows/window.c
 perl -i -pe 's#\Q"%s Internal Error"#"%s 内部错误"#g' windows/window.c
 perl -i -pe 's#\Q"Unsupported protocol number found"#"发现不支持的协议号"#g' windows/window.c
 perl -i -pe 's#\Q"%s Error"#"%s 错误"#g' windows/window.c
-perl -i -pe 's#\Q"Unable to open connection to\n"#"无法打开到\\n"#g' windows/window.c
+perl -i -pe 's#\Q"Unable to open connection to\n%s\n%s"#"无法连接到\\n%s\\n%s"#g' windows/window.c
 perl -i -pe 's#\Q"%.800s\n"#"%.800s 的连接\\n"#g' windows/window.c
 perl -i -pe 's#\Q"%.70s (inactive)"#"%.70s (不活动的)"#g' windows/window.c
 perl -i -pe 's#\Q"&Restart Session"#"重启会话(&R)"#g' windows/window.c
@@ -911,7 +949,18 @@ perl -i -pe 's#\Q"&About %s"#"关于 %s(&A)"#g' windows/window.c
 perl -i -pe 's#\Q"(No sessions)"#"(没有会话)"#g' windows/window.c
 perl -i -pe 's#\Q"S&pecial Command"#"指定命令(&P)"#g' windows/window.c
 perl -i -pe 's#\Q"%s Exit Confirmation"#"%s 退出确认"#g' windows/window.c
-perl -i -pe 's#\Q"Are you sure you want to close this session?"#"确定要关闭本会话么？"#g' windows/window.c
+perl -i -pe 's#\Q"Are you sure you want to close this session?%s%s"#"确定要关闭本会话么？%s%s"#g' windows/window.c
+perl -i -pe 's#\Q"%s (inactive)"#"%s (不活动的)"#g' windows/window.c
+perl -i -pe 's#\Q"Serialised configuration data was invalid"#"序列化配置数据无效"#g' windows/window.c
+perl -i -pe 's#\Q"option \"%s\" requires an argument"#"选项 \\"%s\\" 需要一个参数"#g' windows/window.c
+perl -i -pe 's#\Q"unexpected argument \"%s\""#"无效参数\\"%s\\""#g' windows/window.c
+perl -i -pe 's#\Q"&Copy"#"&复制"#g' windows/window.c
+perl -i -pe 's#\Q"Running with restricted process ACL"#"使用受限进程 ACL 运行"#g' windows/window.c
+perl -i -pe 's#\Q"%s Command Line Error"#"%s 命令行错误"#g' windows/window.c
+perl -i -pe 's#\Q"Connection closed by remote host"#"连接被远程主机关闭"#g' windows/window.c
+perl -i -pe 's#\Q"----- Session restarted -----"#"----- 会话重新启动 -----"#g' windows/window.c
+perl -i -pe 's#\Q"Unable to play sound file\n%s\nUsing default sound instead"#"无法播放声音文件\\n%s\\n改用默认声音"#g' windows/window.c
+perl -i -pe 's#\Q"%s Sound Error"#"%s 声音错误"#g' windows/window.c
 
 # windows/winnet.c
 echo windows/winnet.c
@@ -956,7 +1005,15 @@ perl -i -pe 's#\Q"SSH-&1 key (RSA)"#"SSH&1 密钥 (RSA)"#g' windows/winpgen.c
 perl -i -pe 's#\Q"SSH-2 &RSA key"#"SSH2 &RSA 密钥"#g' windows/winpgen.c
 perl -i -pe 's#\Q"SSH-2 &DSA key"#"SSH2 &DSA 密钥"#g' windows/winpgen.c
 perl -i -pe 's#\Q"SSH-2 &ECDSA key"#"SSH-2 &ECDSA 密钥"#g' windows/winpgen.c
+perl -i -pe 's#\Q"SSH-2 EdD&SA key"#"SSH-2 EdD&SA 密钥"#g' windows/winpgen.c
 perl -i -pe 's#\Q"SSH-2 ED&25519 key"#"SSH-2 ED&25519 密钥"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Use probable primes (fast)"#"使用可用的素数（快速）"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Use proven primes (slower)"#"使用经过验证的素数（较慢）"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Use proven primes with even distribution (slowest)"#"使用经过验证的均匀分布的素数（最慢）"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Use \"strong\" primes as RSA key factors"#"使用“强”像素作为 RSA 秘钥因子"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Parameters for saving key files..."#"密钥文件参数"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Show fingerprint as SHA256"#"以SHA256显示指纹"#g' windows/winpgen.c
+perl -i -pe 's#\Q"Show fingerprint as MD5"#"以MD5显示指纹"#g' windows/winpgen.c
 perl -i -pe 's#\Q"&Key"#"密钥(&K)"#g' windows/winpgen.c
 perl -i -pe 's#\Q"&Import key"#"导入密钥(&I)"#g' windows/winpgen.c
 perl -i -pe 's#\Q"Export &OpenSSH key"#"导出 OpenSSH 密钥(&O)"#g' windows/winpgen.c
@@ -1048,6 +1105,12 @@ perl -i -pe 's#\Q"Add &Key"#"增加密钥(&K)"#g' windows/winpgnt.c
 perl -i -pe 's#\Q"&Help"#"帮助(&H)"#g' windows/winpgnt.c
 perl -i -pe 's#\Q"&About"#"关于(&A)"#g' windows/winpgnt.c
 perl -i -pe 's#\Q"E&xit"#"退出(&X)"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Add key (encrypted)"#"增加密钥(加密)"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Remove All Keys"#"删除所有密钥"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Re-encrypt All Keys"#"重新加密所有密钥"#g' windows/winpgnt.c
+
+
+
 
 # windows/winplink.c
 echo windows/winplink.c
@@ -1126,6 +1189,25 @@ perl -i -pe 's#\Q"system clipboard"#"系统剪贴板"#g' windows/winstuff.h
 perl -i -pe 's#\Q"System clipboard"#"系统剪贴板"#g' windows/winstuff.h
 perl -i -pe 's#\Q"Last selected text"#"上次选择的文本"#g' windows/winstuff.h
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 修改字体
 # windows/*.*
 perl -i -pe 's#\Q8, "MS Shell Dlg"#9, "宋体"#g' windows/{pageant.rc,puttygen.rc,win_res.rc2}
@@ -1165,7 +1247,3 @@ perl -i -MEncode -ne 'print encode("gb2312",decode("utf8",$_))' *.c *.h windows/
 # 删除备份
 echo 删除备份
 rm -rf *.bak */*.bak
-
-# 开始编译
-# cd putty-src-0.73\windows
-# mingw32-make -f Makefile.mgw
