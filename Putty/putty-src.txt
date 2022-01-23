@@ -1,3 +1,8 @@
+#******************************************
+# 0.76
+# 最后编辑 2022/01/23 10:57:40
+#******************************************
+
 # cmdgen.c
 echo cmdgen.c
 perl -i -pe 's#\Q"Usage: puttygen ( keyfile | -t type [ -b bits ] )\n"#"用法: puttygen ( 密钥文件 | -t 类型 [ -b 位数 ] )\\n"#g' cmdgen.c
@@ -29,6 +34,129 @@ perl -i -pe 's#\Q"  --new-passphrase file\n"#"  --new-passphrase 文件\\n"#g' c
 perl -i -pe 's#\Q"        specify file containing new key passphrase\n"#"        指定包含新密钥密码的文件\\n"#g' cmdgen.c
 perl -i -pe 's#\Q"  --random-device device\n"#"  --random-device 设备\\n"#g' cmdgen.c
 perl -i -pe 's#\Q"        specify device to read entropy from (e.g. /dev/urandom)\n"#"        指定用于读取熵的设备 (例如：/dev/urandom)\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"  -t    specify key type when generating:\n"#"  -t    生成时指定密钥类型：\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"           eddsa, ecdsa, rsa, dsa, rsa1   use with -b\n"#"           eddsa, ecdsa, rsa, dsa, rsa1   与-b一起使用\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"           ed25519, ed448                 special cases of eddsa\n"#"           ed25519, ed448                 eddsa的特殊情况\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"           text                output the key components as "#"           text                将密钥组件输出为 "#g' cmdgen.c
+perl -i -pe 's#\Q"  --dump   equivalent to `-O text'\''\n"#"  --dump   等价于 `-O text'\''\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"  --reencrypt          load a key and save it with fresh "#"  --reencrypt          加载密钥并将其保存为最新 "#g' cmdgen.c
+perl -i -pe 's#\Q"  --primes <type>      select prime-generation method:\n"#"  --primes <类型>      选择素数生成方法:\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"        probable       conventional probabilistic prime finding\n"#"        probable       常规概率素数发现\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"        proven         numbers that have been proven to be prime\n"#"        proven         已被证明是质数的数\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"        proven-even    also try harder for an even distribution\n"#"        proven-even    尽可能的均匀分布\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"  --strong-rsa         use \"strong\" primes as RSA key factors\n"#"  --strong-rsa         使用“强”素数作为 RSA 关键因子\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"        specify parameters when writing PuTTY private key file "#"        写入 PuTTY 私钥文件时指定参数 "#g' cmdgen.c
+perl -i -pe 's#\Q"format:\n"#"格式：\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"            version       PPK format version (min 2, max 3, "#"            version       PPK格式版本 (min 2, max 3, 默认 3)\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"default 3)\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"            kdf           key derivation function (argon2id, "#"            kdf           密钥派生函数（argon2id、argon2i、argon2d）\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"argon2i, argon2d)\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"            memory        Kbyte of memory to use in passphrase "#"            memory        用于密码哈希的千字节内存\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"hash\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"            time          approx milliseconds to hash for "#"            time          散列大约毫秒（默认 100）\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"(default 100)\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"            passes        number of hash passes to run "#"            passes        要运行的哈希传递数（替代“time”）\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"(alternative to '\''time'\'')\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"            parallelism   number of parallelisable threads in the "#"            parallelism   哈希函数中的可并行线程数\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"hash function\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"                             (default 1)\n"#"                             (默认 1)\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: cannot move new file on to old one"#"puttygen: 无法将新文件移至旧文件"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: cannot open %s: %s\n"#"puttygen: 无法打开 %s: %s\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: error reading from %s: %s\n"#"puttygen: 读取错误 %s: %s\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: option `-%s'\''"#"puttygen: 选项 `-%s'\''"#g' cmdgen.c
+perl -i -pe 's#\Q" expects no argument\n"#"不需要参数\\n"#g' cmdgen.c
+perl -i -pe 's#\Q" expects an argument\n"#"需要一个参数\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: PPK parameter "#"puttygen：PPK参数"#g' cmdgen.c
+perl -i -pe 's#\Q"'\''%s'\'' expected a value\n"#"'\''%s'\'' 需要一个值\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: unrecognise"#"puttygen：无法识别"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: value '\''%s'\'' for "#"puttygen: PPK 参数“%s”的值“%s”: 需要一个数字\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"PPK parameter '\''%s'\'': expected a "#""#g' cmdgen.c
+perl -i -pe 's#\Q"number\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: unrecognised "#"puttygen: 无法识别的 PPK 参数“%s”\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"PPK parameter '\''%s'\''\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: no such option `-%s'\''\n"#"puttygen: 没有这样的选项 `-%s'\''\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: option `-%c'\'' expects a"#"puttygen: 选项 `-%c'\'' 需要一个参数\\n"#g' cmdgen.c
+perl -i -pe 's#\Q" parameter\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: unknown key type `%s'\''\n"#"puttygen: 未知键类型“%s”\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: unknown output type `%s'\''\n"#"puttygen: 未知输出类型“%s”\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: unknown fingerprint "#"puttygen: 未知指纹类型“%s”\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"type `%s'\''\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: no such option `-%c'\''\n"#"puttygen: 没有这样的选项 `-%c'\''\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: cannot handle more than one"#"puttygen: 不能处理多个输入文件\\n"#g' cmdgen.c
+perl -i -pe 's#\Q" input file\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: invalid bits for %s, choose"#"puttygen: %s 的无效位，选择"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: cannot generate %s keys shorter than"#"puttygen: 无法生成短于 256 位的%s密钥\\n"#g' cmdgen.c
+perl -i -pe 's#\Q" 256 bits\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: warning: %s keys shorter than"#"puttygen: 警告：短于 %d 位的 %s 密钥可能不安全\\n"#g' cmdgen.c
+perl -i -pe 's#\Q" %d bits are probably not secure\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: cannot both load and generate a key\n"#"puttygen: 不能同时加载和生成密钥\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: this would generate a new key but "#"puttygen: 这将生成一个新密钥但丢弃私有部分\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"discard the private part\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: unable to load file `%s'\'': %s\n"#"puttygen: 无法加载文件“%s”: %s\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: conversion from SSH-1 to SSH-2 keys"#"puttygen: 不支持从 SSH-1 到 SSH-2 密钥的转换\\n"#g' cmdgen.c
+perl -i -pe 's#\Q" not supported\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: conversion from SSH-2 to SSH-1 keys"#"puttygen: 不支持从 SSH-2 到 SSH-1 密钥的转换\\n"#g' cmdgen.c
+perl -i -pe 's#\Q" not supported\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"Should never see these types on an input file"#"永远不应该在输入文件中看到这些类型"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: this command would perform no useful"#"puttygen: 此命令不会执行任何有用的操作\\n"#g' cmdgen.c
+perl -i -pe 's#\Q" action\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: need to specify an output file\n"#"puttygen: 需要指定输出文件\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: cannot perform this action on a "#"puttygen: 无法对仅公钥输入文件执行此操作\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"public-key-only input file\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: failed to collect entropy, "#"puttygen: 无法收集熵，无法生成密钥\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"could not generate key\n"#""#g' cmdgen.c
+perl -i -pe 's#\Q"SSH key passphrase"#"SSH 密钥密码"#g' cmdgen.c
+perl -i -pe 's#\Q"Enter passphrase to load key: "#"输入密码以加载密钥： "#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: unable to read passphrase"#"puttygen：无法读取密码"#g' cmdgen.c
+perl -i -pe 's#\Q"unknown error"#"未知错误"#g' cmdgen.c
+perl -i -pe 's#\Q"wrong passphrase"#"密码错误"#g' cmdgen.c
+perl -i -pe 's#\Q"bad input key type"#"输入密钥类型错误"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: error loading `%s'\'': %s\n"#"puttygen: 加载“%s”时出错: %s\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"New SSH key passphrase"#"新的 SSH 密钥密码"#g' cmdgen.c
+perl -i -pe 's#\Q"Enter passphrase to save key: "#"输入密码以保存密钥: "#g' cmdgen.c
+perl -i -pe 's#\Q"Re-enter passphrase to verify: "#"重新输入密码以验证: "#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: unable to read new passphrase"#"puttygen: 无法读取新密码"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: passphrases do not match\n"#"puttygen: 密码不匹配\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: unable to save SSH-1 private key\n"#"puttygen: 无法保存 SSH-1 私钥\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: unable to save SSH-2 private key\n"#"puttygen: 无法保存 SSH-2 私钥\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"unable to open output file\n"#"无法打开输出文件\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"control flow goof"#"控制流错误"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: unable to export key\n"#"puttygen：无法导出密钥\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: unable to decode public key\n"#"puttygen: 无法解码公钥\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"puttygen: cannot extract key components "#"puttygen: 无法从未知类型的公钥中提取关键组件 '\''%.*s'\''\\n"#g' cmdgen.c
+perl -i -pe 's#\Q"from public key of unknown type '\''%.*s'\''\n"#""#g' cmdgen.c
+
+# cmdline.c
+echo cmdline.c
+perl -i -pe 's#\Q"option \"%s\" not available in this tool"#"此工具中没有选项“%s”"#g' cmdline.c
+perl -i -pe 's#\Q"unrecognised protocol prefix '\''%s'\''"#"无法识别的协议前缀“%s”"#g' cmdline.c
+perl -i -pe 's#\Q"'\''%s'\'' is not a valid format for a manual host "#"“%s”不是手动主机密钥规范的有效格式"#g' cmdline.c
+perl -i -pe 's#\Q"key specification"#""#g' cmdline.c
+perl -i -pe 's#\Q"-%c expects at least two colons in its"#"-%c 要求其参数中至少有两个冒号"#g' cmdline.c
+perl -i -pe 's#\Q" argument"#""#g' cmdline.c
+perl -i -pe 's#\Q"-nc expects argument of form '\''host:port'\''"#"-nc 期望形式为“主机：端口”的参数"#g' cmdline.c
+perl -i -pe 's#\Q"unable to open command file \"%s\""#"无法打开命令文件 \\"%s\\""#g' cmdline.c
+perl -i -pe 's#\Q"the -pw option can only be used with the "#"-pw 选项只能与 SSH 协议一起使用"#g' cmdline.c
+perl -i -pe 's#\Q"SSH protocol"#""#g' cmdline.c
+perl -i -pe 's#\Q"the -sercfg option can only be used with the "#"-sercfg 选项只能与串行协议一起使用"#g' cmdline.c
+perl -i -pe 's#\Q"serial protocol"#""#g' cmdline.c
+perl -i -pe 's#\Q"Unrecognised suboption \"-sercfg %c\""#"无法识别的子选项 \\"-sercfg %c\\""#g' cmdline.c
+perl -i -pe 's#\Q"Unrecognised suboption \"-sercfg %s\""#"无法识别的子选项 \\"-sercfg %s\\""#g' cmdline.c
+
+# cproxy.c
+echo cproxy.c
+perl -i -pe 's#\Q"Proxy error: SOCKS proxy wants"#"Proxy error: SOCKS 代理需要不同的 CHAP 版本"#g' cproxy.c
+perl -i -pe 's#\Q" a different CHAP version"#""#g' cproxy.c
+perl -i -pe 's#\Q"Proxy error: SOCKS proxy won'\''t"#"Proxy error: SOCKS 代理不会与我们协商 CHAP"#g' cproxy.c
+perl -i -pe 's#\Q" negotiate CHAP with us"#""#g' cproxy.c
+perl -i -pe 's#\Q"Proxy error: SOCKS proxy"#"Proxy error: SOCKS 代理拒绝 CHAP 身份验证"#g' cproxy.c
+perl -i -pe 's#\Q" refused CHAP authentication"#""#g' cproxy.c
+perl -i -pe 's#\Q"Proxy error: Server chose "#"Proxy error: 服务器选择了 HMAC-MD5 以外的 CHAP，但我们没有提供！"#g' cproxy.c
+perl -i -pe 's#\Q"CHAP of other than HMAC-MD5 but we "#""#g' cproxy.c
+perl -i -pe 's#\Q"didn'\''t offer it!"#""#g' cproxy.c
+perl -i -pe 's#\Q"Proxy error: Server chose "#"Proxy error: 服务器选择了 CHAP 身份验证，但我们没有提供！"#g' cproxy.c
+perl -i -pe 's#\Q"CHAP authentication but we didn'\''t offer it!"#""#g' cproxy.c
+
 
 # config.c
 echo config.c
@@ -410,6 +538,10 @@ perl -i -pe 's#\Q"Extended ASCII Character set:"#"扩展 ASCII 字符集："#g' 
 perl -i -pe 's#\Q"**MORE** processing"#"**更多** 加工处理"#g' config.c
 perl -i -pe 's#\Q"Terminal scrolling"#"终端滚动"#g' config.c
 perl -i -pe 's#\Q"Location string"#"位置字符串"#g' config.c
+perl -i -pe 's#\Q"Nothing on this panel may be reconfigured in mid-"#"此面板上的任何内容都不得在会话中进行重新配置；  "#g' config.c
+perl -i -pe 's#\Q"session; it is only here so that sub-panels of it can "#"它只是在这里，以便它的子面板可以存在而不会看起来很奇怪。"#g' config.c
+perl -i -pe 's#\Q"exist without looking strange."#""#g' config.c
+
 
 
 # putty.h
@@ -441,6 +573,50 @@ perl -i -pe 's#\Q"ANSI White Bold"#"ANSI 白(粗)"#g' putty.h
 # logging.c
 echo logging.c
 perl -i -pe 's#\Q"SSH packets"#"SSH 包"#g' logging.c
+perl -i -pe 's#\Q"Disabled writing session log "#"由于写入时出错而禁用写入会话日志"#g' logging.c
+perl -i -pe 's#\Q"due to error while writing"#""#g' logging.c
+perl -i -pe 's#\Q"%s session log (%s mode) to file: %s"#"%s 会话日志（%s 模式）到文件：%s"#g' logging.c
+perl -i -pe 's#\Q"Disabled writing"#"禁止写入"#g' logging.c
+perl -i -pe 's#\Q"Error writing"#"写入错误"#g' logging.c
+perl -i -pe 's#\Q"Appending"#"追加"#g' logging.c
+perl -i -pe 's#\Q"Writing new"#"新建"#g' logging.c
+perl -i -pe 's#\Q"Event Log: %s\r\n"#"事件日志: %s\\r\\n"#g' logging.c
+
+# mainchan.c
+echo mainchan.c
+perl -i -pe 's#\Q"X11 forwarding not enabled: unable to"#"X11 转发未启用：无法初始化 X 显示：%s"#g' mainchan.c
+perl -i -pe 's#\Q" initialise X display: %s"#""#g' mainchan.c
+perl -i -pe 's#\Q"Sent %d environment variables"#"发送了 %d 环境变量"#g' mainchan.c
+perl -i -pe 's#\Q"X11 forwarding enabled"#"启用 X11 转发"#g' mainchan.c
+perl -i -pe 's#\Q"X11 forwarding refused"#"X11 转发被拒绝"#g' mainchan.c
+perl -i -pe 's#\Q"Agent forwarding enabled"#"已启用代理转发"#g' mainchan.c
+perl -i -pe 's#\Q"Agent forwarding refused"#"代理转发被拒绝"#g' mainchan.c
+perl -i -pe 's#\Q"Allocated pty"#"分配的 pty"#g' mainchan.c
+perl -i -pe 's#\Q"Server refused to allocate pty"#"服务器拒绝分配 pty"#g' mainchan.c
+perl -i -pe 's#\Q"Server refused to allocate pty\r\n"#"服务器拒绝分配 pty\\r\\n"#g' mainchan.c
+perl -i -pe 's#\Q"Server refused to set environment variable %s"#"服务器拒绝设置环境变量 %s"#g' mainchan.c
+perl -i -pe 's#\Q"All environment variables successfully set"#"所有环境变量设置成功"#g' mainchan.c
+perl -i -pe 's#\Q"All environment variables refused"#"拒绝所有环境变量"#g' mainchan.c
+perl -i -pe 's#\Q"Server refused to set environment "#"服务器拒绝设置环境变量\\r\\n"#g' mainchan.c
+perl -i -pe 's#\Q"variables\r\n"#""#g' mainchan.c
+perl -i -pe 's#\Q"Server refused to set all environment "#"服务器拒绝设置所有环境变量\\r\\n"#g' mainchan.c
+perl -i -pe 's#\Q"Started a shell/command"#"启动了一个shell/command"#g' mainchan.c
+perl -i -pe 's#\Q"Primary command failed; attempting fallback"#"主命令失败；尝试回退"#g' mainchan.c
+perl -i -pe 's#\Q"Server refused to start a shell/command"#"服务器拒绝启动 shell/command"#g' mainchan.c
+perl -i -pe 's#\Q"Server refused to open main channel: %s"#"服务器拒绝打开主频道: %s"#g' mainchan.c
+perl -i -pe 's#\Q"Sent EOF message"#"发送 EOF 消息"#g' mainchan.c
+perl -i -pe 's#\Q"Main session channel closed"#"主会话通道关闭"#g' mainchan.c
+perl -i -pe 's#\Q"Session sent command exit status %d"#"会话已发送命令退出状态 %d"#g' mainchan.c
+perl -i -pe 's#\Q"unrecognised signal \"%.*s\""#"无法识别的信号\\"%.*s\\""#g' mainchan.c
+perl -i -pe 's#\Q"signal SIG%.*s"#"信号 SIG%.*s"#g' mainchan.c
+perl -i -pe 's#\Q"signal %d"#"信号 %d"#g' mainchan.c
+perl -i -pe 's#\Q"Sent signal SIG%s"#"发送信号 SIG%s"#g' mainchan.c
+
+# nocproxy.c
+echo nocproxy.c
+perl -i -pe 's#\Q"Proxy error: Trying to handle a SOCKS5 CHAP request"#"Proxy error: 尝试在仅 telnet 构建中处理 SOCKS5 CHAP 请求"#g' nocproxy.c
+perl -i -pe 's#\Q" in telnet-only build"#""#g' nocproxy.c
+
 
 # misc.c
 echo misc.c
@@ -495,6 +671,85 @@ perl -i -pe 's#\Q"  -scp      force use of SCP protocol\n"#"  -scp      强制�
 perl -i -pe 's#\Q"  -sshlog file\n"#"  -sshlog   文件\\n"#g' pscp.c
 perl -i -pe 's#\Q"  -sshrawlog file\n"#"  -sshrawlog 文件\\n"#g' pscp.c
 perl -i -pe 's#\Q"            log protocol details to a file\n"#"            记录协议详细日志到指定文件\\n"#g' pscp.c
+perl -i -pe 's#\Q"Received unexpected end-of-file from server"#"从服务器收到意外的文件结尾"#g' pscp.c
+perl -i -pe 's#\Q"did not receive SFTP response packet from server"#"未收到来自服务器的 SFTP 响应数据包"#g' pscp.c
+perl -i -pe 's#\Q"unable to understand SFTP response packet from server: %s"#"无法理解来自服务器的 SFTP 响应数据包：%s"#g' pscp.c
+perl -i -pe 's#\Q"Empty host name"#"空主机名"#g' pscp.c
+perl -i -pe 's#\Q"Empty user name"#"空用户名"#g' pscp.c
+perl -i -pe 's#\Q"Guessing user name: %s"#"猜测用户名：%s"#g' pscp.c
+perl -i -pe 's#\Q"Connected to %s"#"连接到 %s"#g' pscp.c
+perl -i -pe 's#\Q"Lost connection"#"失去了连接"#g' pscp.c
+perl -i -pe 's#\Q"Protocol error: Lost connection"#"Protocol error: 失去了连接"#g' pscp.c
+perl -i -pe 's#\Q"Directory is too large to sort; writing file names unsorted\n"#"目录太大，无法排序；写入未排序的文件名\\n"#g' pscp.c
+perl -i -pe 's#\Q"unable to initialise SFTP: %s"#"无法初始化 SFTP: %s"#g' pscp.c
+perl -i -pe 's#\Q"Listing directory %s\n"#"列出目录 %s\\n"#g' pscp.c
+perl -i -pe 's#\Q"Unable to open %s: %s\n"#"无法打开 %s: %s\\n"#g' pscp.c
+perl -i -pe 's#\Q"Reading directory %s: %s\n"#"读取目录 %s: %s\\n"#g' pscp.c
+perl -i -pe 's#\Q"pscp: remote filespec %s: not a directory\n"#"pscp: 远程文件规范 %s: 不是目录\\n"#g' pscp.c
+perl -i -pe 's#\Q"pscp: unable to open %s: %s"#"pscp: 无法打开 %s: %s"#g' pscp.c
+perl -i -pe 's#\Q"error while writing: %s"#"写入时出错：%s"#g' pscp.c
+perl -i -pe 's#\Q"unable to set file times: %s"#"无法设置文件时间: %s"#g' pscp.c
+perl -i -pe 's#\Q"server reported no error"#"服务器报告没有错误"#g' pscp.c
+perl -i -pe 's#\Q"unable to create directory %s: %s"#"无法创建目录 %s: %s"#g' pscp.c
+perl -i -pe 's#\Q"%s: multiple-level wildcards unsupported"#"%s: 不支持多级通配符"#g' pscp.c
+perl -i -pe 's#\Q"pscp: wildcard '\''%s'\'' matched "#"pscp: 通配符“%s”没有匹配文件"#g' pscp.c
+perl -i -pe 's#\Q"no files"#""#g' pscp.c
+perl -i -pe 's#\Q"unable to identify %s: %s"#"无法识别 %s: %s"#g' pscp.c
+perl -i -pe 's#\Q"file type not supplied"#"未提供文件类型"#g' pscp.c
+perl -i -pe 's#\Q"pscp: %s: is a directory"#"pscp: %s: 是一个目录"#g' pscp.c
+perl -i -pe 's#\Q"pscp: unable to open directory %s: %s"#"pscp: 无法打开目录 %s: %s"#g' pscp.c
+perl -i -pe 's#\Q"pscp: reading directory %s: %s"#"pscp: 读取目录 %s: %s"#g' pscp.c
+perl -i -pe 's#\Q"ignoring potentially dangerous "#"忽略服务器提供的潜在危险文件名“%s”"#g' pscp.c
+perl -i -pe 's#\Q"server-supplied filename '\''%s'\''"#""#g' pscp.c
+perl -i -pe 's#\Q"Protocol error: Unexpected newline"#"Protocol error: 意外的换行符"#g' pscp.c
+perl -i -pe 's#\Q"Protocol error: Illegal time format"#"Protocol error: 非法时间格式"#g' pscp.c
+perl -i -pe 's#\Q"security violation: remote host attempted to create "#"安全违规：远程主机试图在非递归副本中创建子目录！"#g' pscp.c
+perl -i -pe 's#\Q"a subdirectory in a non-recursive copy!"#""#g' pscp.c
+perl -i -pe 's#\Q"Protocol error: Expected control record"#"协议错误：预期的控制记录"#g' pscp.c
+perl -i -pe 's#\Q"Protocol error: Illegal file descriptor format"#"协议错误：非法文件描述符格式"#g' pscp.c
+perl -i -pe 's#\Q"pscp: error while reading: %s"#"pscp: 读取时出错: %s"#g' pscp.c
+perl -i -pe 's#\Q"pscp: end of file while reading"#"pscp：读取时文件结束"#g' pscp.c
+perl -i -pe 's#\Q"%s: %s file or directory"#"%s: %s 文件或目录"#g' pscp.c
+perl -i -pe 's#\Q"%s: not a regular file"#"%s: 不是普通文件"#g' pscp.c
+perl -i -pe 's#\Q"%s: Cannot open file"#"%s: 无法打开文件"#g' pscp.c
+perl -i -pe 's#\Q"Sending file %s, size=%"#"发送文件 %s，大小=%"#g' pscp.c
+perl -i -pe 's#\Q"%s: Read error"#"%s: 读取错误"#g' pscp.c
+perl -i -pe 's#\Q"%s: Network error occurred"#"%s: 发生网络错误"#g' pscp.c
+perl -i -pe 's#\Q"Entering directory: %s"#"进入目录：%s"#g' pscp.c
+perl -i -pe 's#\Q"Error opening directory %s: %s"#"打开目录 %s 时出错: %s"#g' pscp.c
+perl -i -pe 's#\Q"%s: Not a directory"#"%s: 不是目录"#g' pscp.c
+perl -i -pe 's#\Q"warning: remote host sent a"#"警告：远程主机发送了复合路径名“%s”"#g' pscp.c
+perl -i -pe 's#\Q" compound pathname '\''%s'\''"#""#g' pscp.c
+perl -i -pe 's#\Q"         renaming local"#"         将本地文件重命名为“%s”"#g' pscp.c
+perl -i -pe 's#\Q" file to '\''%s'\''"#""#g' pscp.c
+perl -i -pe 's#\Q"security violation: remote host attempted to write to"#"安全违规：远程主机试图写入“.”或“..”路径！"#g' pscp.c
+perl -i -pe 's#\Q" a '\''.'\'' or '\''..'\'' path!"#""#g' pscp.c
+perl -i -pe 's#\Q"warning: remote host tried to "#"警告：远程主机试图写入名为“%s”的文件"#g' pscp.c
+perl -i -pe 's#\Q"write to a file called '\''%s'\''"#""#g' pscp.c
+perl -i -pe 's#\Q"         when we requested a file "#"         当我们请求一个名为“%s”的文件时."#g' pscp.c
+perl -i -pe 's#\Q"called '\''%s'\''."#""#g' pscp.c
+perl -i -pe 's#\Q"         If this is a wildcard, "#"         如果这是通配符，请考虑升级到 SSH-2 或使用"#g' pscp.c
+perl -i -pe 's#\Q"consider upgrading to SSH-2 or using"#""#g' pscp.c
+perl -i -pe 's#\Q"         the '\''-unsafe'\'' option. Renaming"#"         '\''-unsafe'\'' 选项。不允许重命名此文件。"#g' pscp.c
+perl -i -pe 's#\Q" of this file has been disallowed."#""#g' pscp.c
+perl -i -pe 's#\Q"%s: Cannot create directory"#"%s: 无法创建目录"#g' pscp.c
+perl -i -pe 's#\Q"%s: Cannot create file"#"%s: 无法创建文件"#g' pscp.c
+perl -i -pe 's#\Q"Write error.. waiting for end of file"#"写入错误..等待文件结束"#g' pscp.c
+perl -i -pe 's#\Q"%s: Write error"#"%s: 写入错误"#g' pscp.c
+perl -i -pe 's#\Q"%s: Remote to remote not supported"#"%s: 不支持远程到远程"#g' pscp.c
+perl -i -pe 's#\Q"%s: No such file or directory\n"#"%s: 无此文件或目录\\n"#g' pscp.c
+perl -i -pe 's#\Q"%s: Remote to remote not supported\n"#"%s: 不支持远程到远程\\n"#g' pscp.c
+perl -i -pe 's#\Q"%s: No such file or directory"#"%s: 没有这样的文件或目录"#g' pscp.c
+perl -i -pe 's#\Q"More than one remote source not supported"#"不支持多个远程源"#g' pscp.c
+perl -i -pe 's#\Q"Local to local copy not supported"#"不支持本地到本地副本"#g' pscp.c
+perl -i -pe 's#\Q"Local file listing not supported"#"不支持本地文件列表"#g' pscp.c
+perl -i -pe 's#\Q"            force use of particular SSH protocol variant\n"#"            强制使用特定的 SSH 协议变体\\n"#g' pscp.c
+perl -i -pe 's#\Q"            disconnect if SSH authentication succeeds trivially\n"#"            如果 SSH 身份验证成功，则断开连接\\n"#g' pscp.c
+perl -i -pe 's#\Q"            control what happens when a log file already exists\n"#"            控制当日志文件已经存在时会发生什么\\n"#g' pscp.c
+perl -i -pe 's#\Q"\n      try typing just \"pscp\" for help\n"#"\\n     尝试输入 \\"pscp\\" 寻求帮助\\n"#g' pscp.c
+perl -i -pe 's#\Q"option \"%s\" requires an argument"#"选项 \\"%s\\" 需要一个参数"#g' pscp.c
+perl -i -pe 's#\Q"unknown option \"%s\""#"未知选项 \\"%s\\""#g' pscp.c
+
 
 # psftp.c
 echo psftp.c
@@ -546,6 +801,91 @@ perl -i -pe 's#\Q"  -sshrawlog file\n"#"  -sshrawlog 文件\\n"#g' psftp.c
 perl -i -pe 's#\Q"            log protocol details to a file\n"#"            日志协议明细输出到文件\\n"#g' psftp.c
 perl -i -pe 's#\Q"psftp: no hostname specified; use \"open host.name\""#"psftp: 未指定主机名; 请使用 \\"open host.name\\""#g' psftp.c
 perl -i -pe 's#\Q" to connect\n"#" 进行连接\\n"#g' psftp.c
+perl -i -pe 's#\Q"did not receive SFTP response packet from server"#"未收到来自服务器的 SFTP 响应数据包"#g' psftp.c
+perl -i -pe 's#\Q"unable to understand SFTP response packet from server: %s"#"无法理解来自服务器的 SFTP 响应数据包：%s"#g' psftp.c
+perl -i -pe 's#\Q"psftp: not connected to a host; use \"open host.name\"\n"#"psftp: 未连接到主机；使用\\"打开主机名\\"\\n"#g' psftp.c
+perl -i -pe 's#\Q"%s: Cannot create directory\n"#"%s: 无法创建目录\\n"#g' psftp.c
+perl -i -pe 's#\Q"%s: unable to open directory: %s\n"#"%s: 无法打开目录: %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"%s: reading directory: %s\n"#"%s: 读取目录: %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"ignoring potentially dangerous server-"#"忽略服务器提供的潜在危险文件名“%s”\\n"#g' psftp.c
+perl -i -pe 's#\Q"supplied filename '\''%s'\''\n"#""#g' psftp.c
+perl -i -pe 's#\Q"%s: open for read: %s\n"#"%s:打开并读取: %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"local: unable to open %s\n"#"本地：无法打开 %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"reget: cannot restart %s - file too large\n"#"reget: 无法重新启动 %s -文件太大\\n"#g' psftp.c
+perl -i -pe 's#\Q"reget: restarting at file position "#"reget：在文件位置重新启动"#g' psftp.c
+perl -i -pe 's#\Q"error while reading: %s\n"#"读取时出错: %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"error while writing local file\n"#"写入本地文件时出错\\n"#g' psftp.c
+perl -i -pe 's#\Q"%s: create directory: %s\n"#"%s: 创建目录： %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"%s: unable to open directory: %s\n"#"%s: 无法打开目录： %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"local: unable to open %s\n"#"本地：无法打开 %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"%s: open for write: %s\n"#"%s: 为写入打开: %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"read size of %s: %s\n"#"%s 的读取大小: %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"read size of %s: size was not given\n"#"%s 的读取大小：未给出大小\\n"#g' psftp.c
+perl -i -pe 's#\Q"reput: restarting at file position "#"reput：在文件位置重新启动"#g' psftp.c
+perl -i -pe 's#\Q"error while reading local file\n"#"读取本地文件时出错\\n"#g' psftp.c
+perl -i -pe 's#\Q"error while writing: %s\n"#"写入时出错: %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"error while closing: %s"#"关闭时出错：%s"#g' psftp.c
+perl -i -pe 's#\Q"Multiple-level wildcards are not supported\n"#"不支持多级通配符\\n"#g' psftp.c
+perl -i -pe 's#\Q"Unable to open %s: %s\n"#"无法打开 %s: %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"%s: reading directory: %s\n"#"%s: 读取目录: %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"ignoring potentially dangerous server-"#"忽略服务器提供的潜在危险文件名“%s”\\n"#g' psftp.c
+perl -i -pe 's#\Q"supplied filename '\''%s'\''\n"#""#g' psftp.c
+perl -i -pe 's#\Q"%s: nothing matched\n"#"%s: 没有匹配的\\n"#g' psftp.c
+perl -i -pe 's#\Q"psftp: unknown command \"%s\"\n"#"psftp: 未知的命令\\"%s\\"\\n"#g' psftp.c
+perl -i -pe 's#\Q"Directory is too large to sort; writing file names unsorted\n"#"目录太大，无法排序；写入未排序的文件名\\n"#g' psftp.c
+perl -i -pe 's#\Q"Multiple-level wildcards are not supported\n"#"不支持多级通配符\\n"#g' psftp.c
+perl -i -pe 's#\Q"Listing directory %s\n"#"列出目录 %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"Unable to open %s: %s\n"#"打不开 %s: %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"Reading directory %s: %s\n"#"读取目录 %s: %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"Directory %s: %s\n"#"目录 %s: %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"Remote directory is now %s\n"#"远程目录现在是 %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"Remote directory is %s\n"#"远程目录是 %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"%s: unrecognised option '\''%s'\''\n"#"%s: 无法识别的选项“%s”\\n"#g' psftp.c
+perl -i -pe 's#\Q"%s: expects a filename\n"#"%s: 需要一个文件名\\n"#g' psftp.c
+perl -i -pe 's#\Q"%s: nothing matched\n"#"%s: 没有匹配的\\n"#g' psftp.c
+perl -i -pe 's#\Q"%s: unrecognised option '\''%s'\''\n"#"%s: 无法识别的选项“%s”\\n"#g' psftp.c
+perl -i -pe 's#\Q"%s: expects a filename\n"#"%s: 需要一个文件名\\n"#g' psftp.c
+perl -i -pe 's#\Q"mkdir: expects a directory\n"#"mkdir: 需要一个目录\\n"#g' psftp.c
+perl -i -pe 's#\Q"rm: expects a filename\n"#"rm: 需要一个文件名\\n"#g' psftp.c
+perl -i -pe 's#\Q"mv: expects two filenames\n"#"mv: 需要两个文件名\\n"#g' psftp.c
+perl -i -pe 's#\Q"mv: multiple or wildcard arguments require the destination"#"mv：多个或通配符参数要求目标是目录\\n"#g' psftp.c
+perl -i -pe 's#\Q" to be a directory\n"#""#g' psftp.c
+perl -i -pe 's#\Q"get attrs for %s: %s\n"#"获取 %s 的属性: %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"file permissions not provided"#"未提供文件权限"#g' psftp.c
+perl -i -pe 's#\Q"set attrs for %s: %s\n"#"为 %s 设置属性: %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"chmod: expects a mode specifier and a filename\n"#"chmod: 需要一个模式说明符和一个文件名\\n"#g' psftp.c
+perl -i -pe 's#\Q"chmod: numeric file modes should"#"chmod: 数字文件模式应仅包含数字 0-7\\n"#g' psftp.c
+perl -i -pe 's#\Q" contain digits 0-7 only\n"#""#g' psftp.c
+perl -i -pe 's#\Q"chmod: file mode '\''%.*s'\'' contains unrecognised"#"chmod: 文件模式 '\''%.*s'\'' 包含无法识别的用户/组/其他说明符 '\''%c'\''\\n"#g' psftp.c
+perl -i -pe 's#\Q" user/group/other specifier '\''%c'\''\n"#""#g' psftp.c
+perl -i -pe 's#\Q"chmod: file mode '\''%.*s'\'' is incomplete\n"#"chmod: 文件模式 '\''%.*s'\'' 不完整\\n"#g' psftp.c
+perl -i -pe 's#\Q"chmod: file mode '\''%.*s'\'': set[ug]id bit should"#"chmod: 文件模式 '\''%.*s'\'': set[ug]id 位只能与 u 或 g 之一一起使用\\n"#g' psftp.c
+perl -i -pe 's#\Q" be used with exactly one of u or g only\n"#""#g' psftp.c
+perl -i -pe 's#\Q"chmod: file mode '\''%.*s'\'' contains unrecognised"#"chmod: 文件模式 '\''%.*s'\'' 包含无法识别的权限说明符 '\''%c'\''\\n"#g' psftp.c
+perl -i -pe 's#\Q" permission specifier '\''%c'\''\n"#""#g' psftp.c
+perl -i -pe 's#\Q"chmod: file mode '\''%.*s'\'' contains no user/group/other"#"chmod: 文件模式 '\''%.*s'\'' 不包含除 '\''t'\'' 之外的用户/组/其他说明符和权限 \\n"#g' psftp.c
+perl -i -pe 's#\Q" specifier and permissions other than '\''t'\'' \n"#""#g' psftp.c
+perl -i -pe 's#\Q"psftp: already connected\n"#"psftp: 已经连接\\n"#g' psftp.c
+perl -i -pe 's#\Q"open: expects a host name\n"#"open: 需要一个主机名\\n"#g' psftp.c
+perl -i -pe 's#\Q"open: invalid port number\n"#"open: 无效的端口号\\n"#g' psftp.c
+perl -i -pe 's#\Q"lcd: expects a local directory name\n"#"lcd: 需要一个本地目录名\\n"#g' psftp.c
+perl -i -pe 's#\Q"lcd: unable to change directory: %s\n"#"lcd: 无法更改目录: %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"New local directory is %s\n"#"新的本地目录是 %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"Current local directory is %s\n"#"当前本地目录是 %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"help: %s: command not found\n"#"help: %s: 没有找到指令\\n"#g' psftp.c
+perl -i -pe 's#\Q"Fatal: unable to initialise SFTP: %s\n"#"致命: 无法初始化 SFTP: %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"Warning: failed to resolve home directory: %s\n"#"警告：无法解析主目录: %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"Remote working directory is %s\n"#"远程工作目录是 %s\\n"#g' psftp.c
+perl -i -pe 's#\Q"Fatal: unable to open %s\n"#"致命：无法打开%s\\n"#g' psftp.c
+perl -i -pe 's#\Q"Received unexpected end-of-file from SFTP server"#"从 SFTP 服务器收到意外的文件结尾"#g' psftp.c
+perl -i -pe 's#\Q"            force use of particular SSH protocol variant\n"#"            强制使用特定的 SSH 协议变体\\n"#g' psftp.c
+perl -i -pe 's#\Q"            disconnect if SSH authentication succeeds trivially\n"#"            如果 SSH 身份验证成功，则断开连接\\n"#g' psftp.c
+perl -i -pe 's#\Q"            control what happens when a log file already exists\n"#"            控制当日志文件已经存在时会发生什么\\n"#g' psftp.c
+perl -i -pe 's#\Q"psftp: multiple usernames specified; using \"%s\"\n"#"psftp：指定了多个用户名；使用 \\"%s\\"\\n"#g' psftp.c
+perl -i -pe 's#\Q"ssh_init: error during SSH connection setup\n"#"ssh_init: SSH 连接设置期间的错误\\n"#g' psftp.c
+perl -i -pe 's#\Q"\n       try typing \"psftp -h\" for help\n"#"\\n       尝试输入“psftp -h”寻求帮助\\n"#g' psftp.c
+perl -i -pe 's#\Q"option \"%s\" requires an argument"#"选项 \\"%s\\" 需要一个参数"#g' psftp.c
+
 
 # sercfg.c
 echo sercfg.c
@@ -573,6 +913,538 @@ echo ssh.c
 perl -i -pe 's#\Q"Repeat key exchange"#"重复密钥交换"#g' ssh.c
 perl -i -pe 's#\Q"More signals"#"更多信号"#g' ssh.c
 perl -i -pe 's#\Q"Cache new host key type"#"缓存新的主机密钥类型"#g' ssh.c
+perl -i -pe 's#\Q"This will also close %d downstream connection%s."#"这也将关闭 %d 个下游连接%s."#g' ssh.c
+perl -i -pe 's#\Q"Reusing a shared connection to this server.\r\n"#"重复使用到此服务器的共享连接.\\r\\n"#g' ssh.c
+
+
+# ssh1bpp.c
+echo ssh1bpp.c
+perl -i -pe 's#\Q"Initialised %s encryption"#"初始化 %s 加密"#g' ssh1bpp.c
+perl -i -pe 's#\Q"Started zlib (RFC1950) compression"#"开始 zlib (RFC1950) 压缩"#g' ssh1bpp.c
+perl -i -pe 's#\Q"Out-of-range packet length from remote suggests"#"来自远程的超出范围的数据包长度表明数据流损坏"#g' ssh1bpp.c
+perl -i -pe 's#\Q" data stream corruption"#""#g' ssh1bpp.c
+perl -i -pe 's#\Q"Network attack (CRC compensation) detected!"#"检测到网络攻击（CRC 补偿）！"#g' ssh1bpp.c
+perl -i -pe 's#\Q"Incorrect CRC received on packet"#"在数据包上收到不正确的 CRC"#g' ssh1bpp.c
+perl -i -pe 's#\Q"Zlib decompression encountered invalid data"#"zlib解压遇到无效数据"#g' ssh1bpp.c
+perl -i -pe 's#\Q"Remote side unexpectedly closed network connection"#"远程端意外关闭网络连接"#g' ssh1bpp.c
+perl -i -pe 's#\Q"Remote side closed network connection"#"远端封闭网络连接"#g' ssh1bpp.c
+
+# ssh1connection.c
+echo ssh1connection.c
+perl -i -pe 's#\Q"Received %s for %s channel %u"#"已收到 %s 频道 %u 的 %s"#g' ssh1connection.c
+perl -i -pe 's#\Q"Received CHANNEL_CLOSE_CONFIRMATION for channel"#"收到频道 %u 的 CHANNEL_CLOSE_CONFIRMATION 我们从未发送过 CHANNEL_CLOSE\\n"#g' ssh1connection.c
+perl -i -pe 's#\Q" %u for which we never sent CHANNEL_CLOSE\n"#""#g' ssh1connection.c
+perl -i -pe 's#\Q"Access granted. Press Return to begin session. "#"授予访问权限。按 Return 开始会话。 "#g' ssh1connection.c
+perl -i -pe 's#\Q"Unexpected packet received, "#"收到意外的数据包，类型 %d (%s)"#g' ssh1connection.c
+perl -i -pe 's#\Q"type %d (%s)"#""#g' ssh1connection.c
+perl -i -pe 's#\Q"Session finished"#"会话结束"#g' ssh1connection.c
+perl -i -pe 's#\Q"due to local error: %s"#"由于本地错误：%s"#g' ssh1connection.c
+perl -i -pe 's#\Q"Opening connection to %s:%d for %s"#"为 %s 打开与 %s:%d 的连接"#g' ssh1connection.c
+
+
+# ssh1connection-client.c
+echo ssh1connection-client.c
+perl -i -pe 's#\Q"Received %s with no outstanding request"#"收到 %s 没有未完成的请求"#g' ssh1connection-client.c
+perl -i -pe 's#\Q"Rejected X11 connect request"#"拒绝 X11 连接请求"#g' ssh1connection-client.c
+perl -i -pe 's#\Q"Opened X11 forward channel"#"打开 X11 正向通道"#g' ssh1connection-client.c
+perl -i -pe 's#\Q"Rejected remote port open request for %s:%d"#"拒绝 %s 的远程端口打开请求:%d"#g' ssh1connection-client.c
+perl -i -pe 's#\Q"Port open failed: %s"#"端口打开失败：%s"#g' ssh1connection-client.c
+perl -i -pe 's#\Q"Forwarded port opened successfully"#"转发端口打开成功"#g' ssh1connection-client.c
+perl -i -pe 's#\Q"Server sent command exit status %d"#"服务器发送命令退出状态 %d"#g' ssh1connection-client.c
+perl -i -pe 's#\Q"Remote port forwarding from %s enabled"#"已启用来自 %s 的远程端口转发"#g' ssh1connection-client.c
+perl -i -pe 's#\Q"Remote port forwarding from %s refused"#"来自 %s 的远程端口转发被拒绝"#g' ssh1connection-client.c
+perl -i -pe 's#\Q"Should never be called in the client"#"永远不应该在客户端调用"#g' ssh1connection-client.c
+
+# ssh1connection-server.c
+echo ssh1connection-server.c
+perl -i -pe 's#\Q"Client requested a shell"#"客户请求一个shell"#g' ssh1connection-server.c
+perl -i -pe 's#\Q"Client sent command '\''%.*s'\''"#"客户端发送命令 '\''%.*s'\''"#g' ssh1connection-server.c
+perl -i -pe 's#\Q"Unable to decode pty request packet"#"无法解码 pty 请求数据包"#g' ssh1connection-server.c
+perl -i -pe 's#\Q"Unable to allocate a pty"#"无法分配 pty"#g' ssh1connection-server.c
+perl -i -pe 's#\Q"Client requested port %d forward to %.*s:%d"#"客户端请求端口 %d 转发到 %.*s:%d"#g' ssh1connection-server.c
+perl -i -pe 's#\Q"Received request to connect to port %s:%d"#"收到连接到端口 %s 的请求:%d"#g' ssh1connection-server.c
+perl -i -pe 's#\Q"Port open failed: %s"#"端口打开失败：%s"#g' ssh1connection-server.c
+perl -i -pe 's#\Q"Forwarded port opened successfully"#"转发端口打开成功"#g' ssh1connection-server.c
+perl -i -pe 's#\Q"Received SSH1_CMSG_EXIT_CONFIRMATION"#"在未发送 SSH1_SMSG_EXIT_STATUS 的情况下收到 SSH1_CMSG_EXIT_CONFIRMATION"#g' ssh1connection-server.c
+perl -i -pe 's#\Q" without having sent SSH1_SMSG_EXIT_STATUS"#""#g' ssh1connection-server.c
+perl -i -pe 's#\Q"Client sent exit confirmation"#"客户发送退出确认"#g' ssh1connection-server.c
+perl -i -pe 's#\Q"Received unexpected setup packet after the "#"在设置阶段后收到意外的设置数据包，键入 %d (%s)"#g' ssh1connection-server.c
+perl -i -pe 's#\Q"setup phase, type %d (%s)"#""#g' ssh1connection-server.c
+perl -i -pe 's#\Q"Should never be called in the server"#"永远不应该在服务器中调用"#g' ssh1connection-server.c
+perl -i -pe 's#\Q"Forwarding X11 connection to client"#"将 X11 连接转发给客户端"#g' ssh1connection-server.c
+perl -i -pe 's#\Q"Forwarding agent connection to client"#"将代理连接转发到客户端"#g' ssh1connection-server.c
+
+# ssh1login.c
+echo ssh1login.c
+perl -i -pe 's#\Q"Public key packet not received"#"未收到公钥包"#g' ssh1login.c
+perl -i -pe 's#\Q"Received public keys"#"收到公钥"#g' ssh1login.c
+perl -i -pe 's#\Q"Host key fingerprint is:"#"主机密钥指纹为："#g' ssh1login.c
+perl -i -pe 's#\Q"Bad SSH-1 public key packet"#"错误的 SSH-1 公钥数据包"#g' ssh1login.c
+perl -i -pe 's#\Q"SSH-1 public keys were badly formatted"#"SSH-1 公钥格式错误"#g' ssh1login.c
+perl -i -pe 's#\Q"Host key did not appear in manually "#"主机密钥未出现在手动配置的列表中"#g' ssh1login.c
+perl -i -pe 's#\Q"configured list"#""#g' ssh1login.c
+perl -i -pe 's#\Q"User aborted at host key verification"#"用户在主机密钥验证时中止"#g' ssh1login.c
+perl -i -pe 's#\Q"SSH-1 public key encryptions failed "#"由于格式错误，SSH-1 公钥加密失败"#g' ssh1login.c
+perl -i -pe 's#\Q"due to bad formatting"#""#g' ssh1login.c
+perl -i -pe 's#\Q"Encrypted session key"#"加密会话密钥"#g' ssh1login.c
+perl -i -pe 's#\Q"AES not supported in SSH-1, skipping"#"SSH-1 不支持 AES，跳过"#g' ssh1login.c
+perl -i -pe 's#\Q"Server violates SSH-1 protocol "#"服务器不支持 3DES 加密违反了 SSH-1 协议"#g' ssh1login.c
+perl -i -pe 's#\Q"by not supporting 3DES encryption"#""#g' ssh1login.c
+perl -i -pe 's#\Q"No supported ciphers found"#"未找到支持的密码"#g' ssh1login.c
+perl -i -pe 's#\Q"User aborted at cipher warning"#"用户在密码警告中中止"#g' ssh1login.c
+perl -i -pe 's#\Q"Using 3DES encryption"#"使用 3DES 加密"#g' ssh1login.c
+perl -i -pe 's#\Q"Using single-DES encryption"#"使用单 DES 加密"#g' ssh1login.c
+perl -i -pe 's#\Q"Using Blowfish encryption"#"使用 Blowfish 加密"#g' ssh1login.c
+perl -i -pe 's#\Q"Trying to enable encryption..."#"正在尝试启用加密..."#g' ssh1login.c
+perl -i -pe 's#\Q"Encryption not successfully enabled"#"未成功启用加密"#g' ssh1login.c
+perl -i -pe 's#\Q"Successfully started encryption"#"成功开始加密"#g' ssh1login.c
+perl -i -pe 's#\Q"SSH login name"#"SSH 登录名"#g' ssh1login.c
+perl -i -pe 's#\Q"No username provided"#"未提供用户名"#g' ssh1login.c
+perl -i -pe 's#\Q"Sent username \"%s\""#"发送用户名\\"%s\\""#g' ssh1login.c
+perl -i -pe 's#\Q"Sent username \"%s\"\r\n"#"发送用户名 \\"%s\\"\\r\\n"#g' ssh1login.c
+perl -i -pe 's#\Q"Reading key file \"%s\""#"读取密钥文件\\"%s\\""#g' ssh1login.c
+perl -i -pe 's#\Q"Key file contains public key only"#"密钥文件仅包含公钥"#g' ssh1login.c
+perl -i -pe 's#\Q"Unable to load key (%s)"#"无法加载密钥 (%s)"#g' ssh1login.c
+perl -i -pe 's#\Q"Unable to load key file \"%s\" (%s)\r\n"#"无法加载密钥文件 \\"%s\\" (%s)\\r\\n"#g' ssh1login.c
+perl -i -pe 's#\Q"Unable to use this key file (%s)"#"无法使用此密钥文件 (%s)"#g' ssh1login.c
+perl -i -pe 's#\Q"Unable to use key file \"%s\" (%s)\r\n"#"无法使用密钥文件 \\"%s\\" (%s)\\r\\n"#g' ssh1login.c
+perl -i -pe 's#\Q"Pageant is running. Requesting keys."#"Pageant正在运行。请求密钥."#g' ssh1login.c
+perl -i -pe 's#\Q"Pageant'\''s response was truncated"#"Pageant 的回复被截断了"#g' ssh1login.c
+perl -i -pe 's#\Q"Configured key file not in Pageant"#"配置的密钥文件不在Pageant中"#g' ssh1login.c
+perl -i -pe 's#\Q"Failed to get reply from Pageant"#"未能得到Pageant的回复"#g' ssh1login.c
+perl -i -pe 's#\Q"Key refused"#"钥匙被拒绝"#g' ssh1login.c
+perl -i -pe 's#\Q"Received RSA challenge"#"收到 RSA 质询"#g' ssh1login.c
+perl -i -pe 's#\Q"Server'\''s RSA challenge "#"服务器的 RSA 质询格式错误"#g' ssh1login.c
+perl -i -pe 's#\Q"was badly formatted"#""#g' ssh1login.c
+perl -i -pe 's#\Q"Sending Pageant'\''s response"#"发送Pageant的回应"#g' ssh1login.c
+perl -i -pe 's#\Q"Pageant'\''s response "#"Pageant的回应被接受"#g' ssh1login.c
+perl -i -pe 's#\Q"accepted"#""#g' ssh1login.c
+perl -i -pe 's#\Q"Authenticated using RSA "#"使用来自代理的 RSA 密钥 \\"%.*s\\" 进行身份验证\\r\\n"#g' ssh1login.c
+perl -i -pe 's#\Q"key \"%.*s\" from "#""#g' ssh1login.c
+perl -i -pe 's#\Q"agent\r\n"#""#g' ssh1login.c
+perl -i -pe 's#\Q"Pageant'\''s response not "#"Pageant的回应不被接受"#g' ssh1login.c
+perl -i -pe 's#\Q"Pageant failed to answer "#"Pageant未能回答"#g' ssh1login.c
+perl -i -pe 's#\Q"challenge"#""#g' ssh1login.c
+perl -i -pe 's#\Q"No reply received from Pageant"#"没有收到Pageant的回复"#g' ssh1login.c
+perl -i -pe 's#\Q"Trying public key authentication.\r\n"#"尝试公钥认证。\\r\\n"#g' ssh1login.c
+perl -i -pe 's#\Q"Trying public key \"%s\""#"尝试公钥 \\"%s\\""#g' ssh1login.c
+perl -i -pe 's#\Q"No passphrase required.\r\n"#"无需密码。\\r\\n"#g' ssh1login.c
+perl -i -pe 's#\Q"Passphrase for key \"%s\": "#"密钥 \\"%s\\" 的密码： "#g' ssh1login.c
+perl -i -pe 's#\Q"User aborted at passphrase prompt"#"用户在密码提示时中止"#g' ssh1login.c
+perl -i -pe 's#\Q"Couldn'\''t load private key from %s (%s).\r\n"#"无法从 %s (%s) 加载私钥。\\r\\n"#g' ssh1login.c
+perl -i -pe 's#\Q"Wrong passphrase.\r\n"#"密码错误.\\r\\n"#g' ssh1login.c
+perl -i -pe 's#\Q"unexpected return from rsa1_load_f()"#"从 rsa1_load_f() 意外返回"#g' ssh1login.c
+perl -i -pe 's#\Q"Server refused our public key.\r\n"#"服务器拒绝了我们的公钥。\\r\\n"#g' ssh1login.c
+perl -i -pe 's#\Q"Received unexpected packet"#"收到意外的数据包以响应提供的公钥，类型 %d (%s)"#g' ssh1login.c
+perl -i -pe 's#\Q" in response to offer of public key, "#""#g' ssh1login.c
+perl -i -pe 's#\Q"type %d (%s)"#""#g' ssh1login.c
+perl -i -pe 's#\Q"Server'\''s RSA challenge "#"服务器的 RSA 质询格式错误"#g' ssh1login.c
+perl -i -pe 's#\Q"was badly formatted"#""#g' ssh1login.c
+perl -i -pe 's#\Q"Failed to authenticate with"#"无法使用我们的公钥进行身份验证。\\r\\n"#g' ssh1login.c
+perl -i -pe 's#\Q" our public key.\r\n"#""#g' ssh1login.c
+perl -i -pe 's#\Q"Received unexpected packet"#"收到意外的数据包以响应 RSA 身份验证，类型 %d (%s)"#g' ssh1login.c
+perl -i -pe 's#\Q" in response to RSA authentication, "#""#g' ssh1login.c
+perl -i -pe 's#\Q"type %d (%s)"#""#g' ssh1login.c
+perl -i -pe 's#\Q"Requested TIS authentication"#"请求的 TIS 身份验证"#g' ssh1login.c
+perl -i -pe 's#\Q"TIS authentication refused.\r\n"#"TIS 身份验证被拒绝。\\r\\n"#g' ssh1login.c
+perl -i -pe 's#\Q"TIS challenge packet was "#"TIS 质询数据包格式不正确"#g' ssh1login.c
+perl -i -pe 's#\Q"badly formed"#""#g' ssh1login.c
+perl -i -pe 's#\Q"Requested CryptoCard authentication"#"请求的 CryptoCard 身份验证"#g' ssh1login.c
+perl -i -pe 's#\Q"CryptoCard authentication declined"#"CryptoCard 身份验证被拒绝"#g' ssh1login.c
+perl -i -pe 's#\Q"CryptoCard authentication refused.\r\n"#"CryptoCard 身份验证被拒绝。\\r\\n"#g' ssh1login.c
+perl -i -pe 's#\Q"CryptoCard challenge packet "#"CryptoCard 质询数据包格式不正确"#g' ssh1login.c
+perl -i -pe 's#\Q"was badly formed"#""#g' ssh1login.c
+perl -i -pe 's#\Q"SSH CryptoCard authentication"#"SSH CryptoCard 身份验证"#g' ssh1login.c
+perl -i -pe 's#\Q"CryptoCard authentication response:"#"CryptoCard 身份验证响应："#g' ssh1login.c
+perl -i -pe 's#\Q"Received unexpected packet"#"收到响应 TIS 身份验证的意外数据包，类型 %d (%s)"#g' ssh1login.c
+perl -i -pe 's#\Q" in response to TIS authentication, "#""#g' ssh1login.c
+perl -i -pe 's#\Q"type %d (%s)"#""#g' ssh1login.c
+perl -i -pe 's#\Q"No supported authentication methods "#"没有可用的受支持的身份验证方法"#g' ssh1login.c
+perl -i -pe 's#\Q"available"#""#g' ssh1login.c
+perl -i -pe 's#\Q"%s@%s'\''s password:"#"%s@%s 的密码："#g' ssh1login.c
+perl -i -pe 's#\Q"User aborted at password prompt"#"用户在密码提示时中止"#g' ssh1login.c
+perl -i -pe 's#\Q"Sending password with camouflage packets"#"使用伪装包发送密码"#g' ssh1login.c
+perl -i -pe 's#\Q"Sending length-padded password"#"发送加长密码"#g' ssh1login.c
+perl -i -pe 's#\Q"Sending unpadded password"#"发送未填充的密码"#g' ssh1login.c
+perl -i -pe 's#\Q"Sent password"#"发送密码"#g' ssh1login.c
+perl -i -pe 's#\Q"Access denied\r\n"#"访问被拒绝\\r\\n"#g' ssh1login.c
+perl -i -pe 's#\Q"Authentication refused"#"身份验证被拒绝"#g' ssh1login.c
+perl -i -pe 's#\Q"Received unexpected packet"#"收到响应密码验证的意外数据包，类型 %d (%s)"#g' ssh1login.c
+perl -i -pe 's#\Q" in response to password authentication, type %d "#""#g' ssh1login.c
+perl -i -pe 's#\Q"(%s)"#""#g' ssh1login.c
+perl -i -pe 's#\Q"Authentication was trivial! "#"身份验证很简单！放弃配置中指定的会话。"#g' ssh1login.c
+perl -i -pe 's#\Q"Abandoning session as specified in configuration."#""#g' ssh1login.c
+perl -i -pe 's#\Q"Authentication successful"#"认证成功"#g' ssh1login.c
+perl -i -pe 's#\Q"Requesting compression"#"请求压缩"#g' ssh1login.c
+perl -i -pe 's#\Q"Server refused to enable compression"#"服务器拒绝启用压缩"#g' ssh1login.c
+perl -i -pe 's#\Q"Server refused to compress\r\n"#"服务器拒绝压缩\\r\\n"#g' ssh1login.c
+perl -i -pe 's#\Q"Received unexpected packet"#"收到响应压缩请求的意外数据包，类型 %d (%s)"#g' ssh1login.c
+perl -i -pe 's#\Q" in response to compression request, type %d "#""#g' ssh1login.c
+
+# ssh1login-server.c
+echo ssh1login-server.c
+perl -i -pe 's#\Q"Received unexpected packet in response"#"收到响应初始公钥数据包的意外数据包，类型 %d (%s)"#g' ssh1login-server.c
+perl -i -pe 's#\Q" to initial public key packet, type %d (%s)"#""#g' ssh1login-server.c
+perl -i -pe 's#\Q"Unable to parse session key packet"#"无法解析会话密钥数据包"#g' ssh1login-server.c
+perl -i -pe 's#\Q"Client sent incorrect anti-spoofing cookie"#"客户端发送了错误的反欺骗 cookie"#g' ssh1login-server.c
+perl -i -pe 's#\Q"Client selected an unsupported cipher"#"客户端选择了不受支持的密码"#g' ssh1login-server.c
+perl -i -pe 's#\Q"Failed to decrypt session key"#"无法解密会话密钥"#g' ssh1login-server.c
+perl -i -pe 's#\Q"Received unexpected packet while "#"在需要用户名时收到意外的数据包，键入 %d (%s)"#g' ssh1login-server.c
+perl -i -pe 's#\Q"expecting username, type %d (%s)"#""#g' ssh1login-server.c
+perl -i -pe 's#\Q"Received username '\''%.*s'\''"#"收到的用户名 '\''%.*s'\''"#g' ssh1login-server.c
+perl -i -pe 's#\Q"Auth key far too small"#"身份验证密钥太小"#g' ssh1login-server.c
+perl -i -pe 's#\Q"Failed to encrypt auth challenge"#"无法加密身份验证质询"#g' ssh1login-server.c
+perl -i -pe 's#\Q"Received unexpected packet in "#"收到意外数据包以响应 RSA 身份验证质询，类型 %d (%s)"#g' ssh1login-server.c
+perl -i -pe 's#\Q"response to RSA auth challenge, type %d (%s)"#""#g' ssh1login-server.c
+perl -i -pe 's#\Q"Wrong response to auth challenge"#"对身份验证挑战的错误响应"#g' ssh1login-server.c
+perl -i -pe 's#\Q"Received unexpected packet in "#"收到意外数据包以响应 %s 质询，类型 %d (%s)"#g' ssh1login-server.c
+perl -i -pe 's#\Q"response to %s challenge, type %d (%s)"#""#g' ssh1login-server.c
+perl -i -pe 's#\Q"Multiple authentications required but SSH-1"#"需要多个身份验证，但 SSH-1 无法执行它们"#g' ssh1login-server.c
+perl -i -pe 's#\Q" cannot perform them"#""#g' ssh1login-server.c
+
+# ssh2bpp.c
+echo ssh2bpp.c
+perl -i -pe 's#\Q"Initialised %s outbound encryption"#"已初始化 %s 出站加密"#g' ssh2bpp.c
+perl -i -pe 's#\Q"Initialised %s outbound MAC algorithm%s%s"#"已初始化 %s 出站 MAC 算法%s%s"#g' ssh2bpp.c
+perl -i -pe 's#\Q"Will enable %s compression after user authentication"#"用户认证后将启用 %s 压缩"#g' ssh2bpp.c
+perl -i -pe 's#\Q"Initialised %s compression"#"初始化 %s 压缩"#g' ssh2bpp.c
+perl -i -pe 's#\Q"Initialised %s inbound encryption"#"已初始化 %s 入站加密"#g' ssh2bpp.c
+perl -i -pe 's#\Q"Initialised %s inbound MAC algorithm%s%s"#"已初始化 %s 入站 MAC 算法%s%s"#g' ssh2bpp.c
+perl -i -pe 's#\Q"Will enable %s decompression after user authentication"#"用户认证后将启用 %s 解压"#g' ssh2bpp.c
+perl -i -pe 's#\Q"Initialised %s decompression"#"初始化 %s 解压"#g' ssh2bpp.c
+perl -i -pe 's#\Q"Initialised delayed %s decompression"#"初始化延迟 %s 解压"#g' ssh2bpp.c
+perl -i -pe 's#\Q"Initialised delayed %s compression"#"初始化延迟 %s 压缩"#g' ssh2bpp.c
+perl -i -pe 's#\Q"No valid incoming packet found"#"未找到有效的传入数据包"#g' ssh2bpp.c
+perl -i -pe 's#\Q"Incoming packet length field was garbled"#"传入数据包长度字段乱码"#g' ssh2bpp.c
+perl -i -pe 's#\Q"Incorrect MAC received on packet"#"数据包上收到的 MAC 不正确"#g' ssh2bpp.c
+perl -i -pe 's#\Q"Incoming packet was garbled on decryption"#"传入数据包在解密时出现乱码"#g' ssh2bpp.c
+perl -i -pe 's#\Q"Invalid padding length on received packet"#"接收到的数据包的填充长度无效"#g' ssh2bpp.c
+perl -i -pe 's#\Q"Remote side sent SSH2_MSG_EXT_INFO "#"远程端发送的 SSH2_MSG_EXT_INFO 前面没有 NEWKEYS 也没有后面跟着 USERAUTH_SUCCESS"#g' ssh2bpp.c
+perl -i -pe 's#\Q"not either preceded by NEWKEYS or "#""#g' ssh2bpp.c
+perl -i -pe 's#\Q"followed by USERAUTH_SUCCESS"#""#g' ssh2bpp.c
+perl -i -pe 's#\Q"Remote side sent SSH2_MSG_EXT_INFO "#"远程端发送的 SSH2_MSG_EXT_INFO 不是在初始 NEWKEYS 之后立即发送的"#g' ssh2bpp.c
+perl -i -pe 's#\Q"that was not immediately after the "#""#g' ssh2bpp.c
+perl -i -pe 's#\Q"initial NEWKEYS"#""#g' ssh2bpp.c
+perl -i -pe 's#\Q"Remote side sent SSH2_MSG_EXT_INFO "#"远程端在 USERAUTH_SUCCESS 之后发送 SSH2_MSG_EXT_INFO"#g' ssh2bpp.c
+perl -i -pe 's#\Q"after USERAUTH_SUCCESS"#""#g' ssh2bpp.c
+perl -i -pe 's#\Q"Remote side unexpectedly closed network connection"#"远程端意外关闭网络连接"#g' ssh2bpp.c
+perl -i -pe 's#\Q"Remote side closed network connection"#"远端封闭网络连接"#g' ssh2bpp.c
+
+# ssh2bpp-bare.c
+echo ssh2bpp-bare.c
+perl -i -pe 's#\Q"Invalid packet length received"#"收到的数据包长度无效"#g' ssh2bpp-bare.c
+perl -i -pe 's#\Q"Remote side sent SSH2_MSG_EXT_INFO "#"远端以裸连接协议发送 SSH2_MSG_EXT_INFO"#g' ssh2bpp-bare.c
+perl -i -pe 's#\Q"in bare connection protocol"#""#g' ssh2bpp-bare.c
+perl -i -pe 's#\Q"Remote side unexpectedly closed network connection"#"远程端意外关闭网络连接"#g' ssh2bpp-bare.c
+perl -i -pe 's#\Q"Remote side closed network connection"#"远端封闭网络连接"#g' ssh2bpp-bare.c
+
+
+# ssh2connection.c
+echo ssh2connection.c
+perl -i -pe 's#\Q"Received %s with no outstanding global request"#"收到 %s 没有未完成的全局请求"#g' ssh2connection.c
+perl -i -pe 's#\Q"Rejected channel open: %s"#"拒绝通道打开: %s"#g' ssh2connection.c
+perl -i -pe 's#\Q"Received %s for %s channel %u"#"已收到 %s 频道 %u 的 %s"#g' ssh2connection.c
+perl -i -pe 's#\Q"Received %s for channel %d with no outstanding "#"收到频道 %d 的 %s，没有未完成的频道请求"#g' ssh2connection.c
+perl -i -pe 's#\Q"Unable to decode terminal mode string"#"无法解码终端模式字符串"#g' ssh2connection.c
+perl -i -pe 's#\Q"channel request"#""#g' ssh2connection.c
+perl -i -pe 's#\Q"Received unexpected connection-layer "#"收到意外的连接层数据包，类型 %d (%s)"#g' ssh2connection.c
+perl -i -pe 's#\Q"packet, type %d (%s)"#""#g' ssh2connection.c
+
+# ssh2connection-client.c
+echo ssh2connection-client.c
+perl -i -pe 's#\Q"Received X11 connect request from %.*s:%d"#"收到来自 %.*s:%d 的 X11 连接请求"#g' ssh2connection-client.c
+perl -i -pe 's#\Q"X11 forwarding is not enabled"#"X11 转发未启用"#g' ssh2connection-client.c
+perl -i -pe 's#\Q"Opened X11 forward channel"#"打开 X11 正向通道"#g' ssh2connection-client.c
+perl -i -pe 's#\Q"Received remote port %.*s:%d open request from %.*s:%d"#"收到来自 %.*s:%d 的远程端口 %.*s:%d 打开请求"#g' ssh2connection-client.c
+perl -i -pe 's#\Q"Remote port is not recognised"#"无法识别远程端口"#g' ssh2connection-client.c
+perl -i -pe 's#\Q"Attempting to forward remote port to %s:%d"#"正在尝试将远程端口转发到 %s:%d"#g' ssh2connection-client.c
+perl -i -pe 's#\Q"Port open failed: %s"#"端口打开失败：%s"#g' ssh2connection-client.c
+perl -i -pe 's#\Q"Port open failed"#"端口打开失败"#g' ssh2connection-client.c
+perl -i -pe 's#\Q"Forwarded port opened successfully"#"转发端口打开成功"#g' ssh2connection-client.c
+perl -i -pe 's#\Q"Agent forwarding is not enabled"#"未启用代理转发"#g' ssh2connection-client.c
+perl -i -pe 's#\Q"Unsupported channel type requested"#"请求的频道类型不受支持"#g' ssh2connection-client.c
+perl -i -pe 's#\Q"Opening connection to %s:%d for %s"#"为 %s 打开与 %s:%d 的连接"#g' ssh2connection-client.c
+perl -i -pe 's#\Q"Remote port forwarding from %s enabled"#"已启用来自 %s 的远程端口转发"#g' ssh2connection-client.c
+perl -i -pe 's#\Q"Remote port forwarding from %s refused"#"来自 %s 的远程端口转发被拒绝"#g' ssh2connection-client.c
+perl -i -pe 's#\Q"Opening main session channel"#"打开主会话通道"#g' ssh2connection-client.c
+perl -i -pe 's#\Q"Should never be called in the client"#"永远不应该在客户端调用"#g' ssh2connection-client.c
+
+# ssh2connection-server.c
+echo ssh2connection-server.c
+perl -i -pe 's#\Q"Opened session channel"#"打开会话通道"#g' ssh2connection-server.c
+perl -i -pe 's#\Q"Received request to connect to port %s:%d (from %.*s:%d)"#"收到连接到端口 %s:%d 的请求（来自 %.*s:%d）"#g' ssh2connection-server.c
+perl -i -pe 's#\Q"Port open failed: %s"#"端口打开失败：%s"#g' ssh2connection-server.c
+perl -i -pe 's#\Q"Port opened successfully"#"端口打开成功"#g' ssh2connection-server.c
+perl -i -pe 's#\Q"Connection failed"#"连接失败"#g' ssh2connection-server.c
+perl -i -pe 's#\Q"Unsupported channel type requested"#"请求的频道类型不受支持"#g' ssh2connection-server.c
+perl -i -pe 's#\Q"Forwarding connection to listening port %s:%d from %s"#"将连接转发到侦听端口 %s:%d 从 %s"#g' ssh2connection-server.c
+perl -i -pe 's#\Q"Forwarding connection to listening port %s:%d"#"将连接转发到侦听端口 %s:%d"#g' ssh2connection-server.c
+perl -i -pe 's#\Q"Should never be called in the server"#"永远不应该在服务器中调用"#g' ssh2connection-server.c
+perl -i -pe 's#\Q"Forwarding X11 channel to client"#"将 X11 频道转发给客户端"#g' ssh2connection-server.c
+perl -i -pe 's#\Q"Forwarding SSH agent to client"#"将 SSH 代理转发到客户端"#g' ssh2connection-server.c
+
+# ssh2kex-client.c
+echo ssh2kex-client.c
+perl -i -pe 's#\Q"Doing Diffie-Hellman group exchange"#"进行 Diffie-Hellman 群交换"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Received unexpected packet when "#"收到意外的数据包时"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"expecting Diffie-Hellman group, type %d (%s)"#"期待 Diffie-Hellman 组，类型 %d (%s)"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Unable to parse Diffie-Hellman group packet"#"无法解析 Diffie-Hellman 组数据包"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Doing Diffie-Hellman key exchange using %d-bit "#"使用 %d 位模数和散列 %s 与服务器提供的组进行 Diffie-Hellman 密钥交换"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"modulus and hash %s with a server-supplied group"#""#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Doing Diffie-Hellman key exchange using %d-bit "#"使用 %d 位进行 Diffie-Hellman 密钥交换"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"modulus and hash %s with standard group \"%s\""#"标准组 \\"%s\\" 的模数和散列 %s"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"expecting Diffie-Hellman reply, type %d (%s)"#"期待 Diffie-Hellman 回复，键入 %d (%s)"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Unable to parse Diffie-Hellman reply packet"#"无法解析 Diffie-Hellman 回复数据包"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Diffie-Hellman reply failed "#"Diffie-Hellman 回复失败"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"validation: %s"#"验证：%s"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Doing ECDH key exchange with curve %s and hash %s"#"使用曲线 %s 和散列 %s 进行 ECDH 密钥交换"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Unable to generate key for ECDH"#"无法为 ECDH 生成密钥"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"expecting ECDH reply, type %d (%s)"#"期待 ECDH 回复，类型 %d (%s)"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Received invalid elliptic curve "#"收到无效的椭圆曲线"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"point in ECDH reply"#"指向 ECDH 回复"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Unable to parse ECDH reply packet"#"无法解析 ECDH 回复数据包"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Doing GSSAPI (with Kerberos V5) Diffie-Hellman "#"执行 GSSAPI（使用 Kerberos V5）Diffie-Hellman 组交换，最少 %d 位"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"group exchange, with minimum %d bits"#""#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Using GSSAPI (with Kerberos V5) Diffie-Hellman with"#"使用带有标准组 \\"%s\\" 的 GSSAPI（与 Kerberos V5）Diffie-Hellman"#g' ssh2kex-client.c
+perl -i -pe 's#\Q" standard group \"%s\""#""#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Doing GSSAPI (with Kerberos V5) Diffie-Hellman key "#"使用散列 %s 进行 GSSAPI（使用 Kerberos V5）Diffie-Hellman 密钥交换"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"exchange with hash %s"#""#g' ssh2kex-client.c
+perl -i -pe 's#\Q"GSSAPI key exchange failed to initialise"#"GSSAPI 密钥交换初始化失败"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"GSSAPI key exchange failed: "#"GSSAPI 密钥交换失败："#g' ssh2kex-client.c
+perl -i -pe 's#\Q"no initial context token"#"没有初始上下文令牌"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"GSSAPI key exchange initialised"#"GSSAPI 密钥交换已初始化"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"GSSAPI key exchange failed; "#"GSSAPI 密钥交换失败；"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"server'\''s message: %.*s"#"服务器消息：%.*s"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Received unexpected packet "#"收到意外的数据包"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"during GSSAPI key exchange, type %d (%s)"#"在 GSSAPI 密钥交换期间，键入 %d (%s)"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"GSSAPI reply failed "#"GSSAPI 回复失败"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Doing RSA key exchange with hash %s"#"使用哈希 %s 进行 RSA 密钥交换"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"expecting RSA public key, type %d (%s)"#"需要 RSA 公钥，键入 %d (%s)"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Unable to parse RSA public key packet"#"无法解析 RSA 公钥数据包"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Server sent %d-bit RSA key, "#"服务器发送了 %d 位 RSA 密钥，小于 %s 密钥交换的最小大小 %d"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"less than the minimum size %d for %s "#""#g' ssh2kex-client.c
+perl -i -pe 's#\Q"key exchange"#""#g' ssh2kex-client.c
+perl -i -pe 's#\Q"expecting RSA kex signature, type %d (%s)"#"期待 RSA kex 签名，类型 %d (%s)"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Unable to parse RSA kex signature"#"无法解析 RSA kex 签名"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"GSSAPI key exchange MIC was "#"GSSAPI 密钥交换 MIC"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"not valid: %s"#"无效：%s"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"not valid"#"无效"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"GSSAPI Key Exchange complete!"#"GSSAPI 密钥交换完成！"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Server'\''s host key is invalid"#"服务器的主机密钥无效"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Signature from server'\''s host key "#"服务器主机密钥的签名"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"is invalid"#"无效"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"GSS kex provided fallback host key:"#"GSS kex 提供后备主机密钥："#g' ssh2kex-client.c
+perl -i -pe 's#\Q"No fallback host key available"#"没有可用的备用主机密钥"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Post-GSS rekey provided fallback host key:"#"GSS 更新后提供的备用主机密钥："#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Non-GSS rekey after initial GSS kex "#"初始 GSS kex 使用主机密钥后的非 GSS 重新生成密钥："#g' ssh2kex-client.c
+perl -i -pe 's#\Q"used host key:"#""#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Server'\''s host key did not match any "#"服务器的主机密钥与以前的 GSS kex 中使用的任何密钥都不匹配"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"used in previous GSS kex"#""#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Server also has %s host key%s, but we "#"服务器也有 %s 主机密钥%s，但我们不知道 %s"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"don'\''t know %s"#""#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Host key fingerprint is:"#"主机密钥指纹为："#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Host key did not appear in manually "#"主机密钥未出现在手动配置的列表中"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"configured list"#""#g' ssh2kex-client.c
+perl -i -pe 's#\Q"User aborted at host key verification"#"用户在主机密钥验证时中止"#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Storing additional host key for this host:"#"为该主机存储额外的主机密钥："#g' ssh2kex-client.c
+perl -i -pe 's#\Q"Host key was different in repeat key exchange"#"重复密钥交换中的主机密钥不同"#g' ssh2kex-client.c
+
+# ssh2kex-server.c
+echo ssh2kex-server.c
+perl -i -pe 's#\Q"Doing Diffie-Hellman group exchange"#"进行 Diffie-Hellman 群交换"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"Received unexpected packet when "#"收到意外的数据包"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"expecting Diffie-Hellman group exchange "#"期待 Diffie-Hellman 组交换请求，类型 %d (%s)"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"request, type %d (%s)"#""#g' ssh2kex-server.c
+perl -i -pe 's#\Q"Using Diffie-Hellman with standard group \"%s\""#"将 Diffie-Hellman 与标准组 \\"%s\\" 一起使用"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"Doing Diffie-Hellman key exchange with hash %s"#"使用哈希 %s 进行 Diffie-Hellman 密钥交换"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"expecting Diffie-Hellman initial packet, "#"期待 Diffie-Hellman 初始数据包，"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"type %d (%s)"#"类型 %d (%s)"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"Unable to parse Diffie-Hellman initial packet"#"无法解析 Diffie-Hellman 初始数据包"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"Diffie-Hellman initial packet "#"Diffie-Hellman 初始数据包"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"failed validation: %s"#"验证失败: %s"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"Doing ECDH key exchange with curve %s and hash %s"#"使用曲线 %s 和散列 %s 进行 ECDH 密钥交换"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"Unable to generate key for ECDH"#"无法为 ECDH 生成密钥"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"expecting ECDH initial packet, type %d (%s)"#"期待 ECDH 初始数据包，类型 %d (%s)"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"Received invalid elliptic curve "#"收到无效的椭圆曲线"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"point in ECDH initial packet"#"ECDH 初始数据包中的点"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"GSS key exchange not supported in server"#"服务器不支持 GSS 密钥交换"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"Doing RSA key exchange with hash %s"#"使用哈希 %s 进行 RSA 密钥交换"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"Using configured %d-bit RSA key"#"使用配置的 %d 位 RSA 密钥"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"Configured %d-bit RSA key is too short (min %d)"#"配置的 %d 位 RSA 密钥太短（最少 %d）"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"Generating a %d-bit RSA key"#"生成 %d 位 RSA 密钥"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"expecting RSA kex secret, type %d (%s)"#"期待 RSA kex 密码，键入 %d (%s)"#g' ssh2kex-server.c
+perl -i -pe 's#\Q"Unable to decrypt RSA kex secret"#"无法解密 RSA kex 密钥"#g' ssh2kex-server.c
+
+
+# ssh2transport.c
+echo ssh2transport.c
+perl -i -pe 's#\Q"Should never run out of space in KEXINIT list"#"永远不会用完 KEXINIT 列表中的空间"#g' ssh2transport.c
+perl -i -pe 's#\Q"host not allowed to connect"#"主机不允许连接"#g' ssh2transport.c
+perl -i -pe 's#\Q"protocol error"#"协议错误"#g' ssh2transport.c
+perl -i -pe 's#\Q"key exchange failed"#"密钥交换失败"#g' ssh2transport.c
+perl -i -pe 's#\Q"host authentication failed"#"主机认证失败"#g' ssh2transport.c
+perl -i -pe 's#\Q"MAC error"#"MAC错误"#g' ssh2transport.c
+perl -i -pe 's#\Q"compression error"#"压缩错误"#g' ssh2transport.c
+perl -i -pe 's#\Q"service not available"#"服务不可用"#g' ssh2transport.c
+perl -i -pe 's#\Q"protocol version not supported"#"不支持协议版本"#g' ssh2transport.c
+perl -i -pe 's#\Q"host key not verifiable"#"主机密钥不可验证"#g' ssh2transport.c
+perl -i -pe 's#\Q"connection lost"#"连接丢失"#g' ssh2transport.c
+perl -i -pe 's#\Q"by application"#"按申请"#g' ssh2transport.c
+perl -i -pe 's#\Q"too many connections"#"太多连接"#g' ssh2transport.c
+perl -i -pe 's#\Q"auth cancelled by user"#"用户取消了身份验证"#g' ssh2transport.c
+perl -i -pe 's#\Q"no more auth methods available"#"没有更多可用的身份验证方法"#g' ssh2transport.c
+perl -i -pe 's#\Q"illegal user name"#"非法用户名"#g' ssh2transport.c
+perl -i -pe 's#\Q"Remote side sent disconnect message\n"#"远程端发送断开消息\\n"#g' ssh2transport.c
+perl -i -pe 's#\Q"Remote debug message: %.*s"#"远程调试消息：%.*s"#g' ssh2transport.c
+perl -i -pe 's#\Q"Received premature higher-"#"收到过早的更高层数据包，"#g' ssh2transport.c
+perl -i -pe 's#\Q"layer packet, type %d (%s)"#"类型 %d (%s)"#g' ssh2transport.c
+perl -i -pe 's#\Q"KEXINIT packet was incomplete"#"KEXINIT 数据包不完整"#g' ssh2transport.c
+perl -i -pe 's#\Q"Selected %s \"%.*s\" does not correspond to "#"选定的 %s \\"%.*s\\" 不对应"#g' ssh2transport.c
+perl -i -pe 's#\Q"any supported algorithm"#"任何支持的算法"#g' ssh2transport.c
+perl -i -pe 's#\Q"Couldn'\''t agree a %s (available: %.*s)"#"无法同意 %s（可用：%.*s）"#g' ssh2transport.c
+perl -i -pe 's#\Q"Bad list index in scan_kexinits"#"scan_kexinits 中的错误列表索引"#g' ssh2transport.c
+perl -i -pe 's#\Q"Received unexpected packet when "#"收到意外的数据包"#g' ssh2transport.c
+perl -i -pe 's#\Q"expecting KEXINIT, type %d (%s)"#"期待 KEXINIT，类型 %d (%s)"#g' ssh2transport.c
+perl -i -pe 's#\Q"User aborted at kex warning"#"用户在 kex 警告中中止"#g' ssh2transport.c
+perl -i -pe 's#\Q"User aborted at host key warning"#"用户在主机密钥警告中中止"#g' ssh2transport.c
+perl -i -pe 's#\Q"User aborted at cipher warning"#"用户在密码警告中中止"#g' ssh2transport.c
+perl -i -pe 's#\Q"expecting SSH_MSG_NEWKEYS, type %d (%s)"#"期待 SSH_MSG_NEWKEYS，键入 %d (%s)"#g' ssh2transport.c
+perl -i -pe 's#\Q"Server refused request to start "#"服务器拒绝启动“%s”协议的请求"#g' ssh2transport.c
+perl -i -pe 's#\Q"'\''%s'\'' protocol"#""#g' ssh2transport.c
+perl -i -pe 's#\Q"expecting SERVICE_REQUEST, type %d (%s)"#"期待 SERVICE_REQUEST，类型 %d (%s)"#g' ssh2transport.c
+perl -i -pe 's#\Q"Client requested service "#"当我们只支持“%s”时，客户请求服务“%.*s”"#g' ssh2transport.c
+perl -i -pe 's#\Q"'\''%.*s'\'' when we only support '\''%s'\''"#""#g' ssh2transport.c
+perl -i -pe 's#\Q"Received unexpected transport-"#"在密钥交换之外接收到意外的传输层数据包，类型 %d (%s)"#g' ssh2transport.c
+perl -i -pe 's#\Q"layer packet outside a key exchange, "#""#g' ssh2transport.c
+perl -i -pe 's#\Q"type %d (%s)"#""#g' ssh2transport.c
+perl -i -pe 's#\Q"Remote side initiated key re-exchange"#"远程发起的密钥重新交换"#g' ssh2transport.c
+perl -i -pe 's#\Q"populating transient host key cache"#"填充瞬态主机密钥缓存"#g' ssh2transport.c
+perl -i -pe 's#\Q"too much data received"#"接收到的数据过多"#g' ssh2transport.c
+perl -i -pe 's#\Q"too much data sent"#"发送的数据过多"#g' ssh2transport.c
+perl -i -pe 's#\Q"Remote bug prevents key re-exchange (%s)"#"远程错误阻止密钥重新交换 (%s)"#g' ssh2transport.c
+perl -i -pe 's#\Q"Initiating key re-exchange (%s)"#"启动密钥重新交换 (%s)"#g' ssh2transport.c
+perl -i -pe 's#\Q"GSS credentials updated"#"GSS 凭据已更新"#g' ssh2transport.c
+perl -i -pe 's#\Q"GSSAPI import name failed - Bad service name;"#"GSSAPI 导入名称失败 -服务名称错误；不会使用 GSS 密钥交换"#g' ssh2transport.c
+perl -i -pe 's#\Q" won'\''t use GSS key exchange"#""#g' ssh2transport.c
+perl -i -pe 's#\Q"GSSAPI import name failed;"#"GSSAPI 导入名称失败；不会使用 GSS 密钥交换"#g' ssh2transport.c
+perl -i -pe 's#\Q"No GSSAPI security context available"#"没有可用的 GSSAPI 安全上下文"#g' ssh2transport.c
+perl -i -pe 's#\Q"Repeat key exchange"#"重复密钥交换"#g' ssh2transport.c
+perl -i -pe 's#\Q"Cache new host key type"#"缓存新的主机密钥类型"#g' ssh2transport.c
+perl -i -pe 's#\Q"at user request"#"应用户要求"#g' ssh2transport.c
+perl -i -pe 's#\Q"cross-certifying new host key"#"交叉验证新主机密钥"#g' ssh2transport.c
+perl -i -pe 's#\Q"timeout shortened"#"超时缩短"#g' ssh2transport.c
+perl -i -pe 's#\Q"data limit lowered"#"数据限制降低"#g' ssh2transport.c
+perl -i -pe 's#\Q"compression setting changed"#"压缩设置已更改"#g' ssh2transport.c
+perl -i -pe 's#\Q"cipher settings changed"#"密码设置已更改"#g' ssh2transport.c
+
+# ssh2userauth.c
+echo ssh2userauth.c
+perl -i -pe 's#\Q"Reading key file \"%s\""#"读取密钥文件“%s”"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Key file contains public key only"#"密钥文件仅包含公钥"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Unable to load key (%s)"#"无法加载密钥 (%s)"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Unable to load key file \"%s\" (%s)\r\n"#"无法加载密钥文件 \\"%s\\" (%s)\\r\\n"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Unable to use this key file (%s)"#"无法使用此密钥文件 (%s)"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Unable to use key file \"%s\" (%s)\r\n"#"无法使用密钥文件 \\"%s\\" (%s)\\r\\n"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Pageant is running. Requesting keys."#"Pageant正在运行。请求密钥。"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Pageant'\''s response was truncated"#"Pageant 的回复被截断了"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Configured key file not in Pageant"#"配置的密钥文件不在Pageant中"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Failed to get reply from Pageant"#"未能得到Pageant的回复"#g' ssh2userauth.c
+perl -i -pe 's#\Q"No username provided"#"未提供用户名"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Using username \"%s\".\r\n"#"使用用户名 \\"%s\\"。\\r\\n"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Pre-authentication banner message from server:"#"来自服务器的预认证横幅消息:"#g' ssh2userauth.c
+perl -i -pe 's#\Q"End of banner message from server"#"来自服务器的横幅消息结束"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Access granted"#"授予访问权限"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Received unexpected packet "#"收到意外的数据包"#g' ssh2userauth.c
+perl -i -pe 's#\Q"in response to authentication request, "#"响应身份验证请求，键入 %d (%s)"#g' ssh2userauth.c
+perl -i -pe 's#\Q"type %d (%s)"#""#g' ssh2userauth.c
+perl -i -pe 's#\Q"Server refused our key\r\n"#"服务器拒绝了我们的密钥\\r\\n"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Server refused our key"#"服务器拒绝了我们的密钥"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Server refused public-key signature"#"服务器拒绝公钥签名"#g' ssh2userauth.c
+perl -i -pe 's#\Q" despite accepting key!\r\n"#"尽管接受密钥！\\r\\n"#g' ssh2userauth.c
+perl -i -pe 's#\Q" despite accepting key!"#" 尽管接受密钥!"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Server refused keyboard-interactive "#"服务器拒绝键盘交互"#g' ssh2userauth.c
+perl -i -pe 's#\Q"authentication"#"验证"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Keyboard-interactive authentication "#"键盘交互身份验证"#g' ssh2userauth.c
+perl -i -pe 's#\Q"failed"#"失败"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Password authentication failed"#"密码验证失败"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Access denied\r\n"#"拒绝访问\\r\\n"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Further authentication required\r\n"#"需要进一步验证\\r\\n"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Further authentication required"#"需要进一步验证"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Authenticating with public key "#"使用公钥进行身份验证"#g' ssh2userauth.c
+perl -i -pe 's#\Q"\"%.*s\" from agent\r\n"#"来自代理的\\"%.*s\\"\\r\\n"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Sending Pageant'\''s response"#"发送Pageant的回应"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Pageant refused signing request"#"Pageant拒绝签名请求"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Pageant failed to "#"Pageant未能"#g' ssh2userauth.c
+perl -i -pe 's#\Q"provide a signature\r\n"#"提供签名\\r\\n"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Pageant failed to respond to "#"Pageant未能回应"#g' ssh2userauth.c
+perl -i -pe 's#\Q"signing request"#"签名请求"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Pageant failed to "#"Pageant未能回应"#g' ssh2userauth.c
+perl -i -pe 's#\Q"respond to signing request\r\n"#"签名请求\\r\\n"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Offered public key"#"提供的公钥"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Offer of public key accepted"#"接受公开密钥的提议"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Authenticating with public key \"%s\"\r\n"#"使用公钥 \\"%s\\" 进行身份验证\\r\\n"#g' ssh2userauth.c
+perl -i -pe 's#\Q"SSH key passphrase"#"SSH 密钥密码"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Passphrase for key \"%s\": "#"密钥 \\"%s\\" 的密码："#g' ssh2userauth.c
+perl -i -pe 's#\Q"Unable to authenticate"#"无法进行身份验证"#g' ssh2userauth.c
+perl -i -pe 's#\Q"User aborted at "#"用户中止于"#g' ssh2userauth.c
+perl -i -pe 's#\Q"passphrase prompt"#"密码提示"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Wrong passphrase\r\n"#"密码错误\\r\\n"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Unable to load private key (%s)\r\n"#"无法加载私钥 (%s)\\r\\n"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Cannot use this private key (%s)\r\n"#"无法使用此私钥 (%s)\\r\\n"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Sent public key signature"#"发送公钥签名"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Attempting GSSAPI authentication"#"尝试 GSSAPI 身份验证"#g' ssh2userauth.c
+perl -i -pe 's#\Q"GSSAPI authentication request refused"#"GSSAPI 身份验证请求被拒绝"#g' ssh2userauth.c
+perl -i -pe 's#\Q"GSSAPI authentication - wrong response "#"GSSAPI 身份验证 -错误响应"#g' ssh2userauth.c
+perl -i -pe 's#\Q"from server"#"从服务器"#g' ssh2userauth.c
+perl -i -pe 's#\Q"GSSAPI import name failed -"#"GSSAPI 导入名称失败 -"#g' ssh2userauth.c
+perl -i -pe 's#\Q" Bad service name"#"错误的服务名称"#g' ssh2userauth.c
+perl -i -pe 's#\Q"GSSAPI import name failed"#"GSSAPI 导入名称失败"#g' ssh2userauth.c
+perl -i -pe 's#\Q"GSSAPI authentication failed to get "#"GSSAPI 认证获取失败"#g' ssh2userauth.c
+perl -i -pe 's#\Q"credentials"#"证书"#g' ssh2userauth.c
+perl -i -pe 's#\Q"GSSAPI authentication initialisation "#"GSSAPI 身份验证初始化"#g' ssh2userauth.c
+perl -i -pe 's#\Q"GSSAPI authentication initialised"#"GSSAPI 身份验证已初始化"#g' ssh2userauth.c
+perl -i -pe 's#\Q"after SSH_MSG_USERAUTH_GSSAPI_ERRTOK "#"在 SSH_MSG_USERAUTH_GSSAPI_ERRTOK（预期为 SSH_MSG_USERAUTH_FAILURE）之后：键入 %d (%s)"#g' ssh2userauth.c
+perl -i -pe 's#\Q"(expected SSH_MSG_USERAUTH_FAILURE): "#""#g' ssh2userauth.c
+perl -i -pe 's#\Q"GSSAPI authentication failed"#"GSSAPI 身份验证失败"#g' ssh2userauth.c
+perl -i -pe 's#\Q"GSSAPI authentication -"#"GSSAPI 身份验证 -服务器响应错误"#g' ssh2userauth.c
+perl -i -pe 's#\Q" bad server response"#""#g' ssh2userauth.c
+perl -i -pe 's#\Q"GSSAPI authentication loop finished OK"#"GSSAPI 认证循环完成 OK"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Attempting keyboard-interactive authentication"#"尝试键盘交互身份验证"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Server sent truncated "#"服务器发送截断的 SSH_MSG_USERAUTH_INFO_REQUEST 数据包"#g' ssh2userauth.c
+perl -i -pe 's#\Q"SSH_MSG_USERAUTH_INFO_REQUEST packet"#""#g' ssh2userauth.c
+perl -i -pe 's#\Q"<server failed to send prompt>: "#"<服务器发送提示失败>: "#g' ssh2userauth.c
+perl -i -pe 's#\Q"Keyboard-interactive authentication "#"键盘交互身份验证"#g' ssh2userauth.c
+perl -i -pe 's#\Q"prompts from server:"#"服务器提示："#g' ssh2userauth.c
+perl -i -pe 's#\Q"SSH server authentication"#"SSH服务器认证"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Unable to authenticate"#"无法进行身份验证"#g' ssh2userauth.c
+perl -i -pe 's#\Q"User aborted during "#"用户在期间中止"#g' ssh2userauth.c
+perl -i -pe 's#\Q"End of keyboard-interactive prompts from server"#"来自服务器的键盘交互提示结束"#g' ssh2userauth.c
+perl -i -pe 's#\Q"User aborted during password "#"用户在密码期间中止"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Server requested password change"#"服务器请求更改密码"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Sent password"#"发送密码"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Server rejected new password"#"服务器拒绝新密码"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Current password (blank for previously entered password): "#"当前密码（之前输入的密码为空白）："#g' ssh2userauth.c
+perl -i -pe 's#\Q"password changing"#"更改密码"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Passwords do not match\r\n"#"密码不匹配\\r\\n"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Sent new password"#"发送新密码"#g' ssh2userauth.c
+perl -i -pe 's#\Q"No supported authentication methods available"#"没有可用的受支持的身份验证方法"#g' ssh2userauth.c
+perl -i -pe 's#\Q"No supported authentication methods "#"没有可用的受支持的身份验证方法（服务器发送：%s）"#g' ssh2userauth.c
+perl -i -pe 's#\Q"available (server sent: %s)"#""#g' ssh2userauth.c
+perl -i -pe 's#\Q"Authentication was trivial! "#"身份验证很简单！"#g' ssh2userauth.c
+perl -i -pe 's#\Q"Abandoning session as specified in configuration."#"放弃配置中指定的会话。"#g' ssh2userauth.c
+
+
+
+# ssh2userauth-server.c
+echo ssh2userauth-server.c
+perl -i -pe 's#\Q"Received unexpected packet when "#"收到意外的数据包时"#g' ssh2userauth-server.c
+perl -i -pe 's#\Q"expecting USERAUTH_REQUEST, type %d (%s)"#"期待 USERAUTH_REQUEST，键入 %d (%s)"#g' ssh2userauth-server.c
+perl -i -pe 's#\Q"Please change your password"#"请更改您的密码"#g' ssh2userauth-server.c
+perl -i -pe 's#\Q"expecting USERAUTH_INFO_RESPONSE, type %d (%s)"#"期待 USERAUTH_INFO_RESPONSE，键入 %d (%s)"#g' ssh2userauth-server.c
+perl -i -pe 's#\Q"Received %u keyboard-interactive "#"收到 %u 键盘交互"#g' ssh2userauth-server.c
+perl -i -pe 's#\Q"responses after sending %u prompts"#"发送 %u 提示后的响应"#g' ssh2userauth-server.c
+
+
 
 # sshpubk.c
 echo sshpubk.c
@@ -593,6 +1465,293 @@ perl -i -pe 's#\Q"Release 0.70"#"发布版 0.70_cn_portable"#g' version.h
 perl -i -pe 's#\Q"Release 0.71"#"发布版 0.71_cn_portable"#g' version.h
 perl -i -pe 's#\Q"Release 0.72"#"发布版 0.72_cn_portable"#g' version.h
 perl -i -pe 's#\Q"Release 0.73"#"发布版 0.73_cn_portable"#g' version.h
+
+# psocks.c
+echo psocks.c
+perl -i -pe 's#\Q"request from %s for %s port %d"#"来自 %s 对 %s 端口 %d 的请求"#g' psocks.c
+perl -i -pe 's#\Q"cannot log this connection: "#"无法记录此连接: 创建文件 '\''%s'\'': %s"#g' psocks.c
+perl -i -pe 's#\Q"creating file '\''%s'\'': %s"#""#g' psocks.c
+perl -i -pe 's#\Q"cannot log this connection: "#"无法记录此连接：创建管道：%s"#g' psocks.c
+perl -i -pe 's#\Q"creating pipes: %s"#""#g' psocks.c
+perl -i -pe 's#\Q"name lookup failed: %s"#"名称查找失败：%s"#g' psocks.c
+perl -i -pe 's#\Q"trying to connect to %s port %d"#"试图连接到 %s 端口 %d"#g' psocks.c
+perl -i -pe 's#\Q"trying to connect to %s"#"试图连接到 %s"#g' psocks.c
+perl -i -pe 's#\Q"connection attempt failed: %s"#"连接尝试失败：%s"#g' psocks.c
+perl -i -pe 's#\Q"connection established"#"连接已建立"#g' psocks.c
+perl -i -pe 's#\Q"connection setup: %s"#"连接设置: %s"#g' psocks.c
+perl -i -pe 's#\Q"unable to connect: %s"#"无法连接: %s"#g' psocks.c
+perl -i -pe 's#\Q"psocks: '\''-p'\'' is not supported on this "#"psocks: 此平台不支持“-p”\\n"#g' psocks.c
+perl -i -pe 's#\Q"platform\n"#""#g' psocks.c
+perl -i -pe 's#\Q"psocks: running a subcommand is not "#"psocks: 此平台不支持运行子命令\\n"#g' psocks.c
+perl -i -pe 's#\Q"supported on this platform\n"#""#g' psocks.c
+perl -i -pe 's#\Q"psocks: unexpected extra argument '\''%s'\''\n"#"psocks: 意外的额外参数“%s”\\n"#g' psocks.c
+perl -i -pe 's#\Q"host keys not handled in this tool"#"此工具中未处理的主机密钥"#g' psocks.c
+
+
+# console.c
+echo console.c
+perl -i -pe 's#\Q"The server'\''s host key is not cached. You have no guarantee\n"#"服务器的主机密钥未缓存。你无法保证\\n"#g' console.c
+perl -i -pe 's#\Q"that the server is the computer you think it is.\n"#"服务器就是您认为的计算机。\\n"#g' console.c
+perl -i -pe 's#\Q"The server'\''s %s key fingerprint is:\n"#"服务器 %s 的密钥指纹是:\\n"#g' console.c
+perl -i -pe 's#\Q"If you trust this host, enter \"y\" to add the key to\n"#"如果您信任此主机，请输入 \\"y\\" 以将密钥添加到\\n"#g' console.c
+perl -i -pe 's#\Q"PuTTY'\''s cache and carry on connecting.\n"#"PuTTY 的缓存并继续连接。\\n"#g' console.c
+perl -i -pe 's#\Q"If you want to carry on connecting just once, without\n"#"如果您只想继续连接一次，则无需\\n"#g' console.c
+perl -i -pe 's#\Q"adding the key to the cache, enter \"n\".\n"#"将密钥添加到缓存中，输入 \\"n\\"。\\n"#g' console.c
+perl -i -pe 's#\Q"If you do not trust this host, press Return to abandon the\n"#"如果您不信任此主机，请按 Return 放弃\\n"#g' console.c
+perl -i -pe 's#\Q"connection.\n"#"\\n"#g' console.c
+perl -i -pe 's#\Q"Store key in cache? (y/n, Return cancels connection, "#"将密钥存储在缓存中？ （y/n，返回取消连接，i了解更多信息）"#g' console.c
+perl -i -pe 's#\Q"i for more info) "#""#g' console.c
+perl -i -pe 's#\Q"WARNING - POTENTIAL SECURITY BREACH!\n"#"警告 -潜在的安全漏洞！\\n"#g' console.c
+perl -i -pe 's#\Q"The server'\''s host key does not match the one PuTTY has\n"#"服务器的主机密钥与 PuTTY 的主机密钥不匹配\\n"#g' console.c
+perl -i -pe 's#\Q"cached. This means that either the server administrator\n"#"这意味着服务器管理员\\n"#g' console.c
+perl -i -pe 's#\Q"has changed the host key, or you have actually connected\n"#"已更改主机密钥，或者您已实际连接\\n"#g' console.c
+perl -i -pe 's#\Q"to another computer pretending to be the server.\n"#"到另一台伪装成服务器的计算机。\\n"#g' console.c
+perl -i -pe 's#\Q"The new %s key fingerprint is:\n"#"新的 %s 密钥指纹是:\\n"#g' console.c
+perl -i -pe 's#\Q"If you were expecting this change and trust the new key,\n"#"如果您期待此更改并信任新密钥，\\n"#g' console.c
+perl -i -pe 's#\Q"enter \"y\" to update PuTTY'\''s cache and continue connecting.\n"#"输入 \\"y\\" 以更新 PuTTY 的缓存并继续连接。\\n"#g' console.c
+perl -i -pe 's#\Q"If you want to carry on connecting but without updating\n"#"如果你想继续连接但不更新缓存，\\n"#g' console.c
+perl -i -pe 's#\Q"the cache, enter \"n\".\n"#"请输入 \\"n\\"。\\n"#g' console.c
+perl -i -pe 's#\Q"If you want to abandon the connection completely, press\n"#"如果要完全放弃连接，请按\\n"#g' console.c
+perl -i -pe 's#\Q"Return to cancel. Pressing Return is the ONLY guaranteed\n"#"返回取消。按回车键是唯一保证安全选择\\n"#g' console.c
+perl -i -pe 's#\Q"safe choice.\n"#""#g' console.c
+perl -i -pe 's#\Q"Update cached key? (y/n, Return cancels connection, "#"更新缓存的密钥? (y/n, 返回取消连接, i 了解更多信息) "#g' console.c
+perl -i -pe 's#\Q"i for more info) "#""#g' console.c
+perl -i -pe 's#\Q"The first %s supported by the server is\n"#"服务器支持的第一个 %s 是\\n"#g' console.c
+perl -i -pe 's#\Q"%s, which is below the configured warning threshold.\n"#"%s，低于配置的警告阈值。\\n"#g' console.c
+perl -i -pe 's#\Q"The first host key type we have stored for this server\n"#"我们为此服务器存储的第一个主机密钥类型\\n"#g' console.c
+perl -i -pe 's#\Q"is %s, which is below the configured warning threshold.\n"#"是 %s，低于配置的警告阈值。\\n"#g' console.c
+perl -i -pe 's#\Q"The server also provides the following types of host key\n"#"服务器还提供以下类型的主机密钥\\n"#g' console.c
+perl -i -pe 's#\Q"above the threshold, which we do not have stored:\n"#"高于阈值，我们没有存储：\\n"#g' console.c
+perl -i -pe 's#\Q"Continue with connection? (y/n) "#"继续连接? (y/n) "#g' console.c
+perl -i -pe 's#\Q"Connection abandoned.\n"#"已放弃连接。\\n"#g' console.c
+perl -i -pe 's#\Q"FATAL ERROR"#"致命错误"#g' console.c
+perl -i -pe 's#\Q"ERROR"#"错误"#g' console.c
+
+# be_misc.c
+echo be_misc.c
+perl -i -pe 's#\Q"Connecting to %s port %d"#"正在连接到 %s 端口 %d"#g' be_misc.c
+perl -i -pe 's#\Q"Connecting to %s"#"连接到 %s"#g' be_misc.c
+perl -i -pe 's#\Q"Failed to connect to %s: %s"#"连接失败 %s: %s"#g' be_misc.c
+perl -i -pe 's#\Q"Connected to %s"#"连接到 %s"#g' be_misc.c
+
+# cgtest.c
+echo cgtest.c
+perl -i -pe 's#\Q"  prompt \"%s\": response \"%s\"\n"#"提示 \\"%s\\": 响应 \\"%s\\"\\n"#g' cgtest.c
+perl -i -pe 's#\Q"  prompt \"%s\": no response preloaded\n"#"提示 \\"%s\\": 没有预加载响应\\n"#g' cgtest.c
+perl -i -pe 's#\Q"FAILED retval (exp %d got %d):"#"失败的回报 (exp %d got %d):"#g' cgtest.c
+perl -i -pe 's#\Q"FAILED nprompts (exp %d got %d):"#"失败的 nprompts (exp %d got %d):"#g' cgtest.c
+perl -i -pe 's#\Q"FAILED diff (ret=%d): "#"失败 diff (ret=%d): "#g' cgtest.c
+perl -i -pe 's#\Q"usage:     cgtest [options] [key types]\n"#"用法：cgtest [选项] [密钥类型]\\n"#g' cgtest.c
+perl -i -pe 's#\Q"options:   -v, --verbose         "#"选项：-v，--verbose         "#g' cgtest.c
+perl -i -pe 's#\Q"print more output during tests\n"#"在测试期间打印更多输出\\n"#g' cgtest.c
+perl -i -pe 's#\Q"do not delete the temporary output files\n"#"不要删除临时输出文件\\n"#g' cgtest.c
+perl -i -pe 's#\Q"display this help text\n"#"显示此帮助文本\\n"#g' cgtest.c
+perl -i -pe 's#\Q"key types: "#"密钥类型："#g' cgtest.c
+perl -i -pe 's#\Q"UNABLE to test fingerprint matching against "#"无法针对 OpenSSH 测试指纹匹配\\n"#g' cgtest.c
+perl -i -pe 's#\Q"OpenSSH\n"#""#g' cgtest.c
+perl -i -pe 's#\Q"Cleaned up: %s\n"#"清理干净: %s\\n"#g' cgtest.c
+perl -i -pe 's#\Q"%d passes, %d fails\n"#"%d 通过，%d 失败\\n"#g' cgtest.c
+
+
+# pageant.c
+echo pageant.c
+perl -i -pe 's#\Q"Internal error: attempt to use random numbers in Pageant"#"内部错误：尝试在 Pageant 中使用随机数"#g' pageant.c
+perl -i -pe 's#\Q"key deleted from Pageant while signing "#"签名请求挂起时从 Pageant 中删除的密钥"#g' pageant.c
+perl -i -pe 's#\Q"request was pending"#""#g' pageant.c
+perl -i -pe 's#\Q"on-demand decryption could not "#"按需解密无法提示输入密码"#g' pageant.c
+perl -i -pe 's#\Q"prompt for a passphrase"#""#g' pageant.c
+perl -i -pe 's#\Q"unsupported flag bits 0x%08"#"不支持的标志位 0x%08"#g' pageant.c
+perl -i -pe 's#\Q"key invalid: %s"#"密钥无效: %s"#g' pageant.c
+perl -i -pe 's#\Q"unable to decrypt key"#"无法解密密钥"#g' pageant.c
+perl -i -pe 's#\Q"unable to continue creating "#"无法继续创建密码提示"#g' pageant.c
+perl -i -pe 's#\Q"passphrase prompts"#""#g' pageant.c
+perl -i -pe 's#\Q"user refused to supply passphrase"#"用户拒绝提供密码"#g' pageant.c
+perl -i -pe 's#\Q"message contained no type code"#"消息不包含类型代码"#g' pageant.c
+perl -i -pe 's#\Q"returned key: %s"#"返回密钥: %s"#g' pageant.c
+perl -i -pe 's#\Q"returned key: %s %s"#"返回密钥: %s %s"#g' pageant.c
+perl -i -pe 's#\Q"unable to decode request"#"无法解码请求"#g' pageant.c
+perl -i -pe 's#\Q"response type other than 1 not supported"#"不支持 1 以外的响应类型"#g' pageant.c
+perl -i -pe 's#\Q"key not found"#"未找到密钥"#g' pageant.c
+perl -i -pe 's#\Q"key is invalid"#"密钥无效"#g' pageant.c
+perl -i -pe 's#\Q"submitted key: %s"#"提交的密钥: %s"#g' pageant.c
+perl -i -pe 's#\Q"key already present"#"密钥已经存在"#g' pageant.c
+perl -i -pe 's#\Q"algorithm unknown"#"算法未知"#g' pageant.c
+perl -i -pe 's#\Q"key setup failed"#"密钥设置失败"#g' pageant.c
+perl -i -pe 's#\Q"submitted key: %s %s"#"提交的密钥: %s %s"#g' pageant.c
+perl -i -pe 's#\Q"unwanted key: %s"#"不需要的密钥: %s"#g' pageant.c
+perl -i -pe 's#\Q"found with comment: %s"#"发现有评论: %s"#g' pageant.c
+perl -i -pe 's#\Q"unrecognised extension name '\''%.*s'\''"#"无法识别的扩展名 '\''%.*s'\''"#g' pageant.c
+perl -i -pe 's#\Q"failed to extract public key blob: %s"#"无法提取公钥 blob: %s"#g' pageant.c
+perl -i -pe 's#\Q"failed to decode private key: %s"#"无法解码私钥: %s"#g' pageant.c
+perl -i -pe 's#\Q" (loaded unencrypted PPK)"#" (加载未加密的 PPK)"#g' pageant.c
+perl -i -pe 's#\Q"reply: SSH_AGENT_SUCCESS (added encrypted"#"reply: SSH_AGENT_SUCCESS (将加密的 PPK 添加到现有的密钥记录)"#g' pageant.c
+perl -i -pe 's#\Q" PPK to existing key record)"#""#g' pageant.c
+perl -i -pe 's#\Q"reply: SSH_AGENT_SUCCESS (made"#"reply: SSH_AGENT_SUCCESS (制作了新的仅加密密钥记录)"#g' pageant.c
+perl -i -pe 's#\Q" new encrypted-only key record)"#""#g' pageant.c
+perl -i -pe 's#\Q"key to re-encrypt: %s"#"重新加密的密钥： %s"#g' pageant.c
+perl -i -pe 's#\Q"this key couldn'\''t be re-encrypted"#"无法重新加密此密钥"#g' pageant.c
+perl -i -pe 's#\Q"no key could be re-encrypted"#"没有密钥可以重新加密"#g' pageant.c
+perl -i -pe 's#\Q"(%u keys re-encrypted, %u failures)"#"（%u 密钥重新加密，%u 失败）"#g' pageant.c
+perl -i -pe 's#\Q"request: unknown message type %d"#"请求：未知消息类型 %d"#g' pageant.c
+perl -i -pe 's#\Q"unrecognised message"#"无法识别的消息"#g' pageant.c
+perl -i -pe 's#\Q": error: %s"#": 错误: %s"#g' pageant.c
+perl -i -pe 's#\Q": connection closed"#": 连接关闭"#g' pageant.c
+perl -i -pe 's#\Q"(overlong message, length %u)"#"（超长消息，长度 %u）"#g' pageant.c
+perl -i -pe 's#\Q"listening socket: error: %s"#"监听套接字：错误：%s"#g' pageant.c
+perl -i -pe 's#\Q": new connection from %s"#": 来自的新连接 %s"#g' pageant.c
+perl -i -pe 's#\Q": new connection"#": 新连接"#g' pageant.c
+perl -i -pe 's#\Q"Couldn'\''t load this key (%s)"#"无法加载此密钥 (%s)"#g' pageant.c
+perl -i -pe 's#\Q"Can'\''t add SSH-1 keys in encrypted form"#"无法以加密形式添加 SSH-1 密钥"#g' pageant.c
+perl -i -pe 's#\Q"Couldn'\''t load private key (%s)"#"无法加载私钥 (%s)"#g' pageant.c
+perl -i -pe 's#\Q"Received broken key list from agent"#"从代理收到损坏的密钥列表"#g' pageant.c
+perl -i -pe 's#\Q"Agent doesn'\''t support adding "#"代理不支持添加加密密钥"#g' pageant.c
+perl -i -pe 's#\Q"encrypted keys"#""#g' pageant.c
+perl -i -pe 's#\Q"The already running agent "#"已经运行的代理拒绝添加密钥。"#g' pageant.c
+perl -i -pe 's#\Q"refused to add the key."#""#g' pageant.c
+perl -i -pe 's#\Q"Received broken SSH-1 key list from agent"#"从代理收到损坏的 SSH-1 密钥列表"#g' pageant.c
+perl -i -pe 's#\Q"Received broken SSH-2 key list from agent"#"从代理收到损坏的 SSH-2 密钥列表"#g' pageant.c
+perl -i -pe 's#\Q"Received an invalid SSH-1 key from agent"#"从代理收到无效的 SSH-1 密钥"#g' pageant.c
+perl -i -pe 's#\Q"Agent failed to delete key"#"代理未能删除密钥"#g' pageant.c
+perl -i -pe 's#\Q"Agent failed to delete SSH-2 keys"#"代理无法删除 SSH-2 密钥"#g' pageant.c
+perl -i -pe 's#\Q"Agent failed to delete SSH-1 keys"#"代理无法删除 SSH-1 密钥"#g' pageant.c
+perl -i -pe 's#\Q"Can'\''t re-encrypt an SSH-1 key"#"无法重新加密 SSH-1 密钥"#g' pageant.c
+perl -i -pe 's#\Q"Agent doesn'\''t support encrypted keys"#"代理不支持加密密钥"#g' pageant.c
+perl -i -pe 's#\Q"Agent failed to re-encrypt key"#"代理无法重新加密密钥"#g' pageant.c
+perl -i -pe 's#\Q"Agent failed to re-encrypt any keys"#"代理未能重新加密任何密钥"#g' pageant.c
+perl -i -pe 's#\Q"1 key remains unencrypted"#"1 个密钥未加密"#g' pageant.c
+perl -i -pe 's#\Q" keys remain unencrypted"#"密钥保持未加密"#g' pageant.c
+perl -i -pe 's#\Q"Agent failed to create signature"#"代理未能创建签名"#g' pageant.c
+
+
+# import.c
+echo import.c
+perl -i -pe 's#\Q"unexpected end of file"#"文件意外结束"#g' import.c
+perl -i -pe 's#\Q"file does not begin with OpenSSH key header"#"文件不以 OpenSSH 密钥头开头"#g' import.c
+perl -i -pe 's#\Q"this is a new-style OpenSSH key"#"这是一种新型 OpenSSH 密钥"#g' import.c
+perl -i -pe 's#\Q"unrecognised key type"#"无法识别的密钥类型"#g' import.c
+perl -i -pe 's#\Q"header found in body of key data"#"在密钥数据正文中找到标头"#g' import.c
+perl -i -pe 's#\Q"Proc-Type is not 4 (only 4 is supported)"#"Proc-Type 不是 4（仅支持 4）"#g' import.c
+perl -i -pe 's#\Q"unsupported cipher"#"不支持的密码"#g' import.c
+perl -i -pe 's#\Q"expected more iv data in DEK-Info"#"预计 DEK-Info 中有更多 iv 数据"#g' import.c
+perl -i -pe 's#\Q"more iv data than expected in DEK-Info"#"DEK-Info 中的 iv 数据多于预期"#g' import.c
+perl -i -pe 's#\Q"invalid base64 encoding"#"无效的 base64 编码"#g' import.c
+perl -i -pe 's#\Q"key body not present"#"密钥不存在"#g' import.c
+perl -i -pe 's#\Q"encrypted key blob is not a multiple of "#"加密的密钥 blob 不是密码块大小的倍数"#g' import.c
+perl -i -pe 's#\Q"cipher block size"#""#g' import.c
+perl -i -pe 's#\Q"ASN.1 decoding failure"#"ASN.1 解码失败"#g' import.c
+perl -i -pe 's#\Q"Unsupported ECDSA curve."#"不支持的 ECDSA 曲线。"#g' import.c
+perl -i -pe 's#\Q"unable to create key data structure"#"无法创建密钥数据结构"#g' import.c
+perl -i -pe 's#\Q"version number mismatch"#"版本号不匹配"#g' import.c
+perl -i -pe 's#\Q"Bad key type from load_openssh_pem_key"#"load_openssh_pem_key 中的错误密钥类型"#g' import.c
+perl -i -pe 's#\Q"bad key alg in openssh_pem_write"#"openssh_pem_write 中的错误密钥算法"#g' import.c
+perl -i -pe 's#\Q"new-style OpenSSH magic number missing\n"#"缺少新式 OpenSSH 幻数\\n"#g' import.c
+perl -i -pe 's#\Q"no cipher name found"#"未找到密码名称"#g' import.c
+perl -i -pe 's#\Q"unrecognised cipher name\n"#"无法识别的密码名称\\n"#g' import.c
+perl -i -pe 's#\Q"no kdf name found"#"没有找到 kdf 名称"#g' import.c
+perl -i -pe 's#\Q"unrecognised kdf name\n"#"无法识别的 kdf 名称\\n"#g' import.c
+perl -i -pe 's#\Q"expected empty options string for 'none' kdf"#"'\''none'\'' kdf 的预期空选项字符串"#g' import.c
+perl -i -pe 's#\Q"failed to parse bcrypt options string"#"无法解析 bcrypt 选项字符串"#g' import.c
+perl -i -pe 's#\Q"no key count found"#"未找到密钥计数"#g' import.c
+perl -i -pe 's#\Q"multiple keys in new-style OpenSSH key file not supported\n"#"不支持新型 OpenSSH 密钥文件中的多个密钥\\n"#g' import.c
+perl -i -pe 's#\Q"no private key container string found\n"#"找不到私钥容器字符串\\n"#g' import.c
+perl -i -pe 's#\Q"Bad cipher enumeration value"#"错误的密码枚举值"#g' import.c
+perl -i -pe 's#\Q"Bad kdf enumeration value"#"错误的 kdf 枚举值"#g' import.c
+perl -i -pe 's#\Q"private key container length is not a"#"私钥容器长度不是 AES 块大小的倍数\\n"#g' import.c
+perl -i -pe 's#\Q" multiple of AES block size\n"#""#g' import.c
+perl -i -pe 's#\Q"decryption check failed"#"解密检查失败"#g' import.c
+perl -i -pe 's#\Q"private key type not recognised\n"#"私钥类型无法识别\\n"#g' import.c
+perl -i -pe 's#\Q"unable to read entire private key"#"无法读取整个私钥"#g' import.c
+perl -i -pe 's#\Q"unable to read key comment"#"无法读取密钥评论"#g' import.c
+perl -i -pe 's#\Q"key index out of range"#"密钥引超出范围"#g' import.c
+perl -i -pe 's#\Q"padding at end of private string did not match"#"私有字符串末尾的填充不匹配"#g' import.c
+perl -i -pe 's#\Q"file does not begin with ssh.com key header"#"文件不以 ssh.com 密钥头开头"#g' import.c
+perl -i -pe 's#\Q"key does not begin with magic number"#"密钥不以幻数开头"#g' import.c
+perl -i -pe 's#\Q"key is of unknown type"#"密钥的类型未知"#g' import.c
+perl -i -pe 's#\Q"key encryption is of unknown type"#"密钥加密的类型未知"#g' import.c
+perl -i -pe 's#\Q"no key data found"#"没有找到密钥数据"#g' import.c
+perl -i -pe 's#\Q"encrypted part of key is not a multiple of cipher block"#"密钥的加密部分不是密码块大小的倍数"#g' import.c
+perl -i -pe 's#\Q" size"#""#g' import.c
+perl -i -pe 's#\Q"containing string was ill-formed"#"包含字符串的格式不正确"#g' import.c
+perl -i -pe 's#\Q"key data did not contain six integers"#"密钥数据不包含六个整数"#g' import.c
+perl -i -pe 's#\Q"predefined DSA parameters not supported"#"不支持预定义的 DSA 参数"#g' import.c
+perl -i -pe 's#\Q"key data did not contain five integers"#"密钥数据不包含五个整数"#g' import.c
+perl -i -pe 's#\Q"unable to create key data structure"#"无法创建密钥数据结构"#g' import.c
+
+
+# portfwd.c
+echo portfwd.c
+perl -i -pe 's#\Q"forwarding from %s"#"转发自 %s"#g' portfwd.c
+perl -i -pe 's#\Q"forwarding"#"转发"#g' portfwd.c
+perl -i -pe 's#\Q"These case values cannot appear"#"这些 case 值不能出现"#g' portfwd.c
+perl -i -pe 's#\Q"Forwarded port closed"#"转发端口关闭"#g' portfwd.c
+perl -i -pe 's#\Q"Forwarded connection refused by remote%s%s"#"远程拒绝转发连接%s%s"#g' portfwd.c
+perl -i -pe 's#\Q"Service lookup failed for source"#"源端口“%s”的服务查找失败"#g' portfwd.c
+perl -i -pe 's#\Q" port \"%s\""#""#g' portfwd.c
+perl -i -pe 's#\Q"Service lookup failed for destination"#"目标端口“%s”的服务查找失败"#g' portfwd.c
+perl -i -pe 's#\Q" port \"%s\""#""#g' portfwd.c
+perl -i -pe 's#\Q"%s port forwarding from %s%s%d"#"来自 %s%s%d 的 %s 端口转发"#g' portfwd.c
+perl -i -pe 's#\Q"Cancelling %s"#"取消 %s"#g' portfwd.c
+perl -i -pe 's#\Q"Local %sport %s forwarding to %s%s%s"#"本地 %sport %s 转发到 %s%s%s"#g' portfwd.c
+perl -i -pe 's#\Q"Local %sport %s SOCKS dynamic forwarding%s%s"#"本地 %sport %s SOCKS 动态转发%s%s"#g' portfwd.c
+perl -i -pe 's#\Q"Duplicate remote port forwarding to %s:%d"#"复制远程端口转发到 %s:%d"#g' portfwd.c
+perl -i -pe 's#\Q"Requesting remote port %s"#"请求远程端口 %s 转发到 %s"#g' portfwd.c
+perl -i -pe 's#\Q" forward to %s"#""#g' portfwd.c
+perl -i -pe 's#\Q"%s on port %s:%d to forward to client%s%s"#"%s 在端口 %s:%d 上转发到客户端%s%s"#g' portfwd.c
+perl -i -pe 's#\Q"Failed to listen"#"无法监听"#g' portfwd.c
+perl -i -pe 's#\Q"Listening"#"监听"#g' portfwd.c
+perl -i -pe 's#\Q"Closing listening port %s:%d"#"正在关闭侦听端口 %s:%d"#g' portfwd.c
+
+
+# proxy.c
+echo proxy.c
+perl -i -pe 's#\Q"Looking up host \"%s\"%s for %s"#"为 %s 查找主机 \\"%s\\"%s"#g' proxy.c
+perl -i -pe 's#\Q"Leaving host lookup to proxy of \"%s\""#"将主机查找留给 \\"%s\\" 的代理"#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: Unknown proxy method"#"Proxy error: 未知代理方法"#g' proxy.c
+perl -i -pe 's#\Q"Will use %s proxy at %s:%d to connect"#"将使用 %s:%d 处的 %s 代理连接到 %s:%d"#g' proxy.c
+perl -i -pe 's#\Q" to %s:%d"#""#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: Unable to resolve proxy host name"#"Proxy error: 无法解析代理主机名"#g' proxy.c
+perl -i -pe 's#\Q"Connecting to %s proxy at %s port %d"#"在 %s 端口 %d 连接到 %s 代理"#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: HTTP response was absent"#"Proxy error: 没有 HTTP 响应"#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: unexpected proxy error"#"Proxy error: 意外的代理错误"#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: SOCKS version 4 does not support IPv6"#"Proxy error: SOCKS 版本 4 不支持 IPv6"#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: SOCKS proxy responded with "#"Proxy error: SOCKS 代理以意外的回复代码版本响应"#g' proxy.c
+perl -i -pe 's#\Q"unexpected reply code version"#""#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: SOCKS server wanted IDENTD on client"#"Proxy error: SOCKS 服务器在客户端需要 IDENTD"#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: Username and IDENTD on client don'\''t agree"#"Proxy error: 客户端上的用户名和 IDENTD 不一致"#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: Error while communicating with proxy"#"Proxy error: 与代理通信时出错"#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: unexpected proxy error"#"Proxy error: 意外的代理错误"#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: SOCKS proxy returned unexpected version"#"Proxy error: SOCKS 代理返回了意外的版本"#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: SOCKS proxy did not accept our authentication"#"Proxy error: SOCKS 代理不接受我们的身份验证"#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: SOCKS password "#"Proxy error: SOCKS 密码子协商包含错误的版本号"#g' proxy.c
+perl -i -pe 's#\Q"subnegotiation contained wrong version number"#""#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: SOCKS proxy refused"#"Proxy error:SOCKS 代理拒绝密码认证"#g' proxy.c
+perl -i -pe 's#\Q" password authentication"#""#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: SOCKS 5 cannot "#"Proxy error:SOCKS 5 不能支持超过 255 个字符的主机名"#g' proxy.c
+perl -i -pe 's#\Q"support host names longer than 255 chars"#""#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: SOCKS proxy returned wrong version number"#"Proxy error: SOCKS 代理返回错误的版本号"#g' proxy.c
+perl -i -pe 's#\Q"General SOCKS server failure"#"一般 SOCKS 服务器故障"#g' proxy.c
+perl -i -pe 's#\Q"Connection not allowed by ruleset"#"规则集不允许连接"#g' proxy.c
+perl -i -pe 's#\Q"Network unreachable"#"网络不可达"#g' proxy.c
+perl -i -pe 's#\Q"Host unreachable"#"主机无法访问"#g' proxy.c
+perl -i -pe 's#\Q"Connection refused"#"拒绝连接"#g' proxy.c
+perl -i -pe 's#\Q"TTL expired"#"TTL 已过期"#g' proxy.c
+perl -i -pe 's#\Q"Command not supported"#"不支持命令"#g' proxy.c
+perl -i -pe 's#\Q"Address type not supported"#"不支持地址类型"#g' proxy.c
+perl -i -pe 's#\Q"Unrecognised SOCKS error code %d"#"无法识别的 SOCKS 错误代码 %d"#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: SOCKS proxy returned "#"Proxy error: SOCKS 代理返回无法识别的地址格式"#g' proxy.c
+perl -i -pe 's#\Q"unrecognised address format"#""#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: We don'\''t support GSSAPI authentication"#"Proxy error: 我们不支持 GSSAPI 身份验证"#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: SOCKS 5 authentication cannot "#"Proxy error: SOCKS 5 身份验证不支持超过 255 个字符的用户名"#g' proxy.c
+perl -i -pe 's#\Q"support usernames longer than 255 chars"#""#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: SOCKS 5 authentication cannot "#"Proxy error: SOCKS 5 身份验证不支持超过 255 个字符的密码"#g' proxy.c
+perl -i -pe 's#\Q"support passwords longer than 255 chars"#""#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: Server chose "#"Proxy error: 服务器选择了用户名/密码身份验证，但我们没有提供！"#g' proxy.c
+perl -i -pe 's#\Q"username/password authentication but we "#""#g' proxy.c
+perl -i -pe 's#\Q"didn'\''t offer it!"#""#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: Unexpected proxy error"#"Proxy error: 意外的代理错误"#g' proxy.c
+perl -i -pe 's#\Q"Sending Telnet proxy command: %s"#"发送 Telnet 代理命令: %s"#g' proxy.c
+perl -i -pe 's#\Q"Proxy error: Unexpected proxy error"#"Proxy error: 意外的代理错误"#g' proxy.c
+
 
 # unix/unix.h
 echo unix/unix.h
@@ -622,6 +1781,13 @@ perl -i -pe 's#\Q"Add Key (&encrypted)"#"增加密钥(&加密)"#g' windows/pagea
 perl -i -pe 's#\Q"Re-e&ncrypt"#"重新加密"#g' windows/pageant.rc
 perl -i -pe 's#\Q"&Remove"#"删除"#g' windows/pageant.rc
 perl -i -pe 's#\Q"&Fingerprint type:"#"指纹类型"#g' windows/pageant.rc
+perl -i -pe 's#\Q"Pageant: Loading Encrypted Key"#"Pageant：加载加密密钥"#g' windows/pageant.rc
+perl -i -pe 's#\Q"Enter passphrase to load key"#"输入密码以加载密钥"#g' windows/pageant.rc
+perl -i -pe 's#\Q"Pageant: Decrypting Stored Key"#"Pageant：解密存储的密钥"#g' windows/pageant.rc
+perl -i -pe 's#\Q"A client of Pageant wants to use the following encrypted key:"#"Pageant的一个连接想要使用以下加密密钥："#g' windows/pageant.rc
+perl -i -pe 's#\Q"If you intended this, click in this box to make sure it has"#"如果您打算这样做，请单击此框以确保它具有输入焦点，"#g' windows/pageant.rc
+perl -i -pe 's#\Q"input focus, then enter the passphrase to decrypt the key."#"然后输入密码来解密密钥。"#g' windows/pageant.rc
+
 
 
 # windows/plink.rc
@@ -639,6 +1805,11 @@ perl -i -pe 's#\Q"Command-line interactive SFTP client"#"命令行交互 SFTP �
 # windows/putty.rc
 echo windows/putty.rc
 perl -i -pe 's#\Q"SSH, Telnet and Rlogin client"#"SSH、Telnet 和 Rlogin 客户端"#g' windows/putty.rc
+perl -i -pe 's#\Q"SSH, Telnet, Rlogin, and SUPDUP client"#"SSH、Telnet、Rlogin 和 SUPDUP 客户端"#g' windows/putty.rc
+
+# windows/puttytel.rc
+echo windows/puttytel.rc
+perl -i -pe 's#\Q"Telnet and Rlogin client"#"Telnet 和 Rlogin 客户端"#g' windows/puttytel.rc
 
 # windows/puttygen.rc
 echo windows/puttygen.rc
@@ -683,6 +1854,36 @@ perl -i -pe 's#\Q"PuTTY Event Log"#"PuTTY 事件日志"#g' windows/win_res.rc2
 perl -i -pe 's#\Q"C&opy"#"复制(&O)"#g' windows/win_res.rc2
 perl -i -pe 's#\Q"PuTTY Licence"#"PuTTY 许可证"#g' windows/win_res.rc2
 perl -i -pe 's#\Q"OK"#"确定"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"PuTTY Security Alert"#"PuTTY 安全警报"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"The server'\''s host key is not cached in the registry. You have no"#"服务器的主机密钥未缓存在注册表中。你无法保证服务器是您认可的机器。"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"guarantee that the server is the computer you think it is."#""#g' windows/win_res.rc2
+perl -i -pe 's#\Q"The server'\''s {KEYTYPE} key fingerprint is:"#"服务器的密钥指纹是 {KEYTYPE} "#g' windows/win_res.rc2
+perl -i -pe 's#\Q"If you trust this host, press "#"如果您信任此主机，请按 "#g' windows/win_res.rc2
+perl -i -pe 's#\Q" to add the key to {APPNAME}'\''s"#" 将密钥添加到 {APPNAME} 缓存"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"cache and carry on connecting."#""#g' windows/win_res.rc2
+perl -i -pe 's#\Q"If you want to carry on connecting just once, without adding the key"#"如果您只想进行一次连接，无需添加密钥到缓存，连接一次”。"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"to the cache, press "#"请按 "#g' windows/win_res.rc2
+perl -i -pe 's#\Q"If you do not trust this host, press "#"如果您不信任此主机，请按 "#g' windows/win_res.rc2
+perl -i -pe 's#\Q" to abandon the connection."#"来放弃连接"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"Cancel"#"取消"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"Accept"#"接受"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"Connect Once"#"连接一次"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"More info..."#"更多信息..."#g' windows/win_res.rc2
+perl -i -pe 's#\Q"Help"#"帮助"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"WARNING - POTENTIAL SECURITY BREACH!"#"警告 -潜在的安全漏洞！"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"The server'\''s host key does not match the one {APPNAME} has cached in"#"服务器的主机密钥与 {APPNAME} 缓存的不匹配。"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"the registry. This means that either the server administrator has"#"这意味着服务器管理员可能更改了主机密钥，或者您实际上已连接到另一个计算机伪装的服务器。"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"changed the host key, or you have actually connected to another"#""#g' windows/win_res.rc2
+perl -i -pe 's#\Q"computer pretending to be the server."#""#g' windows/win_res.rc2
+perl -i -pe 's#\Q"The new {KEYTYPE} key fingerprint is:"#"新的密钥指纹为：{KEYTYPE} "#g' windows/win_res.rc2
+perl -i -pe 's#\Q"If you were expecting this change and trust the new key, press"#"如果您期待此更改并信任新密钥，请按 "#g' windows/win_res.rc2
+perl -i -pe 's#\Q" to update {APPNAME}'\''s cache and continue connecting."#" 以更新 {APPNAME} 的缓存并继续连接。"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"If you want to carry on connecting but without updating the cache,"#"如果您想继续连接但不更新缓存，"#g' windows/win_res.rc2
+perl -i -pe 's#\Q"press "#"按 "#g' windows/win_res.rc2
+perl -i -pe 's#\Q"If you want to abandon the connection completely, press "#"如果您想完全放弃连接，请按 "#g' windows/win_res.rc2
+perl -i -pe 's#\Q"Pressing "#"按 "#g' windows/win_res.rc2
+perl -i -pe 's#\Q" is the ONLY guaranteed safe choice."#" 是唯一有保证的安全选择。"#g' windows/win_res.rc2
+
 
 # windows/wincfg.c
 echo windows/wincfg.c
@@ -837,6 +2038,16 @@ perl -i -pe 's#\Q"Once the key is loaded into PuTTYgen, you can perform\n"#"一�
 perl -i -pe 's#\Q"this conversion simply by saving it again.\n"#"使用保存文件来进行转换。\\n"#g' windows/wincons.c
 perl -i -pe 's#\Q"Cannot get standard input handle\n"#"无法获取标准输入句柄\\n"#g' windows/wincons.c
 perl -i -pe 's#\Q"Cannot get standard output handle\n"#"无法获取标准输出句柄\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"Full public key:\n%s\n"#"完整的公钥:\\n%s\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"SHA256 key fingerprint:\n%s\n"#"SHA256钥匙指纹:\\n%s\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"MD5 key fingerprint:\n%s\n"#"MD5钥匙指纹:\\n%s\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"These are the fingerprints of the PuTTY PGP Master Keys. They can\n"#"这些是 PuTTY PGP 主密钥的指纹。他们能\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"be used to establish a trust path from this executable to another\n"#"用于建立从该可执行文件到另一个可执行文件的信任路径\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"one. See the manual for more information.\n"#"有关详细信息，请参阅手册。\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"(Note: these fingerprints have nothing to do with SSH!)\n"#"（注意：这些指纹与 SSH 无关！）\\n"#g' windows/wincons.c
+perl -i -pe 's#\Q"PuTTY Master Key as of "#"PuTTY 万能钥匙 "#g' windows/wincons.c
+perl -i -pe 's#\Q"Previous Master Key ("#"以前的万能钥匙 ("#g' windows/wincons.c
+
 
 # windows/winctrls.c
 echo windows/winctrls.c
@@ -849,6 +2060,10 @@ perl -i -pe 's#\Q"Font: %s, %sdefault height"#"字体: %s, %s默认高度"#g' wi
 perl -i -pe 's#\Q"Font: %s, %s%d-%s"#"字体: %s, %s%d %s"#g' windows/winctrls.c
 perl -i -pe 's#\Q"pixel"#"像素"#g' windows/winctrls.c
 perl -i -pe 's#\Q"point"#"点"#g' windows/winctrls.c
+perl -i -pe 's#\Q"bad control type in winctrl_layout"#"winctrl_layout 中的控件类型错误"#g' windows/winctrls.c
+perl -i -pe 's#\Q"no radio button was checked"#"没有选中单选按钮"#g' windows/winctrls.c
+perl -i -pe 's#\Q"bad control type in label_change"#"label_change 中的控制类型错误"#g' windows/winctrls.c
+
 
 # windows/windlg.c
 echo windows/windlg.c
@@ -888,7 +2103,7 @@ perl -i -pe 's#\Q"Cancel. Hitting Cancel is the ONLY guaranteed safe\n"#" \\"取
 perl -i -pe 's#\Q"choice.\n"#"操作。\\n"#g' windows/windlg.c
 perl -i -pe 's#\Q"%s Security Alert"#"%s 安全警告"#g' windows/windlg.c
 perl -i -pe 's#\Q"The first %s supported by the server\n"#"服务器支持的第一个 %s\\n"#g' windows/windlg.c
-perl -i -pe 's#\Q"is %.64s, which is below the configured\n"#"是 %.64s，其低于配置的"#g' windows/windlg.c
+perl -i -pe 's#\Q"is %s, which is below the configured\n"#"是 %s，其低于配置的"#g' windows/windlg.c
 perl -i -pe 's#\Q"warning threshold.\n"#"警告阀值。\\n"#g' windows/windlg.c
 perl -i -pe 's#\Q"Do you want to continue with this connection?\n"#"你要继续连接么？\\n"#g' windows/windlg.c
 perl -i -pe 's#\Q"The first host key type we have stored for this server\n"#"我们储存的此服务器第一个主机密钥类型\\n"#g' windows/windlg.c
@@ -961,10 +2176,57 @@ perl -i -pe 's#\Q"Connection closed by remote host"#"连接被远程主机关闭
 perl -i -pe 's#\Q"----- Session restarted -----"#"----- 会话重新启动 -----"#g' windows/window.c
 perl -i -pe 's#\Q"Unable to play sound file\n%s\nUsing default sound instead"#"无法播放声音文件\\n%s\\n改用默认声音"#g' windows/window.c
 perl -i -pe 's#\Q"%s Sound Error"#"%s 声音错误"#g' windows/window.c
+perl -i -pe 's#\Q"Primary font H=%d, AW=%d, MW=%d\n"#"主要字体 H=%d, AW=%d, MW=%d\\n"#g' windows/window.c
+
 
 # windows/winnet.c
 echo windows/winnet.c
 perl -i -pe 's#\Q"PuTTY was built without IPv6 support"#"PuTTY 无 IPv6 支持编译版"#g' windows/winnet.c
+perl -i -pe 's#\Q"Unable to load any WinSock library"#"无法加载任何 WinSock 库"#g' windows/winnet.c
+perl -i -pe 's#\Q"Unable to initialise WinSock"#"无法初始化 WinSock"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Permission denied"#"网络错误：权限被拒绝"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Address already in use"#"网络错误：地址已在使用中"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Cannot assign requested address"#"网络错误：无法分配请求的地址"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Address family not supported by protocol family"#"网络错误：协议系列不支持地址系列"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Operation already in progress"#"网络错误：操作已在进行中"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Software caused connection abort"#"网络错误：软件导致连接中止"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Connection refused"#"网络错误：连接被拒绝"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Connection reset by peer"#"网络错误：对等方重置连接"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Destination address required"#"网络错误：需要目标地址"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Bad address"#"网络错误：地址错误"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Host is down"#"网络错误：主机已关闭"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: No route to host"#"网络错误：没有到主机的路由"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Operation now in progress"#"网络错误：操作正在进行中"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Interrupted function call"#"网络错误：函数调用中断"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Invalid argument"#"网络错误：参数无效"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Socket is already connected"#"网络错误：套字节已连接"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Too many open files"#"网络错误：打开的文件太多"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Message too long"#"网络错误：消息太长"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Network is down"#"网络错误：网络已关闭"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Network dropped connection on reset"#"网络错误：重置时网络断开连接"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Network is unreachable"#"网络错误：网络不可达"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: No buffer space available"#"网络错误：没有可用的缓冲区空间"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Bad protocol option"#"网络错误：错误的协议选项"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Socket is not connected"#"网络错误：套字节未连接"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Socket operation on non-socket"#"网络错误：非套字节上的套字节操作"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Operation not supported"#"网络错误：不支持操作"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Protocol family not supported"#"网络错误：不支持协议族"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Too many processes"#"网络错误：进程过多"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Protocol not supported"#"网络错误：不支持协议"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Protocol wrong type for socket"#"网络错误：套字节的协议类型错误"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Cannot send after socket shutdown"#"网络错误：套字节关闭后无法发送"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Socket type not supported"#"网络错误：不支持套字节类型"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Connection timed out"#"网络错误：连接超时"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Resource temporarily unavailable"#"网络错误：资源暂时不可用"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network error: Graceful shutdown in progress"#"网络错误：正在进行正常关机"#g' windows/winnet.c
+perl -i -pe 's#\Q"Network is down"#"网络已关闭"#g' windows/winnet.c
+perl -i -pe 's#\Q"Host does not exist"#"主机不存在"#g' windows/winnet.c
+perl -i -pe 's#\Q"Host not found"#"主机未找到"#g' windows/winnet.c
+perl -i -pe 's#\Q"gethostbyname: unknown error"#"gethostbyname：未知错误"#g' windows/winnet.c
+perl -i -pe 's#\Q"<unknown>"#"<未知>"#g' windows/winnet.c
+perl -i -pe 's#\Q"bad address family in sk_addrcopy"#"sk_addrcopy 中的错误地址系列"#g' windows/winnet.c
+perl -i -pe 's#\Q"unix sockets not supported on this platform"#"此平台不支持 unix 套字节"#g' windows/winnet.c
+
 
 # windows/winpgen.c
 echo windows/winpgen.c
@@ -1070,6 +2332,10 @@ perl -i -pe 's#\Q"PuTTYgen Error"#"PuTTYgen 错误"#g' windows/winpgen.c
 perl -i -pe 's#\Q"Unable to save key file"#"无法保存密钥文件"#g' windows/winpgen.c
 perl -i -pe 's#\Q"PuTTYgen Error"#"PuTTYgen 错误"#g' windows/winpgen.c
 perl -i -pe 's#\Q"Load private key:"#"载入私钥："#g' windows/winpgen.c
+perl -i -pe 's#\Q"bad control id in idc_to_fptype"#"idc_to_fptype 中的控制 ID 错误"#g' windows/winpgen.c
+perl -i -pe 's#\Q"bad fptype in fptype_to_idc"#"fptype_to_idc 中的错误 fptype"#g' windows/winpgen.c
+perl -i -pe 's#\Q"we must have initialised keytype by now"#"我们现在必须初始化 keytype"#g' windows/winpgen.c
+
 
 # windows/winpgnt.c
 echo windows/winpgnt.c
@@ -1108,6 +2374,28 @@ perl -i -pe 's#\Q"E&xit"#"退出(&X)"#g' windows/winpgnt.c
 perl -i -pe 's#\Q"Add key (encrypted)"#"增加密钥(加密)"#g' windows/winpgnt.c
 perl -i -pe 's#\Q"Remove All Keys"#"删除所有密钥"#g' windows/winpgnt.c
 perl -i -pe 's#\Q"Re-encrypt All Keys"#"重新加密所有密钥"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Error: "#"错误："#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Error code: "#"错误代码："#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Unable to read configuration file, falling back to defaults"#"无法读取配置文件，回退到默认值"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Unable to ExpandEnvironmentStrings for session path"#"无法展开会话路径的环境字符串"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"unable to get user SID"#"无法获取用户 SID"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"unable to get default SID"#"无法获取默认 SID"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"unable to get owner of file mapping: "#"无法获取文件映射的所有者："#g' windows/winpgnt.c
+perl -i -pe 's#\Q"GetSecurityInfo returned: %s"#"GetSecurityInfo 返回： %s"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"wrong owning SID of file mapping"#"文件映射的拥有 SID 错误"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"security APIs not present\n"#"安全 API 不存在\\n"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"unable to obtain view of file mapping: %s"#"无法获得文件映射视图: %s"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"unable to query view of file mapping: %s"#"无法查询文件映射视图: %s"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"VirtualQuery returned too little data to get "#"VirtualQuery 返回的数据太少，无法获取区域大小"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"region size"#""#g' windows/winpgnt.c
+perl -i -pe 's#\Q"mapping smaller than smallest possible request"#"映射小于可能的最小请求"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Failed to run \"%s\": %s: %s"#"无法运行 %s: %s"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Pageant can'\''t create a LogContext, so this can'\''t be called"#"Pageant 不能创建 LogContext，所以不能调用这个"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"unrecognised command-line option\n"#"无法识别的命令行选项\\n"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Pageant command-line syntax error"#"Pageant命令行语法错误"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"Unable to open named pipe at %s "#"无法在 %s 处为 SSH 代理打开命名管道:\\n%s"#g' windows/winpgnt.c
+perl -i -pe 's#\Q"for SSH agent:\n%s"#""#g' windows/winpgnt.c
+
 
 
 
@@ -1173,14 +2461,51 @@ perl -i -pe 's#\Q"plink: option \"%s\" requires an argument\n"#"plink: 选项 \\
 perl -i -pe 's#\Q"plink: unknown option \"%s\"\n"#"plink: 未知选项 \\"%s\\"\\n"#g' windows/winplink.c
 perl -i -pe 's#\Q"Internal fault: Unsupported protocol found\n"#"内部错误：发现不支持的协议\\n"#g' windows/winplink.c
 perl -i -pe 's#\Q"Plink requires WinSock 2\n"#"Plink 需要 WinSock 2\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"            disconnect if SSH authentication succeeds trivially\n"#"            如果 SSH 身份验证成功，则断开连接\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"            control what happens when a log file already exists\n"#"            控制当日志文件已经存在时会发生什么\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"Plink doesn'\''t support %s, which needs terminal emulation\n"#"Plink 不支持 %s，需要终端仿真\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"Connection sharing not supported for this "#"此连接类型(%s)不支持连接共享\\n"#g' windows/winplink.c
+perl -i -pe 's#\Q"connection type (%s)'\''\n"#""#g' windows/winplink.c
+perl -i -pe 's#\Q"Running with restricted process ACL"#"使用受限进程 ACL 运行"#g' windows/winplink.c
+perl -i -pe 's#\Q"Unable to open connection:\n%s"#"无法打开连接:\\n%s"#g' windows/winplink.c
+perl -i -pe 's#\Q"Remote process exit code unavailable\n"#"远程进程退出代码不可用\\n"#g' windows/winplink.c
+
 
 # windows/winstore.c
 echo windows/winstore.c
 perl -i -pe 's#\Q"Recent sessions"#"最近会话"#g' windows/winstore.c
 perl -i -pe 's#\Q"Default Settings"#"默认设置"#g' windows/winstore.c
+perl -i -pe 's#\Q"Error: "#"错误："#g' windows/winstore.c
+perl -i -pe 's#\Q"Error code: "#"错误代码："#g' windows/winstore.c
+perl -i -pe 's#\Q"Error"#"错误"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to ExpandEnvironmentStrings for session path"#"无法展开会话路径的环境字符串"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to read configuration file, falling back to defaults"#"无法读取配置文件，回退到默认值"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to create directory for storing sessions"#"无法创建用于存储会话的目录"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to open file for writing"#"无法打开文件进行写入"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to save settings"#"无法保存设置"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to load file for reading"#"无法加载文件进行读取"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to read session from file"#"无法从文件中读取会话"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to delete settings."#"无法删除设置。"#g' windows/winstore.c
+perl -i -pe 's#\Q"Host key is cached but in registry. "#"主机密钥被缓存但在注册表中。"#g' windows/winstore.c
+perl -i -pe 's#\Q"Do you want to move it to file? \n\n"#"要将其移动到文件中吗？ \\n\\n"#g' windows/winstore.c
+perl -i -pe 's#\Q"Yes \t-> Move (delete key in registry)\n"#"是 \\t-> 移动（删除注册表中的键）\\n"#g' windows/winstore.c
+perl -i -pe 's#\Q"No \t-> Copy (keep key in registry)\n"#"否 \\t-> 复制（在注册表中保留密钥）\\n"#g' windows/winstore.c
+perl -i -pe 's#\Q"Cancel \t-> nothing will be done\n"#"取消 \\t-> 什么都不会做\\n"#g' windows/winstore.c
+perl -i -pe 's#\Q"Security risk"#"安全风险"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to create file (key won'\''t be deleted from registry)"#"无法创建文件（密钥不会从注册表中删除）"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to save key to file (key won'\''t be deleted from registry)"#"无法将密钥保存到文件（密钥不会从注册表中删除）"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to delete registry value"#"无法删除注册表值"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to create file"#"无法创建文件"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to save key to file"#"无法将密钥保存到文件"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to delete '\''%s'\'': %s"#"无法删除“%s”: %s"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to create jumplist file"#"无法创建跳转列表文件"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to load jumplist file"#"无法加载跳转列表文件"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to open file for writing"#"无法打开文件进行写入"#g' windows/winstore.c
+perl -i -pe 's#\Q"Unable to save jumplist"#"无法保存跳转列表"#g' windows/winstore.c
+
 
 # windows/winstuff.h
-echo windows/winstuff.c
+echo windows/winstuff.h
 perl -i -pe 's#\Q"PuTTY Private Key Files (*.ppk)\0*.ppk\0"#"PuTTY 私钥文件 (*.ppk)\\0*.ppk\\0"#g' windows/winstuff.h
 perl -i -pe 's#\Q"All Files (*.*)\0*\0\0\0"#"所有文件 (*.*)\\0*\\0\\0\\0"#g' windows/winstuff.h
 perl -i -pe 's#\Q"Wave Files (*.wav)\0*.WAV\0"#"声音文件 (*.wav)\\0*.WAV\\0"#g' windows/winstuff.h
@@ -1189,19 +2514,125 @@ perl -i -pe 's#\Q"system clipboard"#"系统剪贴板"#g' windows/winstuff.h
 perl -i -pe 's#\Q"System clipboard"#"系统剪贴板"#g' windows/winstuff.h
 perl -i -pe 's#\Q"Last selected text"#"上次选择的文本"#g' windows/winstuff.h
 
+# windows/wingss.c
+echo windows/wingss.c
+perl -i -pe 's#\Q"Using GSSAPI from GSSAPI"#"使用 GSSAPI "#g' windows/wingss.c
+perl -i -pe 's#\Q"Using SSPI from SECUR32.DLL"#"使用 SECUR32.DLL 中的 SSPI"#g' windows/wingss.c
+perl -i -pe 's#\Q"Using GSSAPI from user-specified"#"使用用户指定的 GSSAPI"#g' windows/wingss.c
+perl -i -pe 's#\Q"SSPI status OK"#"SSPI 状态正常"#g' windows/wingss.c
+perl -i -pe 's#\Q"The handle passed to the function"#"传递给函数的句柄是无效的。"#g' windows/wingss.c
+perl -i -pe 's#\Q" is invalid."#""#g' windows/wingss.c
+perl -i -pe 's#\Q"The target was not recognized."#"目标未被识别。"#g' windows/wingss.c
+perl -i -pe 's#\Q"The logon failed."#"登录失败。"#g' windows/wingss.c
+perl -i -pe 's#\Q"The Local Security Authority cannot"#"无法联系当地安全机构。"#g' windows/wingss.c
+perl -i -pe 's#\Q" be contacted."#""#g' windows/wingss.c
+perl -i -pe 's#\Q"No credentials are available in the"#"安全包中没有可用的凭据。"#g' windows/wingss.c
+perl -i -pe 's#\Q" security package."#""#g' windows/wingss.c
+perl -i -pe 's#\Q"No authority could be contacted for authentication."#"无法联系任何机构进行身份验证。"#g' windows/wingss.c
+perl -i -pe 's#\Q"The domain name of the authenticating party could be wrong,"#"身份验证方的域名可能是错误的，"#g' windows/wingss.c
+perl -i -pe 's#\Q" the domain could be unreachable, or there might have been"#"域可能无法访问，或者可能存在信任关系失败。"#g' windows/wingss.c
+perl -i -pe 's#\Q" a trust relationship failure."#""#g' windows/wingss.c
+perl -i -pe 's#\Q"One or more of the SecBufferDesc structures passed as"#"作为 OUT 参数传递的一个或多个 SecBufferDesc 结构的缓冲区太小。"#g' windows/wingss.c
+perl -i -pe 's#\Q" an OUT parameter has a buffer that is too small."#""#g' windows/wingss.c
+perl -i -pe 's#\Q"The error is due to a malformed input token, such as a"#"该错误是由于输入标记格式错误造成的，例如"#g' windows/wingss.c
+perl -i -pe 's#\Q" token corrupted in transit, a token"#"令牌在传输中损坏，令牌大小不正确，"#g' windows/wingss.c
+perl -i -pe 's#\Q" of incorrect size, or a token passed into the wrong"#"或令牌传递给错误的安全包。"#g' windows/wingss.c
+perl -i -pe 's#\Q" security package. Passing a token to"#""#g' windows/wingss.c
+perl -i -pe 's#\Q" the wrong package can happen if client and server did not"#"如果客户端和服务器没有协商正确的安全包，"#g' windows/wingss.c
+perl -i -pe 's#\Q" negotiate the proper security package."#"则可能会发生将令牌传递给错误包的情况。"#g' windows/wingss.c
+perl -i -pe 's#\Q"Internal SSPI error"#"内部 SSPI 错误"#g' windows/wingss.c
 
+# windows/winjump.c
+echo windows/winjump.c
+perl -i -pe 's#\Q"Connect to PuTTY session "#"连接到 PuTTY 会话"#g' windows/winjump.c
+#perl -i -pe 's#\Q"Recent Sessions"#"最近的会话"#g' windows/winjump.c
 
+# windows/winmisc.c
+echo windows/winmisc.c
+perl -i -pe 's#\Q"(unable to format: FormatMessage returned %u)"#"（无法格式化：FormatMessage 返回 %u）"#g' windows/winmisc.c
+perl -i -pe 's#\Q"Error %d: %s"#"错误 %d: %s"#g' windows/winmisc.c
 
+# windows/winnpc.c
+echo windows/winnpc.c
+perl -i -pe 's#\Q"Unable to open named pipe '\''%s'\'': %s"#"无法打开命名管道 %s: %s"#g' windows/winnpc.c
+perl -i -pe 's#\Q"Error waiting for named pipe '\''%s'\'': %s"#"等待命名管道时出错 %s: %s"#g' windows/winnpc.c
+perl -i -pe 's#\Q"Unable to get user SID: %s"#"无法获取用户 SID: %s"#g' windows/winnpc.c
+perl -i -pe 's#\Q"Unable to get named pipe security information: %s"#"无法获取命名管道安全信息：%s"#g' windows/winnpc.c
+perl -i -pe 's#\Q"Owner of named pipe '\''%s'\'' is not us"#"命名管道“%s”的所有者不是我们"#g' windows/winnpc.c
 
+# windows/winnps.c
+echo windows/winnps.c
+perl -i -pe 's#\Q"Error while listening to named pipe: %s"#"侦听命名管道时出错：%s"#g' windows/winnps.c
+perl -i -pe 's#\Q"unable to create named pipe '\''%s'\'': %s"#"无法创建命名管道“%s”: %s"#g' windows/winnps.c
 
+# windows/winpgntc.c
+echo windows/winpgntc.c
+perl -i -pe 's#\Q"no agent_connect_ctx can be constructed on this platform"#"在这个平台上不能构建agent_connect_ctx"#g' windows/winpgntc.c
+perl -i -pe 's#\Q"Windows agent queries are never asynchronous!"#"Windows 代理查询永远不会异步！"#g' windows/winpgntc.c
 
+# windows/winproxy.c
+echo windows/winproxy.c
+perl -i -pe 's#\Q"Starting local proxy command: %s"#"启动本地代理命令：%s"#g' windows/winproxy.c
+perl -i -pe 's#\Q"Unable to create pipes for proxy command: %s"#"无法为代理命令创建管道: %s"#g' windows/winproxy.c
 
+# windows/winsecur.c
+echo windows/winsecur.c
+perl -i -pe 's#\Q"unable to construct SID for current user: %s"#"无法为当前用户构造 SID: %s"#g' windows/winsecur.c
+perl -i -pe 's#\Q"unable to construct SID for world: %s"#"无法为世界构造 SID: %s"#g' windows/winsecur.c
+perl -i -pe 's#\Q"unable to construct SID for "#"无法为本地同一用户访问构造 SID: %s"#g' windows/winsecur.c
+perl -i -pe 's#\Q"local same-user access only: %s"#""#g' windows/winsecur.c
+perl -i -pe 's#\Q"unable to construct ACL: %s"#"无法构造 ACL： %s"#g' windows/winsecur.c
+perl -i -pe 's#\Q"unable to allocate security descriptor: %s"#"无法分配安全描述符：%s"#g' windows/winsecur.c
+perl -i -pe 's#\Q"unable to initialise security descriptor: %s"#"无法初始化安全描述符： %s"#g' windows/winsecur.c
+perl -i -pe 's#\Q"unable to set owner in security descriptor: %s"#"无法在安全描述符中设置所有者： %s"#g' windows/winsecur.c
+perl -i -pe 's#\Q"unable to set DACL in security descriptor: %s"#"无法在安全描述符中设置 DACL：%s"#g' windows/winsecur.c
+perl -i -pe 's#\Q"unable to construct ACL: %s"#"无法构造 ACL：%s"#g' windows/winsecur.c
+perl -i -pe 's#\Q"Unable to set process ACL: %s"#"无法设置进程 ACL： %s"#g' windows/winsecur.c
+perl -i -pe 's#\Q"ACL restrictions not compiled into this binary"#"ACL 限制未编译到此二进制文件中"#g' windows/winsecur.c
+perl -i -pe 's#\Q"Could not restrict process ACL: %s"#"无法限制进程 ACL:%s"#g' windows/winsecur.c
 
+# windows/winser.c
+echo windows/winser.c
+perl -i -pe 's#\Q"End of file reading from serial device"#"从串行设备读取文件结束"#g' windows/winser.c
+perl -i -pe 's#\Q"Error reading from serial device"#"从串行设备读取错误"#g' windows/winser.c
+perl -i -pe 's#\Q"Error writing to serial device"#"写入串行设备时出错"#g' windows/winser.c
+perl -i -pe 's#\Q"Configuring baud rate %lu"#"配置波特率 %lu"#g' windows/winser.c
+perl -i -pe 's#\Q"Configuring %u data bits"#"配置 %u 数据位"#g' windows/winser.c
+perl -i -pe 's#\Q"Invalid number of stop bits "#"无效的停止位数"#g' windows/winser.c
+perl -i -pe 's#\Q"(need 1, 1.5 or 2)"#"(需要 1, 1.5 或者 2)"#g' windows/winser.c
+perl -i -pe 's#\Q"Configuring %s"#"配置 %s"#g' windows/winser.c
+perl -i -pe 's#\Q"Configuring %s parity"#"配置 %s 奇偶校验"#g' windows/winser.c
+perl -i -pe 's#\Q"Configuring %s flow control"#"配置 %s 流控制"#g' windows/winser.c
+perl -i -pe 's#\Q"Configuring serial port: %s"#"配置串口: %s"#g' windows/winser.c
+perl -i -pe 's#\Q"Configuring serial timeouts: %s"#"配置串行超时： %s"#g' windows/winser.c
+perl -i -pe 's#\Q"Opening serial device %s"#"打开串行设备 %s"#g' windows/winser.c
+perl -i -pe 's#\Q"Opening '\''%s'\'': %s"#"正在打开“%s”: %s"#g' windows/winser.c
+perl -i -pe 's#\Q"Finished serial break"#"完成连续中断"#g' windows/winser.c
+perl -i -pe 's#\Q"Starting serial break at user request"#"应用户请求启动连续中断"#g' windows/winser.c
 
+# windows/winsftp.c
+echo windows/winsftp.c
+perl -i -pe 's#\Q"Unable to create command input thread\n"#"无法创建命令输入线程\\n"#g' windows/winsftp.c
+perl -i -pe 's#\Q"Running with restricted process ACL"#"使用受限进程 ACL 运行"#g' windows/winsftp.c
 
+# windows/winshare.c
+echo windows/winshare.c
+perl -i -pe 's#\Q"Unable to call CryptProtectMemory: %s"#"无法调用 CryptProtectMemory: %s"#g' windows/winshare.c
 
-
-
+# windows/winutils.c
+echo windows/winutils.c
+perl -i -pe 's#\Q"These are the fingerprints of the PuTTY PGP Master Keys. They can\n"#"这些是 PuTTY PGP 主密钥的指纹。他们能\\n"#g' windows/winutils.c
+perl -i -pe 's#\Q"be used to establish a trust path from this executable to another\n"#"用于建立从该可执行文件到另一个可执行文件的信任路径\\n"#g' windows/winutils.c
+perl -i -pe 's#\Q"one. See the manual for more information.\n"#"有关详细信息，请参阅手册。\\n"#g' windows/winutils.c
+perl -i -pe 's#\Q"(Note: these fingerprints have nothing to do with SSH!)\n"#"（注意：这些指纹与 SSH 无关！）\\n"#g' windows/winutils.c
+perl -i -pe 's#\Q"PuTTY Master Key as of "#"PuTTY 万能钥匙 "#g' windows/winutils.c
+perl -i -pe 's#\Q"Previous Master Key ("#"以前的万能钥匙("#g' windows/winutils.c
+perl -i -pe 's#\Q"PGP fingerprints"#"PGP指纹"#g' windows/winutils.c
+perl -i -pe 's#\Q"unrecognised option: \"%s\"\n"#"无法识别的选项： \\"%s\\"\\n"#g' windows/winutils.c
+perl -i -pe 's#\Q"failed test %d (|%s|) arg %d: |%s| should be |%s|\n"#"失败测试 %d (|%s|) arg %d: |%s|应该是 |%s|\\n"#g' windows/winutils.c
+perl -i -pe 's#\Q"test %d (|%s|) arg %d: |%s| == |%s|\n"#"测试 %d (|%s|) 参数 %d: |%s| == |%s|\\n"#g' windows/winutils.c
+perl -i -pe 's#\Q"failed test %d (|%s|): %d args returned, should be %d\n"#"测试 %d (|%s|) 失败：返回 %d 个参数，应该是 %d\\n"#g' windows/winutils.c
+perl -i -pe 's#\Q"failed test %d (|%s|): %d args returned, should be more\n"#"测试 %d (|%s|) 失败：返回 %d 个参数，应该更多\\n"#g' windows/winutils.c
 
 
 
