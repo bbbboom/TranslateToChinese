@@ -34,7 +34,7 @@
 
    将portable_putty_077_0.19.0_all_in_one中的 **pageant.c** 和 **storage.c** 两个文件替换到 **putty-src/windows** 下
 
-7. 下载 **putty-src-new.bat**  脚本和 **putty-src-new.sh ** 翻译文件，并将 **putty-src** 文件夹拖至 **putty-src-new.bat**  脚本上启动编译
+7. 下载 **putty-src-new.bat**  脚本和 **putty-src-new.sh** 翻译文件，并将 **putty-src** 文件夹拖至 **putty-src-new.bat**  脚本上启动编译
 
 8. 按脚本提示进行编译过程，最终程序输出目录为 **putty-src/output**
 
