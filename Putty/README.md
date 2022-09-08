@@ -14,7 +14,7 @@
 
    [适用于 Windows 便携版的 64 位 Git](https://github.com/git-for-windows/git/releases/download/v2.37.3.windows.1/PortableGit-2.37.3-64-bit.7z.exe) (推荐便携版本，用完抛弃。*解压之后，将 **usr\bin** 目录加入windows环境变量 **PATH*** )
 
-   [MinGW-W64 GCC x86_64-win32-seh](https://sourceforge.net/projects/mingw-w64/files/Toolchains targetting Win64/Personal Builds/mingw-builds/8.1.0/threads-win32/seh/x86_64-8.1.0-release-win32-seh-rt_v6-rev0.7z) （注意选择 win32 seh版本）
+   [MinGW-W64 GCC x86_64-win32-seh](https://sourceforge.net/projects/mingw-w64/files/) （注意选择 win32 seh版本）
 
    *MinGW在线版本有概率(墙)下载失败，下载解压离线包后将 **mingw64\bin** 目录添加至windows环境变量**PATH***
 
