@@ -64,7 +64,7 @@
 
    将portable_putty_077_0.19.0_all_in_one中的 **pageant.c** 和 **storage.c** 两个文件替换到 **putty-src/windows** 下
 
-7. 下载 **putty-src-vs.bat**  脚本和 **putty-src-new.sh ** 翻译文件，并将 **putty-src** 文件夹拖至 **putty-src-vs.bat**  脚本上启动翻译
+7. 下载 **putty-src-vs.bat**  脚本和 **putty-src-new.sh** 翻译文件，并将 **putty-src** 文件夹拖至 **putty-src-vs.bat**  脚本上启动翻译
 
 8. 翻译完成之后，右键 **putty-src** 文件夹使用 **vs2022** 打开，等待cmake自动配置完成之后，点击 **生成** => **全部生成** 来启动编译。
 
