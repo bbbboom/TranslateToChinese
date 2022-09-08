@@ -19,8 +19,7 @@ echo  ^|   5、确定putty-src-new.bat和putty-src-new.sh在同目录  ^|
 echo  ^|   6、请将源码文件夹拖放至本脚本文件来打开本脚本       ^|
 echo  ^|   7、编译文件输出目录 build，程序输出目录 output      ^|
 echo  ^|                                                       ^|
-echo  ^|   汉化人员: bbbboom、wanyanjiabin                     ^|
-echo  ^|   最后修改: 2022/09/02 05:01                          ^|
+echo  ^|   最后修改: 2022/09/08 03:21                          ^|
 echo  ^|   修改人员: wanyanjiabin                              ^|
 echo   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 rem ****************** 判断编译目录 ******************
@@ -92,7 +91,7 @@ del /f /s /q %outputFolder%\testcrypt.exe
 
 
 rem ****************** 编译完毕 ******************
-:: cls
+cls
 color f1
 echo;
 echo ================== 编译完毕 ==================
