@@ -1,0 +1,155 @@
+{
+    "setting": {
+        "main_path": "shiori",
+        "file_list": [
+            "shiori-[(0-9.)|master].zip"
+        ],
+        "file_move": [
+        ],
+        "transcode": {
+            "input": "UTF-8",
+            "output": "UTF-8"
+        },
+        "after_cmd": [
+            "go build -ldflags=\"-s -w --extldflags -static\""
+        ]
+    },
+    "translate": {
+        "internal/view/content.html": [
+            ["Bookmarks Manager", "书签管理器"],
+            ["View Original", "查看原文"],
+            ["View Archive", "查看存档"],
+            ["Bookmarks Manager", "书签管理器"],
+            ["Bookmarks Manager", "书签管理器"]
+        ],
+        "internal/view/index.html": [
+            ["Bookmarks Manager", "书签管理器"],
+            ["Are you sure you want to log out", "您确定要退出吗"],
+            ["Logout", "退出"],
+            ["Log Out", "退出"],
+            ["Yes", "是"],
+            ["No", "否"]
+        ],
+        "internal/view/login.html": [
+            ["simple bookmark manager", "简单的书签管理器"],
+            ["Username", "用户名"],
+            ["Password", "密码"],
+            ["Remember me", "记住账号"],
+            ["Log In", "登录"],
+            ["Username must not empty", "用户名不能为空"]
+        ],
+        "internal/view/js/component/bookmark.js": [
+            ["Edit bookmark", "编辑书签"],
+            ["Delete bookmark", "删除书签"],
+            ["Update archive", "更新存档"]
+        ],
+        "internal/view/js/component/dialog.js": [
+            ["OK", "确定"]
+        ],
+        "internal/view/js/component/pagination.js": [
+            ["Page", "页面"],
+            ["Go to first page", "转到第一页"],
+            ["Go to previous page", "转到上一页"],
+            ["Go to next page", "转到下一页"],
+            ["Go to last page", "转到最后一页"]
+        ],
+        "internal/view/js/page/base.js": [
+            ["Session has expired, please login again.", "会话已过期，请重新登录。"],
+            ["Error", "错误"],
+            ["Yes", "是"],
+            ["OK", "确定"]
+        ],
+        "internal/view/js/page/home.js": [
+            ["Search url, keyword or tags", "搜索网址、关键字或标签"],
+            ["Refresh storage", "刷新存储"],
+            ["Add new bookmark", "添加新书签"],
+            ["Show tags", "显示标签"],
+            ["Batch edit", "批量编辑"],
+            ["Delete bookmark", "删除书签"],
+            ["items selected", "个选择的项目"],
+            ["Add tags", "添加标签"],
+            ["Update archives", "更新档案"],
+            ["OK", "确定"],
+            ["Cancel", "取消"],
+            ["No saved bookmarks yet", "还没有保存的书签"],
+            ["Existing Tags", "现有标签"],
+            ["Rename Tags", "重命名标签"],
+            ["New Bookmark", "新建书签"],
+            ["Create a new bookmark", "创建新书签"],
+            ["Url, start with http://...", "以 http://... 开头的网址"],
+            ["Custom title (optional)", "自定义标题（可选）"],
+            ["Custom excerpt (optional)", "自定义摘录（可选）"],
+            ["Comma separated tags (optional)", "逗号分隔标签（可选）"],
+            ["Create archive", "创建存档"],
+            ["Make archive publicly available", "公开存档"],
+            ["URL must not empty", "网址不能为空"],
+            ["Edit Bookmark", "编辑书签"],
+            ["Edit the bookmark's data", "编辑书签的数据"],
+            ["Url", "网址"],
+            ["Title", "是"],
+            ["Excerpt", "节选"],
+            ["Tags", "标签"],
+            ["Yes", "是"],
+            ["No", "否"],
+            ["Delete Bookmarks", "删除书签"],
+            ["Delete the selected bookmarks ? This action is irreversible", "删除选定的书签？此操作不可逆转"],
+            ["Delete Bookmark", "删除书签"],
+            ["Are you sure ? This action is irreversible", "你确定吗？此操作不可逆转"],
+            ["Update Cache", "更新缓存"],
+            ["Update cache for selected bookmarks ? This action is irreversible", "更新所选书签的缓存？此操作不可逆转"],
+            ["Keep the old title and excerpt", "保留旧标题和摘录"],
+            ["Update archive as well", "也更新存档"],
+            ["Add New Tags", "添加新标签"],
+            ["Add new tags to selected bookmarks", "为选定的书签添加新标签"],
+            ["Comma separated tags", "逗号分隔标签"],
+            ["Rename Tags", "重命名标签"],
+            ["Rename Tag", "重命名标签"],
+            ["New tag name", "新标签名称"]
+        ],
+        "internal/view/js/page/setting.js": [
+            ["Settings", "设置"],
+            ["Display", "显示"],
+            ["Show bookmark's ID", "显示书签的 ID"],
+            ["Display bookmarks as list", "将书签显示为列表"],
+            ["Hide thumbnail image", "隐藏缩略图"],
+            ["Hide bookmark's excerpt", "隐藏书签的摘录"],
+            ["Use dark theme", "使用深色主题"],
+            ["Bookmarks", "书签"],
+            ["Keep bookmark's metadata when updating", "更新时保留书签的元数据"],
+            ["Create archive by default", "默认创建存档"],
+            ["Make archive publicly available by default", "默认情况下公开存档"],
+            ["Accounts", "账户"],
+            ["No accounts registered", "没有已注册的账户"],
+            ["Change password", "更改密码"],
+            ["Delete account", "删除帐户"],
+            ["Refresh accounts", "刷新帐户"],
+            ["Add new account", "添加新帐户"],
+            ["New Account", "新建账户"],
+            ["Input new account's data", "输入新账户的数据"],
+            ["Username", "用户名"],
+            ["Password", "密码"],
+            ["Repeat password", "重复输入密码"],
+            ["This account is for visitor", "此帐户供访客使用"],
+            ["OK", "确定"],
+            ["Cancel", "取消"],
+            ["Username must not empty", "用户名不能为空"],
+            ["Password must not empty", "密码不能为空"],
+            ["Password does not match", "密码不匹配"],
+            ["Change Password", "更改密码"],
+            ["Input new password", "输入新密码"],
+            ["Old password", "旧密码"],
+            ["New password", "新密码"],
+            ["Repeat password", "重复输入密码"],
+            ["Old password must not empty", "旧密码不能为空"],
+            ["New password must not empty", "新密码不能为空"],
+            ["Delete Account", "删除帐户"]
+        ]
+    },
+    "translate_ext": {
+        "windows/version.rc2": [
+            ["(UK English, Unicode)", "(CN 中文, 中华人民共和国)"],
+            ["\"080904B0\"", "\"080404B0\""],
+            [", 0x809, 1200", ", 0x804, 0x4B0"]
+        ]
+    }
+}
